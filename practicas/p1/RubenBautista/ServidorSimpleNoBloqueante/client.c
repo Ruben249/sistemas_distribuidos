@@ -1,6 +1,6 @@
 /*
- * Simple TCP Client - Systems Distributed and Concurrent
- * Client for bidirectional synchronous communication with server
+ * Non-blocking TCP Client - Systems Distributed and Concurrent
+ * Client with non-blocking communication and 0.5s timeout
  */
 
 #include <stdio.h>
@@ -12,10 +12,12 @@
 #include <sys/select.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
 
 #define SERVER_IP "127.0.0.1"
 #define PORT 8080
 #define BUFFER_SIZE 1024
+#define CLIENT_TIMEOUT_US 500000  /* 0.5 seconds in microseconds */
 
 /* Global variable for signal handler */
 int client_socket = -1;
@@ -68,11 +70,12 @@ int setup_client_socket(void) {
     return sock_fd;
 }
 
-/* Handle communication with server */
+/* Handle communication with server using non-blocking recv with timeout */
 void handle_server_communication(int sock_fd) {
     char buffer[BUFFER_SIZE];
     fd_set read_fds;
     int max_fd, activity;
+    struct timeval timeout;
     
     printf("> ");
     fflush(stdout);
@@ -84,34 +87,39 @@ void handle_server_communication(int sock_fd) {
         
         max_fd = (STDIN_FILENO > sock_fd) ? STDIN_FILENO : sock_fd;
         
-        /* Wait for activity on input descriptors */
-        activity = select(max_fd + 1, &read_fds, NULL, NULL, NULL);
+        /* Set timeout for select - 0.5 seconds as required */
+        timeout.tv_sec = 0;
+        timeout.tv_usec = CLIENT_TIMEOUT_US;
+        
+        /* Wait for activity on input descriptors with timeout */
+        activity = select(max_fd + 1, &read_fds, NULL, NULL, &timeout);
         
         if (activity < 0) {
             perror("select");
             break;
         }
         
-        /* Handle incoming message from server */
+        /* Handle incoming message from server with NON-BLOCKING recv */
         if (FD_ISSET(sock_fd, &read_fds)) {
-            int bytes_received = recv(sock_fd, buffer, BUFFER_SIZE - 1, 0);
+            int bytes_received = recv(sock_fd, buffer, BUFFER_SIZE - 1, MSG_DONTWAIT);
             
-            if (bytes_received <= 0) {
+            if (bytes_received > 0) {
+                buffer[bytes_received] = '\0';
+                printf("\n+++ %s\n", buffer);
+            } else if (bytes_received == 0) {
                 printf("Server disconnected\n");
                 break;
+            } else {
+                /* No data available or error */
+                if (errno != EAGAIN && errno != EWOULDBLOCK) {
+                    perror("recv");
+                    break;
+                }
             }
-            
-            buffer[bytes_received] = '\0';
-            printf("\n+++ %s\n", buffer);
-            printf("> ");
-            fflush(stdout);
         }
         
         /* Handle user input */
         if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-            printf("> ");
-            fflush(stdout);
-            
             if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
                 buffer[strcspn(buffer, "\n")] = 0;
                 
@@ -121,6 +129,10 @@ void handle_server_communication(int sock_fd) {
                 }
             }
         }
+        
+        /* Always show prompt after each iteration (non-blocking behavior) */
+        printf("> ");
+        fflush(stdout);
     }
 }
 

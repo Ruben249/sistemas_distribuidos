@@ -1,6 +1,6 @@
 /*
- * Simple TCP Server - Systems Distributed and Concurrent
- * Monoclient server with bidirectional synchronous communication
+ * Non-blocking TCP Server - Systems Distributed and Concurrent
+ * Monoclient server with non-blocking communication
  */
 
 #include <stdio.h>
@@ -12,6 +12,7 @@
 #include <sys/select.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
 
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -103,7 +104,7 @@ int accept_client_connection(int server_fd) {
     return client_fd;
 }
 
-/* Handle communication with a connected client */
+/* Handle communication with a connected client using non-blocking recv */
 void handle_client_communication(int client_fd) {
     char buffer[BUFFER_SIZE];
     fd_set read_fds;
@@ -120,7 +121,7 @@ void handle_client_communication(int client_fd) {
         
         max_fd = (STDIN_FILENO > client_fd) ? STDIN_FILENO : client_fd;
         
-        /* Wait for activity on input descriptors */
+        /* Wait for activity on input descriptors - no timeout for server */
         activity = select(max_fd + 1, &read_fds, NULL, NULL, NULL);
         
         if (activity < 0) {
@@ -128,20 +129,30 @@ void handle_client_communication(int client_fd) {
             break;
         }
         
-        /* Handle incoming message from client */
+        /* Handle incoming message from client with NON-BLOCKING recv */
         if (FD_ISSET(client_fd, &read_fds)) {
-            int bytes_received = recv(client_fd, buffer, BUFFER_SIZE - 1, 0);
+            int bytes_received = recv(client_fd, buffer, BUFFER_SIZE - 1, MSG_DONTWAIT);
             
-            if (bytes_received <= 0) {
+            if (bytes_received > 0) {
+                buffer[bytes_received] = '\0';
+                printf("\n+++ %s\n", buffer);
+                printf("> ");
+                fflush(stdout);
+            } else if (bytes_received == 0) {
                 printf("Client disconnected\n");
                 client_connected = 0;
                 break;
+            } else {
+                /* No data available - show prompt again */
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    printf("> ");
+                    fflush(stdout);
+                } else {
+                    perror("recv");
+                    client_connected = 0;
+                    break;
+                }
             }
-            
-            buffer[bytes_received] = '\0';
-            printf("\n+++ %s\n", buffer);
-            printf("> ");
-            fflush(stdout);
         }
         
         /* Handle user input */
