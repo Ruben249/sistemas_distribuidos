@@ -17,15 +17,9 @@
 #define PORT 8080
 #define BUFFER_SIZE 1024
 
-/* Global variable for signal handler */
 int client_socket = -1;
 
-/* Function prototypes */
-void handle_signal(int sig);
-int setup_client_socket(void);
-void handle_server_communication(int sock_fd);
-
-/* Handle CTRL+C signal for graceful shutdown */
+/* Handle CTRL+C signal */
 void handle_signal(int sig) {
     (void)sig;
     printf("\nDisconnecting from server...\n");
@@ -35,54 +29,54 @@ void handle_signal(int sig) {
     exit(0);
 }
 
-/* Set up and connect client socket */
-int setup_client_socket(void) {
+int main() {
     struct sockaddr_in server_addr;
-    int sock_fd;
-    
-    /* Create TCP socket */
-    sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sock_fd == -1) {
-        perror("socket");
-        return -1;
-    }
-    
-    /* Configure server address structure */
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(PORT);
-    
-    /* Convert IP address from text to binary form */
-    if (inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr) <= 0) {
-        perror("inet_pton");
-        close(sock_fd);
-        return -1;
-    }
-    
-    /* Connect to server */
-    if (connect(sock_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) != 0) {
-        perror("connect");
-        close(sock_fd);
-        return -1;
-    }
-    
-    return sock_fd;
-}
-
-/* Handle communication with server */
-void handle_server_communication(int sock_fd) {
     char buffer[BUFFER_SIZE];
     fd_set read_fds;
     int max_fd, activity;
     
+    /* Set output buffering for immediate display */
+    setbuf(stdout, NULL);
+    
+    /* Register signal handler for CTRL+C */
+    signal(SIGINT, handle_signal);
+    
+    /* Create TCP socket */
+    client_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (client_socket == -1) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+    printf("Socket successfully created...\n");
+    
+    /* Configure server address structure */
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(PORT);
+    server_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
+    
+    /* Connect to server */
+    if (connect(client_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) != 0) {
+        perror("connect");
+        close(client_socket);
+        exit(EXIT_FAILURE);
+    }
+    printf("Connected to the server...\n");
+    
     printf("> ");
     fflush(stdout);
     
+    /* Main communication loop */
     while (1) {
         FD_ZERO(&read_fds);
         FD_SET(STDIN_FILENO, &read_fds);
-        FD_SET(sock_fd, &read_fds);
+        FD_SET(client_socket, &read_fds);
         
-        max_fd = (STDIN_FILENO > sock_fd) ? STDIN_FILENO : sock_fd;
+        /* Find maximum file descriptor for select() */
+        if (STDIN_FILENO > client_socket) {
+            max_fd = STDIN_FILENO;
+        } else {
+            max_fd = client_socket;
+        }
         
         /* Wait for activity on input descriptors */
         activity = select(max_fd + 1, &read_fds, NULL, NULL, NULL);
@@ -93,18 +87,22 @@ void handle_server_communication(int sock_fd) {
         }
         
         /* Handle incoming message from server */
-        if (FD_ISSET(sock_fd, &read_fds)) {
-            int bytes_received = recv(sock_fd, buffer, BUFFER_SIZE - 1, 0);
+        if (FD_ISSET(client_socket, &read_fds)) {
+            int bytes_received = recv(client_socket, buffer, BUFFER_SIZE - 1, 0);
             
-            if (bytes_received <= 0) {
-                printf("Server disconnected\n");
+            if (bytes_received == 0) {
+                /* Server closed connection gracefully */
+                printf("\nServer closed the connection\n");
                 break;
+            } else if (bytes_received < 0) {
+                /* Error in recv */
+                perror("recv");
+                break;
+            } else {
+                /* Data received successfully */
+                buffer[bytes_received] = '\0';
+                printf("\n+++ %s\n", buffer);
             }
-            
-            buffer[bytes_received] = '\0';
-            printf("\n+++ %s\n", buffer);
-            printf("> ");
-            fflush(stdout);
         }
         
         /* Handle user input */
@@ -115,34 +113,17 @@ void handle_server_communication(int sock_fd) {
             if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
                 buffer[strcspn(buffer, "\n")] = 0;
                 
-                if (send(sock_fd, buffer, strlen(buffer), 0) == -1) {
+                if (send(client_socket, buffer, strlen(buffer), 0) == -1) {
                     perror("send");
                     break;
                 }
             }
         }
+        
+        printf("> ");
+        fflush(stdout);
     }
-}
-
-int main() {
-    /* Set output buffering for immediate display */
-    setbuf(stdout, NULL);
     
-    /* Register signal handler for CTRL+C */
-    signal(SIGINT, handle_signal);
-    
-    /* Set up client socket and connect to server */
-    client_socket = setup_client_socket();
-    if (client_socket == -1) {
-        exit(EXIT_FAILURE);
-    }
-    printf("Socket successfully created...\n");
-    printf("Connected to the server...\n");
-    
-    /* Handle communication with server */
-    handle_server_communication(client_socket);
-    
-    /* Cleanup */
     close(client_socket);
     return 0;
 }

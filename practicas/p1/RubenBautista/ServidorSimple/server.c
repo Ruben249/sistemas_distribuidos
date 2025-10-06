@@ -19,31 +19,24 @@
 
 /* Global variables for signal handler */
 int server_socket = -1;
-int client_socket = -1;
+int connection_socket = -1;
+int state = 0;
 
-/* Function prototypes */
-void handle_signal(int sig);
-int setup_server_socket(void);
-int accept_client_connection(int server_fd);
-void handle_client_communication(int client_fd);
-void cleanup_resources(void);
+/* Clean up all resources */
+void cleanup_resources(void) {
+    if (connection_socket != -1) {
+        close(connection_socket);
+    }
+    if (server_socket != -1) {
+        close(server_socket);
+    }
+}
 
 /* Handle CTRL+C signal for graceful shutdown */
 void handle_signal(int sig) {
     (void)sig;
     printf("\nShutting down server...\n");
-    cleanup_resources();
-    exit(0);
-}
-
-/* Clean up all resources */
-void cleanup_resources(void) {
-    if (client_socket != -1) {
-        close(client_socket);
-    }
-    if (server_socket != -1) {
-        close(server_socket);
-    }
+    state = 1;
 }
 
 /* Set up and configure server socket */
@@ -113,6 +106,11 @@ void handle_client_communication(int client_fd) {
     printf("> ");
     fflush(stdout);
     
+    if (state == 1) {
+        cleanup_resources();
+        exit(0);
+    }
+
     while (client_connected) {
         FD_ZERO(&read_fds);
         FD_SET(STDIN_FILENO, &read_fds);
@@ -144,7 +142,7 @@ void handle_client_communication(int client_fd) {
             fflush(stdout);
         }
         
-        /* Handle user input */
+        /* Use fgets to read user input */
         if (FD_ISSET(STDIN_FILENO, &read_fds)) {
             printf("> ");
             fflush(stdout);
@@ -163,13 +161,10 @@ void handle_client_communication(int client_fd) {
 }
 
 int main() {
-    /* Set output buffering for immediate display */
     setbuf(stdout, NULL);
     
-    /* Register signal handler for CTRL+C */
     signal(SIGINT, handle_signal);
     
-    /* Main server loop - accept new clients after disconnections */
     while (1) {
         /* Set up server socket for each new client */
         server_socket = setup_server_socket();
@@ -179,10 +174,11 @@ int main() {
         printf("Socket successfully created...\n");
         printf("Socket successfully binded...\n");
         printf("Server listening...\n");
+
         
-        /* Accept client connection */
-        client_socket = accept_client_connection(server_socket);
-        if (client_socket == -1) {
+        /* Generate client connection */
+        connection_socket = accept_client_connection(server_socket);
+        if (connection_socket == -1) {
             close(server_socket);
             continue;
         }
@@ -192,15 +188,14 @@ int main() {
         server_socket = -1;
         
         /* Handle communication with client */
-        handle_client_communication(client_socket);
+        handle_client_communication(connection_socket);
         
         /* Cleanup client connection and wait for new one */
-        close(client_socket);
-        client_socket = -1;
+        close(connection_socket);
+        connection_socket = -1;
         printf("Waiting for new client connection...\n");
     }
     
-    /* Cleanup (should not be reached due to signal handler) */
     cleanup_resources();
     return 0;
 }
