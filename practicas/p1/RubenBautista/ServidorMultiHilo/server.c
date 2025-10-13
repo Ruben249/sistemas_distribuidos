@@ -81,33 +81,24 @@ void* handle_client_communication(void* arg) {
     int client_fd = client_data->client_fd;
     char buffer[BUFFER_SIZE];
     
-    // Receive message from client
     int bytes_received = recv(client_fd, buffer, BUFFER_SIZE - 1, 0);
     
     if (bytes_received > 0) {
         buffer[bytes_received] = '\0';
-        
-        // Display the message from client (exactly as required)
         printf("+++ %s\n", buffer);
         
-        // Simulate random processing delay (0.5-2 seconds)
         usleep(500000 + (rand() % 1500000));
         
-        // Send response to client
         const char* response = "Hello client!";
         send(client_fd, response, strlen(response), 0);
     }
     
-    // Cleanup
     close(client_fd);
     free(client_data);
-    
-    // Decrement active clients count
     active_clients--;
     
     pthread_exit(NULL);
 }
-
 /* Print usage information */
 void print_usage(const char* program_name) {
     printf("Usage: %s <port>\n", program_name);
@@ -217,7 +208,7 @@ int main(int argc, char* argv[]) {
                 continue;
             }
             
-            // Detach thread (we don't need to join it)
+            // Detach thread
             pthread_detach(client_thread);
         }
     }

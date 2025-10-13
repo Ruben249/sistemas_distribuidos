@@ -1,21 +1,23 @@
 #!/bin/bash
+# Script para lanzar múltiples clientes simultáneamente
+# Uso: ./run_clients.sh <num_clientes> [ip_servidor] [puerto]
+# Ejemplo: ./run_clients.sh 300 127.0.0.1 8000
 
-# Simple multiclient test script
-# Usage: ./test_simple.sh <num_clients>
+NUM_CLIENTS=${1:-300}
+SERVER_IP=${2:-127.0.0.1}
+SERVER_PORT=${3:-8000}
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <num_clients>"
-    echo "Example: $0 300"
-    exit 1
-fi
+echo "Lanzando $NUM_CLIENTS clientes contra $SERVER_IP:$SERVER_PORT..."
 
-NUM_CLIENTS=$1
-
-echo "Testing with $NUM_CLIENTS clients"
-
-for i in $(seq 1 $NUM_CLIENTS); do
-    ./client $i 127.0.0.1 8080 &
+for i in $(seq 1 "$NUM_CLIENTS"); do
+WAIT=$(printf '0.%06d\n' $RANDOM)
+(
+sleep "$WAIT"
+echo "Lanzando cliente $i ..."
+./client "$i" "$SERVER_IP" "$SERVER_PORT"
+) &
 done
 
+# Esperar a que terminen todos los clientes
 wait
-echo "All $NUM_CLIENTS clients completed"
+echo "Todos los clientes han finalizado."
