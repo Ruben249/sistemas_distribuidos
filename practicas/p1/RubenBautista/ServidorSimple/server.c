@@ -12,6 +12,7 @@
 #include <sys/select.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
 
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -99,63 +100,43 @@ int accept_client_connection(int server_fd) {
 /* Handle communication with a connected client */
 void handle_client_communication(int client_fd) {
     char buffer[BUFFER_SIZE];
-    fd_set read_fds;
-    int max_fd, activity;
     int client_connected = 1;
     
-    printf("> ");
-    fflush(stdout);
-    
-    if (state == 1) {
-        cleanup_resources();
-        exit(0);
-    }
-
-    while (client_connected) {
-        FD_ZERO(&read_fds);
-        FD_SET(STDIN_FILENO, &read_fds);
-        FD_SET(client_fd, &read_fds);
+    while (client_connected && state == 0) {
+        /* Wait for client message first (cliente empieza) - recv bloqueante */
+        int bytes_received = recv(client_fd, buffer, BUFFER_SIZE - 1, 0);
         
-        max_fd = (STDIN_FILENO > client_fd) ? STDIN_FILENO : client_fd;
-        
-        /* Wait for activity on input descriptors */
-        activity = select(max_fd + 1, &read_fds, NULL, NULL, NULL);
-        
-        if (activity < 0) {
-            perror("select");
+        if (bytes_received <= 0) {
+            printf("Client disconnected\n");
+            client_connected = 0;
             break;
         }
         
-        /* Handle incoming message from client */
-        if (FD_ISSET(client_fd, &read_fds)) {
-            int bytes_received = recv(client_fd, buffer, BUFFER_SIZE - 1, 0);
+        buffer[bytes_received] = '\0';
+        printf("+++ %s\n", buffer);
+        
+        /* Check if we need to shutdown after recv */
+        if (state == 1) {
+            break;
+        }
+        
+        /* Then get user input and send response */
+        printf("> ");
+        fflush(stdout);
+        
+        if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
+            buffer[strcspn(buffer, "\n")] = 0;
             
-            if (bytes_received <= 0) {
-                printf("Client disconnected\n");
+            if (send(client_fd, buffer, strlen(buffer), 0) == -1) {
+                perror("send");
                 client_connected = 0;
                 break;
             }
-            
-            buffer[bytes_received] = '\0';
-            printf("\n+++ %s\n", buffer);
-            printf("> ");
-            fflush(stdout);
         }
         
-        /* Use fgets to read user input */
-        if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-            printf("> ");
-            fflush(stdout);
-            
-            if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
-                buffer[strcspn(buffer, "\n")] = 0;
-                
-                if (send(client_fd, buffer, strlen(buffer), 0) == -1) {
-                    perror("send");
-                    client_connected = 0;
-                    break;
-                }
-            }
+        /* Check if we need to shutdown after send */
+        if (state == 1) {
+            break;
         }
     }
 }
@@ -163,9 +144,14 @@ void handle_client_communication(int client_fd) {
 int main() {
     setbuf(stdout, NULL);
     
-    signal(SIGINT, handle_signal);
+    /* Configure signal handling to interrupt blocking calls */
+    struct sigaction sa;
+    sa.sa_handler = handle_signal;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;  /* Important: restart system calls after signal */
+    sigaction(SIGINT, &sa, NULL);
     
-    while (1) {
+    while (state == 0) {
         /* Set up server socket for each new client */
         server_socket = setup_server_socket();
         if (server_socket == -1) {
@@ -180,6 +166,7 @@ int main() {
         connection_socket = accept_client_connection(server_socket);
         if (connection_socket == -1) {
             close(server_socket);
+            if (state == 1) break;
             continue;
         }
         
@@ -193,9 +180,13 @@ int main() {
         /* Cleanup client connection and wait for new one */
         close(connection_socket);
         connection_socket = -1;
-        printf("Waiting for new client connection...\n");
+        
+        if (state == 0) {
+            printf("Waiting for new client connection...\n");
+        }
     }
     
     cleanup_resources();
+    printf("Server shutdown complete.\n");
     return 0;
 }
