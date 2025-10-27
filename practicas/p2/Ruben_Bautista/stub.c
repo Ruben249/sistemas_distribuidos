@@ -54,7 +54,7 @@ int get_clock_lamport() {
     return current_clock;
 }
 
-void increment_clock() {
+static void increment_clock_for_send() {
     pthread_mutex_lock(&clock_mutex);
     lamport_clock++;
     pthread_mutex_unlock(&clock_mutex);
@@ -69,6 +69,28 @@ static void update_clock_on_receive(int received_clock) {
     pthread_mutex_unlock(&clock_mutex);
 }
 
+static void* handle_client_communication(void* arg) {
+    struct client_data* client_data = (struct client_data*)arg;
+    int client_socket = client_data->client_fd;
+    
+    struct message received_msg;
+    ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
+    
+    if (bytes_read == sizeof(received_msg)) {
+        update_clock_on_receive(received_msg.clock_lamport);
+        enqueue_message(&received_msg);
+        
+        printf("%s, %d, RECV (%s), %s\n", process_name, 
+               received_msg.clock_lamport, received_msg.origin,
+               operation_to_string(received_msg.action));
+    }
+    
+    close(client_socket);
+    free(client_data);
+    
+    pthread_exit(NULL);
+}
+
 static void* receiver_thread(void* arg) {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
@@ -81,19 +103,26 @@ static void* receiver_thread(void* arg) {
             continue;
         }
         
-        struct message received_msg;
-        ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
-        
-        if (bytes_read == sizeof(received_msg)) {
-            update_clock_on_receive(received_msg.clock_lamport);
-            enqueue_message(&received_msg);
-            
-            printf("%s, %d, RECV (%s), %s\n", process_name, 
-                   received_msg.clock_lamport, received_msg.origin,
-                   operation_to_string(received_msg.action));
+        // Create thread for client
+        struct client_data* client_data = malloc(sizeof(struct client_data));
+        if (client_data == NULL) {
+            close(client_socket);
+            continue;
         }
         
-        close(client_socket);
+        client_data->client_fd = client_socket;
+        strncpy(client_data->process_name, process_name, MAX_PROCESS_NAME - 1);
+        
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, handle_client_communication, client_data) != 0) {
+            perror("pthread_create");
+            free(client_data);
+            close(client_socket);
+            continue;
+        }
+        
+        // Detach thread
+        pthread_detach(client_thread);
     }
     
     return NULL;
@@ -142,7 +171,6 @@ int init_stub(const char* proc_name, const char* ip, int port) {
         return -1;
     }
     
-    printf("%s: Stub initialized on port %d\n", process_name, port);
     return 0;
 }
 
@@ -169,7 +197,6 @@ int send_message(const char* dest_ip, int dest_port, enum operations action) {
         return -1;
     }
     
-    // Retry connection logic for distributed environment
     int connected = 0;
     for (int attempt = 0; attempt < CONNECTION_RETRIES && !connected; attempt++) {
         if (connect(client_socket, (struct sockaddr*)&server_addr, 
@@ -185,7 +212,7 @@ int send_message(const char* dest_ip, int dest_port, enum operations action) {
         return -1;
     }
     
-    increment_clock();
+    increment_clock_for_send();
     int current_clock = get_clock_lamport();
     
     struct message msg;
@@ -206,6 +233,21 @@ int send_message(const char* dest_ip, int dest_port, enum operations action) {
     return -1;
 }
 
+int receive_message(struct message* msg) {
+    pthread_mutex_lock(&msg_queue.mutex);
+    
+    if (msg_queue.count > 0) {
+        *msg = msg_queue.messages[msg_queue.front];
+        msg_queue.front = (msg_queue.front + 1) % MAX_MESSAGE_QUEUE;
+        msg_queue.count--;
+        pthread_mutex_unlock(&msg_queue.mutex);
+        return 1;
+    }
+    
+    pthread_mutex_unlock(&msg_queue.mutex);
+    return 0;
+}
+
 int has_pending_message() {
     pthread_mutex_lock(&msg_queue.mutex);
     int result = (msg_queue.count > 0);
@@ -213,10 +255,10 @@ int has_pending_message() {
     return result;
 }
 
-void process_pending_messages() {
-    // Messages are automatically processed by receiver thread
-    // This function exists for API consistency
-    usleep(SLEEP_INTERVAL);
+void reset_clock() {
+    pthread_mutex_lock(&clock_mutex);
+    lamport_clock = 0;
+    pthread_mutex_unlock(&clock_mutex);
 }
 
 const char* operation_to_string(enum operations op) {

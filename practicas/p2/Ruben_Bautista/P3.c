@@ -13,30 +13,22 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    printf("Starting P3 on %s:%s\n", argv[1], argv[2]);
-    
     if (init_stub("P3", argv[1], atoi(argv[2])) != 0) {
         fprintf(stderr, "Failed to initialize stub\n");
         return 1;
     }
     
-    // Enviar READY inmediatamente (reloj 1)
-    increment_clock();
+    // P3 envía READY inmediatamente
     send_message(P2_IP, P2_PORT, READY_TO_SHUTDOWN);
     
-    // Esperar SHUTDOWN de P2 - evento en reloj 9
+    // P3 espera recibir SHUTDOWN (reloj debe ser 9 después de recibir)
     while (get_clock_lamport() < 9) {
-        process_pending_messages();
+        usleep(SLEEP_INTERVAL);
     }
     
-    // Enviar ACK a P2 en reloj 10
-    while (get_clock_lamport() < 10) {
-        process_pending_messages();
-    }
-    increment_clock();
+    // P3 envía ACK (reloj se incrementa a 10)
     send_message(P2_IP, P2_PORT, SHUTDOWN_ACK);
     
-    printf("P3: Shutdown completed at lamport time %d\n", get_clock_lamport());
     close_stub();
     return 0;
 }
