@@ -4,14 +4,14 @@
 #include <unistd.h>
 #include <string.h>
 
-#define P2_IP "127.0.0.1"
-#define P2_PORT 8002
-
 int main(int argc, char* argv[]) {
     if (argc != 3) {
         printf("Usage: %s <ip> <port>\n", argv[0]);
         return 1;
     }
+    
+    // Register P1 information
+    register_process_info("P1", argv[1], atoi(argv[2]));
     
     if (init_stub("P1", argv[1], atoi(argv[2])) != 0) {
         fprintf(stderr, "Failed to initialize stub\n");
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     }
     
     // P1 sends READY to P2
-    send_message(P2_IP, P2_PORT, READY_TO_SHUTDOWN);
+    send_message(get_process_ip("P2"), get_process_port("P2"), READY_TO_SHUTDOWN);
     
     // P1 waits to receive SHUTDOWN
     while (get_clock_lamport() != 5) {
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
     }
     
     // P1 sends ACK
-    send_message(P2_IP, P2_PORT, SHUTDOWN_ACK);
+    send_message(get_process_ip("P2"), get_process_port("P2"), SHUTDOWN_ACK);
     close_stub();
     return 0;
 }

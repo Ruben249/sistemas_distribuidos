@@ -43,5 +43,8 @@ int receive_message(struct message* msg);
 
 // Utility functions
 const char* operation_to_string(enum operations op);
+void register_process_info(const char* process_name, const char* ip, int port);
+const char* get_process_ip(const char* process_name);
+int get_process_port(const char* process_name);
 
 #endif
