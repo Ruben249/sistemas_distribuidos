@@ -6,10 +6,17 @@
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        printf("Usage: %s <ip> <port>\n", argv[0]);
+        printf("Usage: %s <my_ip> <my_port>\n", argv[0]);
         return 1;
     }
-    setbuf(stdout, NULL);
+    
+    // P2 usa las IPs predefinidas de P1 y P3
+    char p1_ip[16], p3_ip[16];
+    int p1_port, p3_port;
+    strcpy(p1_ip, "212.128.254.50");
+    strcpy(p3_ip, "212.128.254.49");
+    p1_port = 8006;
+    p3_port = 8003;
     
     if (init_stub("P2", argv[1], atoi(argv[2])) != 0) {
         fprintf(stderr, "Failed to initialize stub\n");
@@ -22,6 +29,7 @@ int main(int argc, char* argv[]) {
     
     printf("P2: Waiting for READY messages from P1 and P3...\n");
     
+    // Wait for READY messages from P1 and P3
     while (!p1_ready_received || !p3_ready_received) {
         if (has_pending_message()) {
             if (receive_message(&received_msg)) {
@@ -42,20 +50,18 @@ int main(int argc, char* argv[]) {
         usleep(SLEEP_INTERVAL);
     }
 
-    while (get_clock_lamport() != 3) {
-        usleep(SLEEP_INTERVAL);
-    }
-    
     // Send SHUTDOWN to P1
-    send_message(get_process_ip("P1"), get_process_port("P1"), SHUTDOWN_NOW);
+    send_message(p1_ip, p1_port, SHUTDOWN_NOW);
     
+    // Wait for ACK from P1
     while (get_clock_lamport() != 7) {
         usleep(SLEEP_INTERVAL);
     }
     
     // Send SHUTDOWN to P3
-    send_message(get_process_ip("P3"), get_process_port("P3"), SHUTDOWN_NOW);
+    send_message(p3_ip, p3_port, SHUTDOWN_NOW);
     
+    // Wait for ACK from P3
     while (get_clock_lamport() != 11) {
         usleep(SLEEP_INTERVAL);
     }

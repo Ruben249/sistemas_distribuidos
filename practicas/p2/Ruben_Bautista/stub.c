@@ -12,12 +12,6 @@
 static unsigned int lamport_clock = 0;
 static pthread_mutex_t clock_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-
-static char p1_ip[16] = "212.128.254.50";
-static char p2_ip[16] = "212.128.254.47"; 
-static char p3_ip[16] = "212.128.254.49";
-static int p1_port = 8006, p2_port = 8005, p3_port = 8003;
-
 static char process_name[MAX_PROCESS_NAME];
 static int server_port;
 static int server_socket;
@@ -258,26 +252,4 @@ const char* operation_to_string(enum operations op) {
         case SHUTDOWN_ACK: return "SHUTDOWN_ACK";
         default: return "UNKNOWN";
     }
-}
-
-/* get_process_ip(): Returns the IP address for the specified process */
-const char* get_process_ip(const char* proc_name) {
-    if (strcmp(proc_name, "P1") == 0) {
-        return p1_ip;
-    }
-    if (strcmp(proc_name, "P2") == 0) {
-        return p2_ip;
-    }
-    if (strcmp(proc_name, "P3") == 0) {
-        return p3_ip;
-    }
-    return NULL;
-}
-
-/* get_process_port(): Returns the port number for the specified process */
-int get_process_port(const char* proc_name) {
-    if (strcmp(proc_name, "P1") == 0) return p1_port;
-    if (strcmp(proc_name, "P2") == 0) return p2_port;
-    if (strcmp(proc_name, "P3") == 0) return p3_port;
-    return -1;
 }
