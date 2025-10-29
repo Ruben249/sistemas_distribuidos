@@ -1,16 +1,12 @@
 #include "stub.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <errno.h>
 
 static unsigned int lamport_clock = 0;
 static pthread_mutex_t clock_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+char p1_ip[16] = "127.0.0.1";
+char p3_ip[16] = "127.0.0.1";
+int p1_port = 8001;
+int p3_port = 8003;
 
 static char process_name[MAX_PROCESS_NAME];
 static int server_port;
@@ -252,4 +248,37 @@ const char* operation_to_string(enum operations op) {
         case SHUTDOWN_ACK: return "SHUTDOWN_ACK";
         default: return "UNKNOWN";
     }
+}
+
+/* wait_for_ready_messages(): Espera los mensajes READY de P1 y P3 */
+int wait_for_ready_messages(void) {
+    int p1_ready_received = 0;
+    int p3_ready_received = 0;
+    struct message received_msg;
+    
+    printf("P2: Waiting for READY messages from P1 and P3...\n");
+    
+    while (!p1_ready_received || !p3_ready_received) {
+        if (has_pending_message()) {
+            if (receive_message(&received_msg)) {
+                if (strcmp(received_msg.origin, "P1") == 0 && received_msg.action == READY_TO_SHUTDOWN) {
+                    p1_ready_received = 1;
+                    printf("P2: Received READY from P1\n");
+                }
+                else if (strcmp(received_msg.origin, "P3") == 0 && received_msg.action == READY_TO_SHUTDOWN) {
+                    if (!p1_ready_received) {
+                        printf("ERROR: P3 arrived before P1! Please execute P1 first\n");
+                        reset_clock();
+                        p3_ready_received = 0;
+                    } else {
+                        p3_ready_received = 1;
+                        printf("P2: Received READY from P3 after P1 - correct order\n");
+                    }
+                }
+            }
+        }
+        usleep(SLEEP_INTERVAL);
+    }
+    
+    return 1; // Success
 }
