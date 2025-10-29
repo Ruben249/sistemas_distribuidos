@@ -18,15 +18,15 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    // P1 envía READY inmediatamente (reloj se incrementa a 1)
+    // P1 sends READY to P2
     send_message(P2_IP, P2_PORT, READY_TO_SHUTDOWN);
     
-    // P1 espera recibir SHUTDOWN (reloj debe ser 5 después de recibir)
-    while (get_clock_lamport() < 5) {
+    // P1 waits to receive SHUTDOWN
+    while (get_clock_lamport() != 5) {
         usleep(SLEEP_INTERVAL);
     }
     
-    // P1 envía ACK (reloj se incrementa a 6)
+    // P1 sends ACK
     send_message(P2_IP, P2_PORT, SHUTDOWN_ACK);
     close_stub();
     return 0;

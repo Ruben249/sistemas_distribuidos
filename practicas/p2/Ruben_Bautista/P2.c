@@ -26,10 +26,11 @@ int main(int argc, char* argv[]) {
     
     printf("P2: Waiting for READY messages from P1 and P3...\n");
     
+    // Wait for READY messages from P1 and P3
     while (!p1_ready_received || !p3_ready_received) {
         if (has_pending_message()) {
+            // If P3's READY arrives before P1's, reset clock and show error
             if (receive_message(&received_msg)) {
-                // Verificar el origen del mensaje
                 if (strcmp(received_msg.origin, "P1") == 0 && received_msg.action == READY_TO_SHUTDOWN) {
                     p1_ready_received = 1;
                 }
@@ -48,21 +49,22 @@ int main(int argc, char* argv[]) {
         usleep(SLEEP_INTERVAL);
     }
 
-    while (get_clock_lamport() < 3) {
+    // Wait for both READY messages to be processed
+    while (get_clock_lamport() != 3) {
         usleep(SLEEP_INTERVAL);
     }
+    // Send SHUTDOWN to P1
     send_message(P1_IP, P1_PORT, SHUTDOWN_NOW);
     
-    while (get_clock_lamport() < 6) {
+    // Wait for P1 to ACK
+    while (get_clock_lamport() != 7) {
         usleep(SLEEP_INTERVAL);
     }
-    
-    while (get_clock_lamport() < 7) {
-        usleep(SLEEP_INTERVAL);
-    }
+    // Send SHUTDOWN to P3
     send_message(P3_IP, P3_PORT, SHUTDOWN_NOW);
     
-    while (get_clock_lamport() < 10) {
+    // Wait for P3 to ACK
+    while (get_clock_lamport() != 11) {
         usleep(SLEEP_INTERVAL);
     }
     

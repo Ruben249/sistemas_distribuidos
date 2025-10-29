@@ -2,6 +2,7 @@
 #define STUB_H
 
 #include <pthread.h>
+#include <signal.h>
 
 #define MAX_PROCESS_NAME 20
 #define MAX_IP_LENGTH 16

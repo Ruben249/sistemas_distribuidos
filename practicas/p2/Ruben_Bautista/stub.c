@@ -27,6 +27,8 @@ static struct message_queue {
 
 static int is_running = 1;
 
+/* init_message_queue(): Initializes the message queue
+for incoming messages */
 static void init_message_queue() {
     msg_queue.front = 0;
     msg_queue.rear = 0;
@@ -34,6 +36,7 @@ static void init_message_queue() {
     pthread_mutex_init(&msg_queue.mutex, NULL);
 }
 
+/* enqueue_message(): Adds a message to the message queue */
 static void enqueue_message(const struct message* msg) {
     pthread_mutex_lock(&msg_queue.mutex);
     
@@ -46,6 +49,7 @@ static void enqueue_message(const struct message* msg) {
     pthread_mutex_unlock(&msg_queue.mutex);
 }
 
+/* get_clock_lamport(): Returns the current Lamport clock value */
 int get_clock_lamport() {
     int current_clock;
     pthread_mutex_lock(&clock_mutex);
@@ -54,12 +58,14 @@ int get_clock_lamport() {
     return current_clock;
 }
 
+/* increment_clock_for_send(): Increments the Lamport clock before sending a message */
 static void increment_clock_for_send() {
     pthread_mutex_lock(&clock_mutex);
     lamport_clock++;
     pthread_mutex_unlock(&clock_mutex);
 }
 
+/* update_clock_on_receive(): Updates the Lamport clock upon receiving a message */
 static void update_clock_on_receive(int received_clock) {
     pthread_mutex_lock(&clock_mutex);
     if (received_clock > lamport_clock) {
@@ -69,6 +75,7 @@ static void update_clock_on_receive(int received_clock) {
     pthread_mutex_unlock(&clock_mutex);
 }
 
+/* handle_client_communication(): Manages communication with a connected client */
 static void* handle_client_communication(void* arg) {
     struct client_data* client_data = (struct client_data*)arg;
     int client_socket = client_data->client_fd;
@@ -76,6 +83,7 @@ static void* handle_client_communication(void* arg) {
     struct message received_msg;
     ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
     
+    // If full message received, process it
     if (bytes_read == sizeof(received_msg)) {
         update_clock_on_receive(received_msg.clock_lamport);
         enqueue_message(&received_msg);
@@ -91,18 +99,16 @@ static void* handle_client_communication(void* arg) {
     pthread_exit(NULL);
 }
 
+/* receiver_thread(): Listens for incoming connections and spawns threads to handle them */
 static void* receiver_thread(void* arg) {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
     
+    /* While the server is running, accept incoming connections */
     while (is_running) {
         int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, 
                                   &client_len);
-        if (client_socket < 0) {
-            usleep(50000);
-            continue;
-        }
-        
+                
         // Create thread for client
         struct client_data* client_data = malloc(sizeof(struct client_data));
         if (client_data == NULL) {
@@ -128,6 +134,7 @@ static void* receiver_thread(void* arg) {
     return NULL;
 }
 
+/* init_stub(): Initializes the stub with the given process name, IP, and port */
 int init_stub(const char* proc_name, const char* ip, int port) {
     strncpy(process_name, proc_name, MAX_PROCESS_NAME - 1);
     process_name[MAX_PROCESS_NAME - 1] = '\0';
@@ -174,6 +181,7 @@ int init_stub(const char* proc_name, const char* ip, int port) {
     return 0;
 }
 
+/* close_stub(): Cleans up and closes the stub */
 void close_stub() {
     is_running = 0;
     pthread_cancel(receiver_thread_id);
@@ -182,6 +190,7 @@ void close_stub() {
     pthread_mutex_destroy(&msg_queue.mutex);
 }
 
+/* send_message(): Sends a message to the specified destination */
 int send_message(const char* dest_ip, int dest_port, enum operations action) {
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (client_socket < 0) {
@@ -215,6 +224,7 @@ int send_message(const char* dest_ip, int dest_port, enum operations action) {
     increment_clock_for_send();
     int current_clock = get_clock_lamport();
     
+    // Prepare message to send
     struct message msg;
     strncpy(msg.origin, process_name, MAX_PROCESS_NAME - 1);
     msg.origin[MAX_PROCESS_NAME - 1] = '\0';
@@ -233,9 +243,9 @@ int send_message(const char* dest_ip, int dest_port, enum operations action) {
     return -1;
 }
 
+/* receive_message(): Retrieves a message from the message queue */
 int receive_message(struct message* msg) {
     pthread_mutex_lock(&msg_queue.mutex);
-    
     if (msg_queue.count > 0) {
         *msg = msg_queue.messages[msg_queue.front];
         msg_queue.front = (msg_queue.front + 1) % MAX_MESSAGE_QUEUE;
@@ -248,6 +258,7 @@ int receive_message(struct message* msg) {
     return 0;
 }
 
+/* has_pending_message(): Checks if there are pending messages in the queue */
 int has_pending_message() {
     pthread_mutex_lock(&msg_queue.mutex);
     int result = (msg_queue.count > 0);
@@ -255,12 +266,14 @@ int has_pending_message() {
     return result;
 }
 
+/* reset_clock(): Resets the Lamport clock to zero */
 void reset_clock() {
     pthread_mutex_lock(&clock_mutex);
     lamport_clock = 0;
     pthread_mutex_unlock(&clock_mutex);
 }
 
+/* operation_to_string(): Converts an operation enum to a string */
 const char* operation_to_string(enum operations op) {
     switch (op) {
         case READY_TO_SHUTDOWN: return "READY_TO_SHUTDOWN";
