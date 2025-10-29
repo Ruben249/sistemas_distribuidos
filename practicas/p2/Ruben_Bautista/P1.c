@@ -9,10 +9,7 @@ int main(int argc, char* argv[]) {
         printf("Usage: %s <ip> <port>\n", argv[0]);
         return 1;
     }
-    
-    // Register P1 information
-    register_process_info("P1", argv[1], atoi(argv[2]));
-    
+    setbuf(stdout, NULL);    
     if (init_stub("P1", argv[1], atoi(argv[2])) != 0) {
         fprintf(stderr, "Failed to initialize stub\n");
         return 1;

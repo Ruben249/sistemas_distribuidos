@@ -10,8 +10,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    // Register P3 information
-    register_process_info("P3", argv[1], atoi(argv[2]));
+    setbuf(stdout, NULL);
     
     if (init_stub("P3", argv[1], atoi(argv[2])) != 0) {
         fprintf(stderr, "Failed to initialize stub\n");
