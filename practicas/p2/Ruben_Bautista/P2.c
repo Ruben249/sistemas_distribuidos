@@ -41,7 +41,6 @@ int main(int argc, char* argv[]) {
                         p3_ready_received = 0;
                     } else {
                         p3_ready_received = 1;
-                        printf("P2: Received READY from P3 after P1 - correct order\n");
                     }
                 }
             }

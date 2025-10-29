@@ -65,70 +65,41 @@ static void increment_clock_for_send() {
     pthread_mutex_unlock(&clock_mutex);
 }
 
-/* update_clock_on_receive(): Updates the Lamport clock upon receiving a message */
-static void update_clock_on_receive(int received_clock) {
-    pthread_mutex_lock(&clock_mutex);
-    if (received_clock > lamport_clock) {
-        lamport_clock = received_clock;
-    }
-    lamport_clock++;
-    pthread_mutex_unlock(&clock_mutex);
-}
-
-/* handle_client_communication(): Manages communication with a connected client */
-static void* handle_client_communication(void* arg) {
-    struct client_data* client_data = (struct client_data*)arg;
-    int client_socket = client_data->client_fd;
-    
-    struct message received_msg;
-    ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
-    
-    // If full message received, process it
-    if (bytes_read == sizeof(received_msg)) {
-        update_clock_on_receive(received_msg.clock_lamport);
-        enqueue_message(&received_msg);
-        
-        printf("%s, %d, RECV (%s), %s\n", process_name, 
-               received_msg.clock_lamport, received_msg.origin,
-               operation_to_string(received_msg.action));
-    }
-    
-    close(client_socket);
-    free(client_data);
-    
-    pthread_exit(NULL);
-}
-
-/* receiver_thread(): Listens for incoming connections and spawns threads to handle them */
+/* receiver_thread(): We handle incoming connections and messages */
 static void* receiver_thread(void* arg) {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
     
-    /* While the server is running, accept incoming connections */
-    while (is_running) {
-        int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, 
-                                  &client_len);
-                
-        // Create thread for client
-        struct client_data* client_data = malloc(sizeof(struct client_data));
-        if (client_data == NULL) {
-            close(client_socket);
+    while (1) {
+        // Accept incoming connection
+        int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, &client_len);
+        if (client_socket < 0) {
             continue;
         }
         
-        client_data->client_fd = client_socket;
-        strncpy(client_data->process_name, process_name, MAX_PROCESS_NAME - 1);
+        struct message received_msg;
+        ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
         
-        pthread_t client_thread;
-        if (pthread_create(&client_thread, NULL, handle_client_communication, client_data) != 0) {
-            perror("pthread_create");
-            free(client_data);
-            close(client_socket);
-            continue;
+        if (bytes_read == sizeof(received_msg)) {
+            // Update Lamport clock
+            pthread_mutex_lock(&clock_mutex);
+            if (received_msg.clock_lamport > lamport_clock) {
+                lamport_clock = received_msg.clock_lamport;
+            }
+            lamport_clock++;
+            int current_clock = lamport_clock;
+            pthread_mutex_unlock(&clock_mutex);
+            
+            enqueue_message(&received_msg);
+            
+            printf("%s, %d, RECV (%s), %s\n", 
+                   process_name, 
+                   current_clock,
+                   received_msg.origin,
+                   operation_to_string(received_msg.action));
         }
         
-        // Detach thread
-        pthread_detach(client_thread);
+        close(client_socket);
     }
     
     return NULL;
