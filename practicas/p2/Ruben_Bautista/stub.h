@@ -1,15 +1,10 @@
 #ifndef STUB_H
 #define STUB_H
 
-#include <pthread.h>
-#include <netinet/in.h>
-
 #define MAX_PROCESS_NAME 20
 #define MAX_MESSAGE_QUEUE 100
 #define SLEEP_TIME 100000
 #define MAX_CLIENTS 2
-#define CONNECTION_RETRIES 10
-#define RETRY_DELAY 500000
 
 enum operations {
     READY_TO_SHUTDOWN = 0,
@@ -25,15 +20,11 @@ struct message {
 
 int init_stub(const char* process_name, const char* ip, int port);
 void close_stub();
-
 int get_clock_lamport();
 int send_message_to_process(const char* process_name, enum operations action);
-int wait_for_message(enum operations expected_action, int expected_clock);
 int wait_for_ready_messages(void);
-
 int has_pending_message(void);
 int receive_message(struct message* msg);
 void reset_clock(void);
-const char* operation_to_string(enum operations op);
 
 #endif
