@@ -38,6 +38,8 @@ static void init_message_queue() {
     pthread_mutex_init(&msg_queue.mutex, NULL);
 }
 
+/* enqueue_message adds a message to the message queue by locking the mutex,
+checking if there is space in the queue, and then adding the message. */
 static void enqueue_message(const struct message* msg) {
     pthread_mutex_lock(&msg_queue.mutex);
     if (msg_queue.count < MAX_MESSAGE_QUEUE) {
@@ -83,10 +85,14 @@ static void process_received_message(const struct message* msg) {
     }
 }
 
-static void* handle_client_connection(void* arg) {
+/* process manages communication with a connected client,
+   including receiving messages and updating client information. */
+static void* process(void* arg) {
     int client_socket = *((int*)arg);
     free(arg);
-    
+
+    /* Handle incoming messages from the client .
+    If the message is valid, process it; otherwise, ignore it. */
     while (is_running) {
         struct message received_msg;
         ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
@@ -112,10 +118,13 @@ static void* handle_client_connection(void* arg) {
     return NULL;
 }
 
+/* receiver_thread_server listens for incoming client connections
+   and spawns a new thread to handle each connection. */
 static void* receiver_thread_server(void* arg) {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
-    
+
+    /* Accept incoming client connections */
     while (is_running) {
         int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, &client_len);
         if (client_socket < 0) continue;
@@ -124,7 +133,7 @@ static void* receiver_thread_server(void* arg) {
         *client_sock_ptr = client_socket;
         
         pthread_t client_thread;
-        if (pthread_create(&client_thread, NULL, handle_client_connection, client_sock_ptr) != 0) {
+        if (pthread_create(&client_thread, NULL, process, client_sock_ptr) != 0) {
             free(client_sock_ptr);
             close(client_socket);
         } else {
@@ -134,6 +143,8 @@ static void* receiver_thread_server(void* arg) {
     return NULL;
 }
 
+/* receiver_thread_client continuously receives messages from the server
+   and processes them. */
 static void* receiver_thread_client(void* arg) {
     while (is_running) {
         struct message received_msg;
@@ -147,6 +158,8 @@ static void* receiver_thread_client(void* arg) {
     return NULL;
 }
 
+/* init_stub initializes the stub for the given process name, IP, and port.
+   It sets up the server or client socket and starts the receiver thread. */
 int init_stub(const char* proc_name, const char* ip, int port) {
     strncpy(process_name, proc_name, MAX_PROCESS_NAME - 1);
     process_name[MAX_PROCESS_NAME - 1] = '\0';
@@ -168,6 +181,7 @@ int init_stub(const char* proc_name, const char* ip, int port) {
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     
+    /* Setup server or client socket based on the process */
     if (is_p2) {
         server_addr.sin_addr.s_addr = INADDR_ANY;
         if (bind(server_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0 ||
@@ -188,6 +202,8 @@ int init_stub(const char* proc_name, const char* ip, int port) {
     return 0;
 }
 
+/* close_stub cleans up resources, stops the receiver thread,
+   and closes all sockets. */
 void close_stub() {
     is_running = 0;
     pthread_cancel(receiver_thread_id);
@@ -204,6 +220,8 @@ void close_stub() {
     pthread_mutex_destroy(&msg_queue.mutex);
 }
 
+/* send_message_to_process constructs and sends a message to the specified target process.
+   It increments the Lamport clock and logs the sending action. */
 int send_message_to_process(const char* target_process, enum operations action) {
     int target_socket = server_socket;
     
@@ -220,13 +238,15 @@ int send_message_to_process(const char* target_process, enum operations action) 
     int current_clock = get_clock_lamport();
     
     struct message msg;
-    memset(&msg, 0, sizeof(msg)); // Inicializar toda la estructura a 0
+    memset(&msg, 0, sizeof(msg));
     strncpy(msg.origin, process_name, MAX_PROCESS_NAME - 1);
-    msg.origin[MAX_PROCESS_NAME - 1] = '\0'; // Asegurar terminación nula
+    msg.origin[MAX_PROCESS_NAME - 1] = '\0';
     msg.action = action;
     msg.clock_lamport = current_clock;
     
-    if (send(target_socket, &msg, sizeof(msg), MSG_NOSIGNAL) == sizeof(msg)) {
+    ssize_t bytes_sent = send(target_socket, &msg, sizeof(msg), 0);
+    
+    if (bytes_sent == sizeof(msg)) {
         printf("%s, %d, SEND, ", process_name, current_clock);
         switch (action) {
             case READY_TO_SHUTDOWN: printf("READY_TO_SHUTDOWN\n"); break;
@@ -238,6 +258,8 @@ int send_message_to_process(const char* target_process, enum operations action) 
     return -1;
 }
 
+/* has_pending_message checks if there are any messages in the queue
+   by locking the mutex and checking the count. */
 int has_pending_message(void) {
     pthread_mutex_lock(&msg_queue.mutex);
     int result = (msg_queue.count > 0);
@@ -245,6 +267,8 @@ int has_pending_message(void) {
     return result;
 }
 
+/* receive_message retrieves a message from the queue if available,
+   locking the mutex to ensure thread safety. */
 int receive_message(struct message* msg) {
     pthread_mutex_lock(&msg_queue.mutex);
     if (msg_queue.count > 0) {
@@ -264,6 +288,8 @@ void reset_clock(void) {
     pthread_mutex_unlock(&clock_mutex);
 }
 
+/* wait_for_ready_messages waits for READY_TO_SHUTDOWN messages
+   from P1 and P3, ensuring P1 arrives before P3. */
 int wait_for_ready_messages(void) {
     if (strcmp(process_name, "P2") != 0) return -1;
     

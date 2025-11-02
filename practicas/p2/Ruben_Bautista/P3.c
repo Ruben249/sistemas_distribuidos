@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define SLEEP_TIME 100000
-
 int main(int argc, char* argv[]) {
     if (argc != 3) {
         printf("Usage: %s <ip> <port>\n", argv[0]);
