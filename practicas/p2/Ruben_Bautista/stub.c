@@ -16,6 +16,7 @@ static char process_name[MAX_PROCESS_NAME];
 static int server_socket;
 static int server_port;
 static pthread_t receiver_thread_id;
+static void* handle_client_connection(void* arg);
 
 // Message queue implementation: circular buffer
 static struct message_queue {
@@ -74,51 +75,126 @@ static void increment_clock_for_send() {
 }
 
 // receiver_thread: thread function to receive messages
+static struct client_connections {
+    int p1_socket;
+    int p3_socket;
+    pthread_mutex_t mutex;
+} clients = {-1, -1, PTHREAD_MUTEX_INITIALIZER};
+
 static void* receiver_thread(void* arg) {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
     
-    // While the server is running, accept incoming connections
     while (is_running) {
         int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, &client_len);
         if (client_socket < 0) {
             continue;
         }
         
-        // Get client IP and port
-        char client_ip[INET_ADDRSTRLEN];
-        inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
-        int client_port = ntohs(client_addr.sin_port);
+        // Crear thread separado para cada cliente
+        int* client_sock_ptr = malloc(sizeof(int));
+        *client_sock_ptr = client_socket;
         
-        struct message received_msg;
-        ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
-        
-        if (bytes_read == sizeof(received_msg)) {
-            /* Verificar que no sea un mensaje de nosotros mismos */
-            if (strcmp(received_msg.origin, process_name) != 0) {
-                pthread_mutex_lock(&clock_mutex);
-                if (received_msg.clock_lamport > lamport_clock) {
-                    lamport_clock = received_msg.clock_lamport;
-                }
-                lamport_clock++;
-                int current_clock = lamport_clock;
-                pthread_mutex_unlock(&clock_mutex);
-                
-                enqueue_message(&received_msg);
-                
-                printf("%s, %d, RECV (%s), %s\n", 
-                       process_name, 
-                       current_clock,
-                       received_msg.origin,
-                       operation_to_string(received_msg.action));
-            }
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, handle_client_connection, client_sock_ptr) == 0) {
+            pthread_detach(client_thread);
+        } else {
+            free(client_sock_ptr);
+            close(client_socket);
         }
-        
-        close(client_socket);
     }
     
     return NULL;
 }
+
+static void* handle_client_connection(void* arg) {
+    int client_socket = *((int*)arg);
+    free(arg);
+    
+    // Guardar información del cliente
+    struct sockaddr_in client_addr;
+    socklen_t client_len = sizeof(client_addr);
+    getpeername(client_socket, (struct sockaddr*)&client_addr, &client_len);
+    char client_ip[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
+    int client_port = ntohs(client_addr.sin_port);
+    
+    while (is_running) {
+        struct message received_msg;
+        ssize_t bytes_read = recv(client_socket, &received_msg, sizeof(received_msg), 0);
+        
+        if (bytes_read == sizeof(received_msg)) {
+            /* Guardar/actualizar el socket del cliente */
+            pthread_mutex_lock(&clients.mutex);
+            if (strcmp(received_msg.origin, "P1") == 0) {
+                if (clients.p1_socket != -1) {
+                    close(clients.p1_socket); // Cerrar conexión anterior
+                }
+                clients.p1_socket = client_socket;
+                printf("P2: P1 connected from %s:%d\n", client_ip, client_port);
+            } else if (strcmp(received_msg.origin, "P3") == 0) {
+                if (clients.p3_socket != -1) {
+                    close(clients.p3_socket); // Cerrar conexión anterior
+                }
+                clients.p3_socket = client_socket;
+                printf("P2: P3 connected from %s:%d\n", client_ip, client_port);
+            }
+            pthread_mutex_unlock(&clients.mutex);
+            
+            pthread_mutex_lock(&clock_mutex);
+            if (received_msg.clock_lamport > lamport_clock) {
+                lamport_clock = received_msg.clock_lamport;
+            }
+            lamport_clock++;
+            int current_clock = lamport_clock;
+            pthread_mutex_unlock(&clock_mutex);
+            
+            enqueue_message(&received_msg);
+            
+            printf("%s, %d, RECV (%s), %s\n", 
+                   process_name, 
+                   current_clock,
+                   received_msg.origin,
+                   operation_to_string(received_msg.action));
+        } else if (bytes_read <= 0) {
+            break;
+        }
+    }
+    
+    // Cerrar socket cuando el cliente se desconecte
+    close(client_socket);
+    return NULL;
+}
+
+static void* receiver_thread_client(void* arg) {
+    while (is_running) {
+        struct message received_msg;
+        ssize_t bytes_read = recv(server_socket, &received_msg, sizeof(received_msg), 0);
+        
+        if (bytes_read == sizeof(received_msg)) {
+            pthread_mutex_lock(&clock_mutex);
+            if (received_msg.clock_lamport > lamport_clock) {
+                lamport_clock = received_msg.clock_lamport;
+            }
+            lamport_clock++;
+            int current_clock = lamport_clock;
+            pthread_mutex_unlock(&clock_mutex);
+            
+            enqueue_message(&received_msg);
+            
+            printf("%s, %d, RECV (%s), %s\n", 
+                   process_name, 
+                   current_clock,
+                   received_msg.origin,
+                   operation_to_string(received_msg.action));
+        } else if (bytes_read <= 0) {
+            break;
+        }
+    }
+    
+    return NULL;
+}
+
 int init_stub(const char* proc_name, const char* ip, int port) {
     strncpy(process_name, proc_name, MAX_PROCESS_NAME - 1);
     process_name[MAX_PROCESS_NAME - 1] = '\0';
@@ -169,100 +245,78 @@ int init_stub(const char* proc_name, const char* ip, int port) {
         printf("P2: Server listening on port %d\n", port);
         
     } else {
-        /* P1 and P3 also need to receive messages - create their own server sockets */
-        int client_server_socket = socket(AF_INET, SOCK_STREAM, 0);
-        if (client_server_socket < 0) {
+        /* P1 and P3 are clients - connect to P2 and start receiver thread */
+        server_socket = socket(AF_INET, SOCK_STREAM, 0);
+        if (server_socket < 0) {
             perror("socket creation failed");
             return -1;
         }
         
-        int opt = 1;
-        if (setsockopt(client_server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
-            perror("setsockopt failed");
-            close(client_server_socket);
-            return -1;
-        }
+        struct sockaddr_in server_addr;
+        server_addr.sin_family = AF_INET;
+        server_addr.sin_port = htons(port);
+        server_addr.sin_addr.s_addr = inet_addr(ip);
         
-        struct sockaddr_in client_server_addr;
-        client_server_addr.sin_family = AF_INET;
-        client_server_addr.sin_addr.s_addr = INADDR_ANY;
-        
-        /* P1 uses port+1, P3 uses port+2 to avoid conflicts */
-        int client_port = port;
-        if (strcmp(proc_name, "P1") == 0) {
-            client_port = port + 1;
-        } else if (strcmp(proc_name, "P3") == 0) {
-            client_port = port + 2;
-        }
-        
-        client_server_addr.sin_port = htons(client_port);
-        
-        if (bind(client_server_socket, (struct sockaddr*)&client_server_addr, sizeof(client_server_addr)) < 0) {
-            perror("bind failed");
-            close(client_server_socket);
-            return -1;
-        }
-        
-        if (listen(client_server_socket, 1) < 0) {
-            perror("listen failed");
-            close(client_server_socket);
-            return -1;
-        }
-        
-        server_socket = client_server_socket;
-        
-        if (pthread_create(&receiver_thread_id, NULL, receiver_thread, NULL) != 0) {
-            perror("thread creation failed");
+        if (connect(server_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+            perror("connect failed");
             close(server_socket);
             return -1;
         }
         
-        printf("%s: Client server listening on port %d\n", proc_name, client_port);
+        printf("%s: Connected to P2 at %s:%d\n", proc_name, ip, port);
+        
+        /* Start receiver thread to listen for messages from P2 */
+        if (pthread_create(&receiver_thread_id, NULL, receiver_thread_client, NULL) != 0) {
+            perror("thread creation failed");
+            close(server_socket);
+            return -1;
+        }
     }
-    
     return 0;
 }
 
 void close_stub() {
     is_running = 0;
-    pthread_cancel(receiver_thread_id);
-    pthread_join(receiver_thread_id, NULL);
-    close(server_socket);
+    
+    if (strcmp(process_name, "P2") == 0) {
+        pthread_cancel(receiver_thread_id);
+        pthread_join(receiver_thread_id, NULL);
+        close(server_socket);
+        
+        pthread_mutex_lock(&clients.mutex);
+        if (clients.p1_socket != -1) close(clients.p1_socket);
+        if (clients.p3_socket != -1) close(clients.p3_socket);
+        pthread_mutex_unlock(&clients.mutex);
+    } else {
+        /* P1 y P3 también tienen que cerrar su thread receptor */
+        pthread_cancel(receiver_thread_id);
+        pthread_join(receiver_thread_id, NULL);
+        close(server_socket);
+    }
+    
     pthread_mutex_destroy(&msg_queue.mutex);
 }
 
 int send_message_to_process(const char* target_process, enum operations action) {
-    int client_socket = socket(AF_INET, SOCK_STREAM, 0);
-    if (client_socket < 0) {
-        perror("socket creation failed");
-        return -1;
-    }
-    
-    struct sockaddr_in server_addr;
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    
-    /* Determinar el puerto destino basado en el proceso objetivo */
-    int target_port = server_port; // Por defecto, puerto de P2
+    int socket_to_use = -1;
     
     if (strcmp(process_name, "P2") == 0) {
-        /* P2 envía a P1 o P3 en sus puertos específicos */
-        if (strcmp(target_process, "P1") == 0) {
-            target_port = server_port + 1; // P1 en puerto+1
-        } else if (strcmp(target_process, "P3") == 0) {
-            target_port = server_port + 2; // P3 en puerto+2
+        /* P2 usa las conexiones guardadas de P1 y P3 */
+        pthread_mutex_lock(&clients.mutex);
+        if (strcmp(target_process, "P1") == 0 && clients.p1_socket != -1) {
+            socket_to_use = clients.p1_socket;
+        } else if (strcmp(target_process, "P3") == 0 && clients.p3_socket != -1) {
+            socket_to_use = clients.p3_socket;
+        }
+        pthread_mutex_unlock(&clients.mutex);
+        
+        if (socket_to_use == -1) {
+            printf("Error: No connection available for %s\n", target_process);
+            return -1;
         }
     } else {
-        /* P1 y P3 siempre envían a P2 */
-        target_port = server_port;
-    }
-    
-    server_addr.sin_port = htons(target_port);
-    
-    if (connect(client_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        printf("Error: Cannot connect to %s at port %d\n", target_process, target_port);
-        close(client_socket);
-        return -1;
+        /* P1 y P3 usan su conexión establecida con P2 */
+        socket_to_use = server_socket;
     }
     
     increment_clock_for_send();
@@ -274,18 +328,16 @@ int send_message_to_process(const char* target_process, enum operations action) 
     msg.action = action;
     msg.clock_lamport = current_clock;
     
-    ssize_t bytes_sent = send(client_socket, &msg, sizeof(msg), 0);
-    close(client_socket);
+    ssize_t bytes_sent = send(socket_to_use, &msg, sizeof(msg), MSG_NOSIGNAL);
     
     if (bytes_sent == sizeof(msg)) {
         printf("%s, %d, SEND, %s\n", process_name, current_clock, 
                operation_to_string(action));
         return 0;
     } else {
-        printf("Error: Failed to send message to %s\n", target_process);
+        printf("Error sending message to %s\n", target_process);
+        return -1;
     }
-    
-    return -1;
 }
 
 int has_pending_message(void) {
