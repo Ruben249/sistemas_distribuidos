@@ -1,1 +1,4 @@
-614
+200
+
+solo los escritores acceden al fichero, los lectores a la variable global. Los 600 están ejecutando, si mando mas, esos están encolados y ahí está la prioridad. El control c tiene que hacer join de los threads del cliente.
+ejecutar test y ver por qué no concuerdan. 

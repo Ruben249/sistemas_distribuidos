@@ -291,9 +291,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    printf("Server listening on port %d with %s priority\n", 
-           server_port, server_priority ? "writers" : "readers");
-    
     while (1) {
         sem_wait(&available_threads_semaphore);
         
