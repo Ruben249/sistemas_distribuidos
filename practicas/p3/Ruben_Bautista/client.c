@@ -73,6 +73,8 @@ void *client_thread_function(void *thread_id_ptr) {
     int client_socket;
     struct request client_req;
     struct response server_resp;
+    int bytes_sent, bytes_received;
+    int total_sent = 0, total_received = 0;
     
     client_socket = connect_to_server(server_ip_address, server_port_number);
     if (client_socket < 0) {
@@ -80,6 +82,7 @@ void *client_thread_function(void *thread_id_ptr) {
         return NULL;
     }
     
+    // Configurar request
     if (client_mode == 0) {
         client_req.action = READ;
     } else {
@@ -87,16 +90,36 @@ void *client_thread_function(void *thread_id_ptr) {
     }
     client_req.id = thread_id;
     
-    if (send(client_socket, &client_req, sizeof(struct request), 0) <= 0) {
-        fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
-        close_client_connection(client_socket);
-        return NULL;
+    // Envío robusto del request
+    char *request_ptr = (char *)&client_req;
+    int remaining_request_bytes = sizeof(struct request);
+    
+    while (remaining_request_bytes > 0) {
+        bytes_sent = send(client_socket, request_ptr, remaining_request_bytes, MSG_NOSIGNAL);
+        if (bytes_sent <= 0) {
+            fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
+            close_client_connection(client_socket);
+            return NULL;
+        }
+        request_ptr += bytes_sent;
+        remaining_request_bytes -= bytes_sent;
+        total_sent += bytes_sent;
     }
     
-    if (recv(client_socket, &server_resp, sizeof(struct response), 0) <= 0) {
-        fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
-        close_client_connection(client_socket);
-        return NULL;
+    // Recepción robusta de la respuesta
+    char *response_ptr = (char *)&server_resp;
+    int remaining_response_bytes = sizeof(struct response);
+    
+    while (remaining_response_bytes > 0) {
+        bytes_received = recv(client_socket, response_ptr, remaining_response_bytes, 0);
+        if (bytes_received <= 0) {
+            fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
+            close_client_connection(client_socket);
+            return NULL;
+        }
+        response_ptr += bytes_received;
+        remaining_response_bytes -= bytes_received;
+        total_received += bytes_received;
     }
     
     print_thread_result(thread_id, &server_resp);

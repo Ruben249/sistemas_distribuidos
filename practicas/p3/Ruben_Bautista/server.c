@@ -8,6 +8,7 @@
 #include <sys/time.h>
 #include <sys/socket.h>
 #include <getopt.h>
+#include <signal.h>
 #include "stub.h"
 
 #define MAX_CONCURRENT_THREADS 600
@@ -32,6 +33,8 @@ pthread_cond_t writers_can_enter;
 int active_threads_count;
 pthread_mutex_t active_threads_mutex;
 sem_t available_threads_semaphore;
+
+volatile int server_running = 1;
 
 int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
     static struct option long_options[] = {
@@ -97,18 +100,6 @@ void cleanup_server_resources(void) {
     sem_destroy(&available_threads_semaphore);
 }
 
-int read_counter_from_file(void) {
-    FILE *file = fopen(OUTPUT_FILENAME, "r");
-    int counter = 0;
-    
-    if (file != NULL) {
-        fscanf(file, "%d", &counter);
-        fclose(file);
-    }
-    
-    return counter;
-}
-
 void write_counter_to_file(int counter_value) {
     pthread_mutex_lock(&file_mutex);
     FILE *file = fopen(OUTPUT_FILENAME, "w");
@@ -142,12 +133,12 @@ void enter_critical_section(struct request *client_req, struct timespec *start_t
     
     if (client_req->action == READ) {
         if (server_priority == 1) {
-            waiting_readers_count++;
+            // Prioridad escritores: lectores esperan si hay escritores
             while (is_writer_active || waiting_writers_count > 0) {
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
             }
-            waiting_readers_count--;
         } else {
+            // Prioridad lectores: solo esperan si hay escritor activo
             while (is_writer_active) {
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
             }
@@ -155,6 +146,7 @@ void enter_critical_section(struct request *client_req, struct timespec *start_t
         active_readers_count++;
     } else {
         waiting_writers_count++;
+        // Escritores siempre esperan si hay actividad en sección crítica
         while (is_writer_active || active_readers_count > 0) {
             pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
         }
@@ -170,23 +162,19 @@ void exit_critical_section(struct request *client_req) {
     
     if (client_req->action == READ) {
         active_readers_count--;
+        // Solo notificar escritores si no quedan lectores
         if (active_readers_count == 0 && waiting_writers_count > 0) {
             pthread_cond_signal(&writers_can_enter);
         }
     } else {
         is_writer_active = 0;
-        if (server_priority == 1) {
-            if (waiting_writers_count > 0) {
-                pthread_cond_signal(&writers_can_enter);
-            } else if (waiting_readers_count > 0) {
-                pthread_cond_broadcast(&readers_can_enter);
-            }
+        // Estrategia eficiente de notificación
+        if (waiting_writers_count > 0) {
+            // Prioridad a escritores si los hay esperando
+            pthread_cond_signal(&writers_can_enter);
         } else {
-            if (waiting_writers_count > 0) {
-                pthread_cond_signal(&writers_can_enter);
-            } else {
-                pthread_cond_broadcast(&readers_can_enter);
-            }
+            // Solo notificar lectores si no hay escritores esperando
+            pthread_cond_broadcast(&readers_can_enter);
         }
     }
     
@@ -224,15 +212,20 @@ void *handle_client_thread(void *client_socket_ptr) {
     struct request client_req;
     struct response client_resp;
     struct timespec start_time, end_time;
-    int bytes_received, bytes_sent;
-    int total_sent = 0;
+    int bytes_received;
     
-    bytes_received = recv(client_socket, &client_req, sizeof(struct request), 0);
-    if (bytes_received <= 0) {
+    // Recepción eficiente - una sola llamada
+    bytes_received = recv(client_socket, &client_req, sizeof(struct request), MSG_WAITALL);
+    if (bytes_received != sizeof(struct request)) {
         close_client_connection(client_socket);
-        goto cleanup;
+        pthread_mutex_lock(&active_threads_mutex);
+        active_threads_count--;
+        pthread_mutex_unlock(&active_threads_mutex);
+        sem_post(&available_threads_semaphore);
+        return NULL;
     }
     
+    // Medir tiempo de espera para región crítica
     clock_gettime(CLOCK_MONOTONIC, &start_time);
     enter_critical_section(&client_req, &start_time);
     clock_gettime(CLOCK_MONOTONIC, &end_time);
@@ -241,23 +234,11 @@ void *handle_client_thread(void *client_socket_ptr) {
     process_client_request(&client_req, &client_resp, wait_time);
     exit_critical_section(&client_req);
     
-    // Robust send to ensure complete response delivery
-    char *response_ptr = (char *)&client_resp;
-    int remaining_bytes = sizeof(struct response);
-    
-    while (remaining_bytes > 0) {
-        bytes_sent = send(client_socket, response_ptr, remaining_bytes, 0);
-        if (bytes_sent <= 0) {
-            break;
-        }
-        response_ptr += bytes_sent;
-        remaining_bytes -= bytes_sent;
-        total_sent += bytes_sent;
-    }
+    // Envío eficiente - una sola llamada
+    send(client_socket, &client_resp, sizeof(struct response), MSG_NOSIGNAL);
     
     close_client_connection(client_socket);
-
-cleanup:
+    
     pthread_mutex_lock(&active_threads_mutex);
     active_threads_count--;
     pthread_mutex_unlock(&active_threads_mutex);
@@ -266,9 +247,80 @@ cleanup:
     return NULL;
 }
 
+void *acceptor_thread_function(void *server_socket_ptr) {
+    int server_socket = *(int *)server_socket_ptr;
+    
+    while (server_running) {
+        // Aceptar conexión usando la función del stub
+        int client_socket = accept_client_connection(server_socket);
+        if (client_socket < 0) {
+            if (server_running) continue;
+            else break;
+        }
+        
+        // Esperar por slot disponible
+        sem_wait(&available_threads_semaphore);
+        
+        pthread_mutex_lock(&active_threads_mutex);
+        active_threads_count++;
+        pthread_mutex_unlock(&active_threads_mutex);
+        
+        int *client_socket_ptr = malloc(sizeof(int));
+        if (client_socket_ptr == NULL) {
+            close_client_connection(client_socket);
+            sem_post(&available_threads_semaphore);
+            continue;
+        }
+        *client_socket_ptr = client_socket;
+        
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, handle_client_thread, client_socket_ptr) != 0) {
+            free(client_socket_ptr);
+            close_client_connection(client_socket);
+            pthread_mutex_lock(&active_threads_mutex);
+            active_threads_count--;
+            pthread_mutex_unlock(&active_threads_mutex);
+            sem_post(&available_threads_semaphore);
+            continue;
+        }
+        
+        pthread_detach(client_thread);
+    }
+    
+    return NULL;
+}
+
+int read_counter_from_file(void) {
+    FILE *file = fopen(OUTPUT_FILENAME, "r");
+    int counter = 0;
+    
+    if (file != NULL) {
+        if (fscanf(file, "%d", &counter) != 1) {
+            counter = 0;
+        }
+        fclose(file);
+    } else {
+        // File doesn't exist, create it with initial value 0
+        file = fopen(OUTPUT_FILENAME, "w");
+        if (file != NULL) {
+            fprintf(file, "0");
+            fclose(file);
+        }
+    }
+    
+    return counter;
+}
+
+void signal_handler(int signal) {
+    if (signal == SIGINT) {
+        server_running = 0;
+    }
+}
+
 int main(int argc, char *argv[]) {
     int server_port;
     int server_socket;
+    pthread_t acceptor_thread;
     
     setbuf(stdout, NULL);
     srand(time(NULL));
@@ -291,35 +343,19 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    while (1) {
-        sem_wait(&available_threads_semaphore);
-        
-        int client_socket = accept_client_connection(server_socket);
-        if (client_socket < 0) {
-            sem_post(&available_threads_semaphore);
-            continue;
-        }
-        
-        pthread_mutex_lock(&active_threads_mutex);
-        active_threads_count++;
-        pthread_mutex_unlock(&active_threads_mutex);
-        
-        int *client_socket_ptr = malloc(sizeof(int));
-        *client_socket_ptr = client_socket;
-        
-        pthread_t client_thread;
-        if (pthread_create(&client_thread, NULL, handle_client_thread, client_socket_ptr) != 0) {
-            free(client_socket_ptr);
-            close_client_connection(client_socket);
-            pthread_mutex_lock(&active_threads_mutex);
-            active_threads_count--;
-            pthread_mutex_unlock(&active_threads_mutex);
-            sem_post(&available_threads_semaphore);
-            continue;
-        }
-        
-        pthread_detach(client_thread);
+    printf("Server listening on port %d with %s priority\n", 
+           server_port, server_priority ? "writers" : "readers");
+    
+    // Crear thread aceptador
+    if (pthread_create(&acceptor_thread, NULL, acceptor_thread_function, &server_socket) != 0) {
+        fprintf(stderr, "Error creating acceptor thread\n");
+        close_server_socket(server_socket);
+        cleanup_server_resources();
+        exit(EXIT_FAILURE);
     }
+    
+    // Esperar a que el thread aceptador termine (nunca debería pasar)
+    pthread_join(acceptor_thread, NULL);
     
     close_server_socket(server_socket);
     cleanup_server_resources();

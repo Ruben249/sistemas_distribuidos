@@ -32,7 +32,7 @@ int initialize_server_socket(int port) {
         return -1;
     }
     
-    if (listen(server_socket, 10) < 0) {
+    if (listen(server_socket, 1024) < 0) {
         close(server_socket);
         return -1;
     }
