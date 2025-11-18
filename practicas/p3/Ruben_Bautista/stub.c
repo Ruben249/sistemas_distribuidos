@@ -7,6 +7,7 @@
 #include <arpa/inet.h>
 #include "stub.h"
 
+// initialize_server_socket(): Creates and configures the server socket
 int initialize_server_socket(int port) {
     int server_socket;
     struct sockaddr_in server_addr;
@@ -40,6 +41,7 @@ int initialize_server_socket(int port) {
     return server_socket;
 }
 
+// accept_client_connection(): Accepts an incoming client connection
 int accept_client_connection(int server_socket) {
     int client_socket;
     struct sockaddr_in client_addr;
@@ -49,10 +51,7 @@ int accept_client_connection(int server_socket) {
     return client_socket;
 }
 
-void close_server_socket(int server_socket) {
-    close(server_socket);
-}
-
+// connect_to_server(): Establishes connection to the server from client
 int connect_to_server(char *server_ip, int port) {
     int client_socket;
     struct sockaddr_in server_addr;
@@ -66,7 +65,8 @@ int connect_to_server(char *server_ip, int port) {
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     
-    if (inet_pton(AF_INET, server_ip, &server_addr.sin_addr) <= 0) {
+    server_addr.sin_addr.s_addr = inet_addr(server_ip);
+    if (server_addr.sin_addr.s_addr == INADDR_NONE) {
         close(client_socket);
         return -1;
     }
@@ -79,6 +79,78 @@ int connect_to_server(char *server_ip, int port) {
     return client_socket;
 }
 
-void close_client_connection(int client_socket) {
-    close(client_socket);
+// send_request(): Sends a request to the server
+int send_request(int socket, struct request *req) {
+    char *request_ptr = (char *)req;
+    int remaining_bytes = sizeof(struct request);
+    int total_sent = 0;
+    
+    while (remaining_bytes > 0) {
+        int bytes_sent = send(socket, request_ptr, remaining_bytes, MSG_NOSIGNAL);
+        if (bytes_sent <= 0) {
+            return -1;
+        }
+        request_ptr += bytes_sent;
+        remaining_bytes -= bytes_sent;
+        total_sent += bytes_sent;
+    }
+    
+    return total_sent;
+}
+
+// receive_request(): Receives a request from client
+int receive_request(int socket, struct request *req) {
+    char *request_ptr = (char *)req;
+    int remaining_bytes = sizeof(struct request);
+    int total_received = 0;
+    
+    while (remaining_bytes > 0) {
+        int bytes_received = recv(socket, request_ptr, remaining_bytes, 0);
+        if (bytes_received <= 0) {
+            return -1;
+        }
+        request_ptr += bytes_received;
+        remaining_bytes -= bytes_received;
+        total_received += bytes_received;
+    }
+    
+    return total_received;
+}
+
+// send_response(): Sends a response to the client
+int send_response(int socket, struct response *resp) {
+    char *response_ptr = (char *)resp;
+    int remaining_bytes = sizeof(struct response);
+    int total_sent = 0;
+    
+    while (remaining_bytes > 0) {
+        int bytes_sent = send(socket, response_ptr, remaining_bytes, MSG_NOSIGNAL);
+        if (bytes_sent <= 0) {
+            return -1;
+        }
+        response_ptr += bytes_sent;
+        remaining_bytes -= bytes_sent;
+        total_sent += bytes_sent;
+    }
+    
+    return total_sent;
+}
+
+// receive_response(): The client receives a response from server 
+int receive_response(int socket, struct response *resp) {
+    char *response_ptr = (char *)resp;
+    int remaining_bytes = sizeof(struct response);
+    int total_received = 0;
+    
+    while (remaining_bytes > 0) {
+        int bytes_received = recv(socket, response_ptr, remaining_bytes, 0);
+        if (bytes_received <= 0) {
+            return -1;
+        }
+        response_ptr += bytes_received;
+        remaining_bytes -= bytes_received;
+        total_received += bytes_received;
+    }
+    
+    return total_received;
 }

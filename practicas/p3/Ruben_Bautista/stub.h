@@ -17,10 +17,17 @@ struct response {
     long latency_time;
 };
 
+// Server socket functions
 int initialize_server_socket(int port);
 int accept_client_connection(int server_socket);
-void close_server_socket(int server_socket);
+
+// Client socket functions  
 int connect_to_server(char *server_ip, int port);
-void close_client_connection(int client_socket);
+
+// Communication functions
+int send_request(int socket, struct request *req);
+int receive_request(int socket, struct request *req);
+int send_response(int socket, struct response *resp);
+int receive_response(int socket, struct response *resp);
 
 #endif

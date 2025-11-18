@@ -12,6 +12,7 @@ int server_port_number = 0;
 int client_mode = 0;
 int number_of_threads = 0;
 
+//print_thread_result(): Prints the result of a thread's operation.
 void print_thread_result(int thread_id, struct response *resp) {
     const char *mode_str;
     if (resp->action == READ) {
@@ -23,6 +24,7 @@ void print_thread_result(int thread_id, struct response *resp) {
            thread_id, mode_str, resp->counter, resp->latency_time);
 }
 
+// parse_client_arguments(): Parses command-line arguments for client configuration.
 int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mode, int *threads) {
     static struct option long_options[] = {
         {"ip", required_argument, 0, 'i'},
@@ -68,7 +70,8 @@ int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mo
     return 0;
 }
 
-void *client_thread_function(void *thread_id_ptr) {
+// comunication_server(): sends requests to the server and processes responses.
+void *comunication_server(void *thread_id_ptr) {
     int thread_id = *(int *)thread_id_ptr;
     int client_socket;
     struct request client_req;
@@ -82,7 +85,6 @@ void *client_thread_function(void *thread_id_ptr) {
         return NULL;
     }
     
-    // Configurar request
     if (client_mode == 0) {
         client_req.action = READ;
     } else {
@@ -90,7 +92,7 @@ void *client_thread_function(void *thread_id_ptr) {
     }
     client_req.id = thread_id;
     
-    // Envío robusto del request
+    // Send the request to server
     char *request_ptr = (char *)&client_req;
     int remaining_request_bytes = sizeof(struct request);
     
@@ -98,7 +100,7 @@ void *client_thread_function(void *thread_id_ptr) {
         bytes_sent = send(client_socket, request_ptr, remaining_request_bytes, MSG_NOSIGNAL);
         if (bytes_sent <= 0) {
             fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
-            close_client_connection(client_socket);
+            close(client_socket);
             return NULL;
         }
         request_ptr += bytes_sent;
@@ -106,7 +108,7 @@ void *client_thread_function(void *thread_id_ptr) {
         total_sent += bytes_sent;
     }
     
-    // Recepción robusta de la respuesta
+    // Reception from server
     char *response_ptr = (char *)&server_resp;
     int remaining_response_bytes = sizeof(struct response);
     
@@ -114,7 +116,7 @@ void *client_thread_function(void *thread_id_ptr) {
         bytes_received = recv(client_socket, response_ptr, remaining_response_bytes, 0);
         if (bytes_received <= 0) {
             fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
-            close_client_connection(client_socket);
+            close(client_socket);
             return NULL;
         }
         response_ptr += bytes_received;
@@ -123,7 +125,7 @@ void *client_thread_function(void *thread_id_ptr) {
     }
     
     print_thread_result(thread_id, &server_resp);
-    close_client_connection(client_socket);
+    close(client_socket);
     
     return NULL;
 }
@@ -140,6 +142,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
+    // Save memory for threads and their IDs
     threads = malloc(number_of_threads * sizeof(pthread_t));
     thread_ids = malloc(number_of_threads * sizeof(int));
     if (threads == NULL || thread_ids == NULL) {
@@ -147,14 +150,16 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
+    // Create client threads
     for (i = 0; i < number_of_threads; i++) {
         thread_ids[i] = i;
-        if (pthread_create(&threads[i], NULL, client_thread_function, &thread_ids[i]) != 0) {
+        if (pthread_create(&threads[i], NULL, comunication_server, &thread_ids[i]) != 0) {
             fprintf(stderr, "Error: Thread creation failed\n");
             exit(EXIT_FAILURE);
         }
     }
     
+    // Wait for all threads to finish
     for (i = 0; i < number_of_threads; i++) {
         pthread_join(threads[i], NULL);
     }

@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <getopt.h>
 #include <signal.h>
+#include <errno.h>
 #include "stub.h"
 
 #define MAX_CONCURRENT_THREADS 600
@@ -30,12 +31,13 @@ pthread_mutex_t readers_writers_mutex;
 pthread_cond_t readers_can_enter;
 pthread_cond_t writers_can_enter;
 
-int active_threads_count;
+int active_threads_count = 0;
 pthread_mutex_t active_threads_mutex;
 sem_t available_threads_semaphore;
 
 volatile int server_running = 1;
 
+// parse_server_arguments(): Parses command-line arguments for server configuration.
 int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
     static struct option long_options[] = {
         {"port", required_argument, 0, 'p'},
@@ -71,7 +73,8 @@ int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
     return 0;
 }
 
-int initialize_server_resources(void) {
+// initialize(): Initializes mutexes, condition variables, and semaphores.
+int initialize(void) {
     shared_counter = 0;
     active_readers_count = 0;
     waiting_writers_count = 0;
@@ -90,16 +93,49 @@ int initialize_server_resources(void) {
     return 0;
 }
 
-void cleanup_server_resources(void) {
+// cleanup_resources(): Cleans up ALL resources and forces thread termination
+void cleanup_resources(int server_socket) {
+    printf("Starting cleanup...\n");
+
+    server_running = 0;
+
+    if (server_socket >= 0) {
+        shutdown(server_socket, SHUT_RDWR);
+        close(server_socket);
+    }
+
+    pthread_mutex_lock(&readers_writers_mutex);
+    pthread_cond_broadcast(&readers_can_enter);
+    pthread_cond_broadcast(&writers_can_enter);
+    pthread_mutex_unlock(&readers_writers_mutex);
+    
+    for (int i = 0; i < MAX_CONCURRENT_THREADS * 2; i++) {
+        sem_post(&available_threads_semaphore);
+    }
+    
+    for (int i = 0; i < 5; i++) {
+        pthread_mutex_lock(&active_threads_mutex);
+        int remaining = active_threads_count;
+        pthread_mutex_unlock(&active_threads_mutex);
+        
+        if (remaining == 0) break;
+        
+        printf("Waiting for %d threads...\n", remaining);
+        usleep(100000); // 100ms
+    }
+    
     pthread_mutex_destroy(&counter_mutex);
     pthread_mutex_destroy(&file_mutex);
     pthread_mutex_destroy(&readers_writers_mutex);
     pthread_mutex_destroy(&active_threads_mutex);
+    
     pthread_cond_destroy(&readers_can_enter);
     pthread_cond_destroy(&writers_can_enter);
+    
     sem_destroy(&available_threads_semaphore);
 }
 
+// write_counter_to_file(): Writes the current counter value to the output file.
 void write_counter_to_file(int counter_value) {
     pthread_mutex_lock(&file_mutex);
     FILE *file = fopen(OUTPUT_FILENAME, "w");
@@ -110,6 +146,7 @@ void write_counter_to_file(int counter_value) {
     pthread_mutex_unlock(&file_mutex);
 }
 
+// get_current_timestamp(): Retrieves the current time in seconds and microseconds.
 void get_current_timestamp(long *seconds, long *microseconds) {
     struct timeval current_time;
     gettimeofday(&current_time, NULL);
@@ -117,30 +154,34 @@ void get_current_timestamp(long *seconds, long *microseconds) {
     *microseconds = current_time.tv_usec;
 }
 
-long calculate_time_difference_ns(struct timespec start, struct timespec end) {
+// calculate_latency(): Calculates the time difference in nanoseconds.
+long calculate_latency(struct timespec start, struct timespec end) {
     long seconds = end.tv_sec - start.tv_sec;
     long nanoseconds = end.tv_nsec - start.tv_nsec;
     return seconds * 1000000000L + nanoseconds;
 }
 
-void random_sleep_in_critical_section(void) {
+// sleep_random(): Sleeps for a random duration within the critical section.
+void sleep_random(void) {
     int sleep_ms = MIN_SLEEP_MS + rand() % (MAX_SLEEP_MS - MIN_SLEEP_MS + 1);
     usleep(sleep_ms * 1000);
 }
 
-void enter_critical_section(struct request *client_req, struct timespec *start_time) {
+/* can_pass(): Manages entry into the critical section
+ based on reader/writer priority.*/
+void can_pass(struct request *client_req, struct timespec *start_time) {
     pthread_mutex_lock(&readers_writers_mutex);
     
     if (client_req->action == READ) {
         if (server_priority == 1) {
-            // PRIORIDAD ESCRITORES: lectores esperan si hay escritores ACTIVOS o ESPERANDO
+            // Priority writers: readers wait if there's an active writer or waiting writers
             while (is_writer_active || waiting_writers_count > 0) {
                 waiting_readers_count++;
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
                 waiting_readers_count--;
             }
         } else {
-            // PRIORIDAD LECTORES: lectores esperan solo si hay escritor ACTIVO
+            // Priority readers: readers wait only if there's an active writer
             while (is_writer_active) {
                 waiting_readers_count++;
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
@@ -152,12 +193,12 @@ void enter_critical_section(struct request *client_req, struct timespec *start_t
         waiting_writers_count++;
         
         if (server_priority == 0) {
-            // PRIORIDAD LECTORES: escritores esperan si hay lectores ACTIVOS o ESPERANDO
+            // Priority readers: writers wait if there are active or waiting readers
             while (is_writer_active || active_readers_count > 0 || waiting_readers_count > 0) {
                 pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
             }
         } else {
-            // PRIORIDAD ESCRITORES: escritores esperan si hay alguien ACTIVO
+            // Priority writers: writers wait if there is anyone active
             while (is_writer_active || active_readers_count > 0) {
                 pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
             }
@@ -165,55 +206,58 @@ void enter_critical_section(struct request *client_req, struct timespec *start_t
         waiting_writers_count--;
         is_writer_active = 1;
     }
-    
+    // unlock readers_writers_mutex before returning to allow other threads to proceed
     pthread_mutex_unlock(&readers_writers_mutex);
 }
 
-void exit_critical_section(struct request *client_req) {
+// priority_control(): Lets threads exit the critical section and signals waiting threads.
+void priority_control(struct request *client_req) {
     pthread_mutex_lock(&readers_writers_mutex);
     
     if (client_req->action == READ) {
         active_readers_count--;
         
         if (active_readers_count == 0) {
+            //server_priority =1 -> priority writers
             if (server_priority == 1) {
-                // PRIORIDAD ESCRITORES: dar paso a escritores primero
+                // Priority writers: give priority to writers first
                 if (waiting_writers_count > 0) {
                     pthread_cond_signal(&writers_can_enter);
                 }
-                // Solo si no hay escritores, dar paso a lectores
+                // Only if there are no writers, give priority to readers
                 else if (waiting_readers_count > 0) {
                     pthread_cond_broadcast(&readers_can_enter);
                 }
             } else {
-                // PRIORIDAD LECTORES: dar paso a lectores primero
+                // Priority readers: give priority to readers first
                 if (waiting_readers_count > 0) {
                     pthread_cond_broadcast(&readers_can_enter);
                 }
-                // Solo si no hay lectores, dar paso a escritores
+                // Only if there are no readers, give priority to writers
                 else if (waiting_writers_count > 0) {
                     pthread_cond_signal(&writers_can_enter);
                 }
             }
         }
+        // server_priority = 0 -> priority readers
     } else {
         is_writer_active = 0;
         
         if (server_priority == 1) {
-            // PRIORIDAD ESCRITORES: escritores primero
+            // Priority writers: give priority to writers first
             if (waiting_writers_count > 0) {
                 pthread_cond_signal(&writers_can_enter);
             }
-            // Solo si no hay escritores, dar paso a lectores
+            // Only if there are no writers, give priority to readers
             else if (waiting_readers_count > 0) {
                 pthread_cond_broadcast(&readers_can_enter);
             }
         } else {
-            // PRIORIDAD LECTORES: lectores primero
+            // Priority readers: give priority to readers first
             if (waiting_readers_count > 0) {
                 pthread_cond_broadcast(&readers_can_enter);
             }
-            // Solo si no hay lectores, dar paso a escritores
+            // Only if there are no readers, give priority to writers
             else if (waiting_writers_count > 0) {
                 pthread_cond_signal(&writers_can_enter);
             }
@@ -223,7 +267,9 @@ void exit_critical_section(struct request *client_req) {
     pthread_mutex_unlock(&readers_writers_mutex);
 }
 
-void process_client_request(struct request *req, struct response *resp, long wait_time) {
+/* manage_request(): Handles the client's request by
+reading or writing the shared counter.*/
+void manage_request(struct request *req, struct response *resp, long wait_time) {
     long seconds, microseconds;
     get_current_timestamp(&seconds, &microseconds);
     
@@ -239,7 +285,7 @@ void process_client_request(struct request *req, struct response *resp, long wai
                seconds, microseconds, req->id, shared_counter);
     }
     
-    random_sleep_in_critical_section();
+    sleep_random();
     pthread_mutex_unlock(&counter_mutex);
     
     resp->action = req->action;
@@ -247,91 +293,130 @@ void process_client_request(struct request *req, struct response *resp, long wai
     resp->latency_time = wait_time;
 }
 
-void *handle_client_thread(void *client_socket_ptr) {
+/* process(): Manages the lifecycle of a client connection,
+including receiving requests, processing them, and sending responses. */
+void *process(void *client_socket_ptr) {
     int client_socket = *(int *)client_socket_ptr;
     free(client_socket_ptr);
+    
+    pthread_mutex_lock(&active_threads_mutex);
+    active_threads_count++;
+    pthread_mutex_unlock(&active_threads_mutex);
     
     struct request client_req;
     struct response client_resp;
     struct timespec start_time, end_time;
-    int bytes_received;
     
-    // Recepción eficiente - una sola llamada
-    bytes_received = recv(client_socket, &client_req, sizeof(struct request), MSG_WAITALL);
-    if (bytes_received != sizeof(struct request)) {
-        close_client_connection(client_socket);
+    if (receive_request(client_socket, &client_req) <= 0) {
+        close(client_socket);
         pthread_mutex_lock(&active_threads_mutex);
-        active_threads_count--;
+        active_threads_count--;  // Decrementar si hay error
         pthread_mutex_unlock(&active_threads_mutex);
         sem_post(&available_threads_semaphore);
         return NULL;
     }
     
-    // Medir tiempo de espera para región crítica
     clock_gettime(CLOCK_MONOTONIC, &start_time);
-    enter_critical_section(&client_req, &start_time);
+    can_pass(&client_req, &start_time);
     clock_gettime(CLOCK_MONOTONIC, &end_time);
     
-    long wait_time = calculate_time_difference_ns(start_time, end_time);
-    process_client_request(&client_req, &client_resp, wait_time);
-    exit_critical_section(&client_req);
+    long wait_time = calculate_latency(start_time, end_time);
+    manage_request(&client_req, &client_resp, wait_time);
+    priority_control(&client_req);
     
-    // Envío eficiente - una sola llamada
-    send(client_socket, &client_resp, sizeof(struct response), MSG_NOSIGNAL);
+    send_response(client_socket, &client_resp);
+    close(client_socket);
     
-    close_client_connection(client_socket);
-    
+    // Decrementar contador al final
     pthread_mutex_lock(&active_threads_mutex);
     active_threads_count--;
     pthread_mutex_unlock(&active_threads_mutex);
+    
     sem_post(&available_threads_semaphore);
     
     return NULL;
 }
 
-void *acceptor_thread_function(void *server_socket_ptr) {
+/* manager_thread(): Accepts incoming client connections
+ and spawns threads to handle them. */
+void *manager_thread(void *server_socket_ptr) {
     int server_socket = *(int *)server_socket_ptr;
+    struct timeval timeout;
+    fd_set read_fds;
     
     while (server_running) {
-        // Aceptar conexión usando la función del stub
-        int client_socket = accept_client_connection(server_socket);
-        if (client_socket < 0) {
-            if (server_running) continue;
-            else break;
-        }
+        FD_ZERO(&read_fds);
+        FD_SET(server_socket, &read_fds);
         
-        // Esperar por slot disponible
-        sem_wait(&available_threads_semaphore);
+        timeout.tv_sec = 1;
+        timeout.tv_usec = 0;
         
-        pthread_mutex_lock(&active_threads_mutex);
-        active_threads_count++;
-        pthread_mutex_unlock(&active_threads_mutex);
+        int ready = select(server_socket + 1, &read_fds, NULL, NULL, &timeout);
         
-        int *client_socket_ptr = malloc(sizeof(int));
-        if (client_socket_ptr == NULL) {
-            close_client_connection(client_socket);
-            sem_post(&available_threads_semaphore);
-            continue;
-        }
-        *client_socket_ptr = client_socket;
-        
-        pthread_t client_thread;
-        if (pthread_create(&client_thread, NULL, handle_client_thread, client_socket_ptr) != 0) {
-            free(client_socket_ptr);
-            close_client_connection(client_socket);
-            pthread_mutex_lock(&active_threads_mutex);
-            active_threads_count--;
-            pthread_mutex_unlock(&active_threads_mutex);
-            sem_post(&available_threads_semaphore);
+        if (ready < 0) {
+            if (server_running && errno != EINTR) {
+                usleep(100000);
+            }
             continue;
         }
         
-        pthread_detach(client_thread);
+        if (ready == 0) {
+            // Timeout - verificar salida
+            if (!server_running) break;
+            continue;
+        }
+        
+        if (FD_ISSET(server_socket, &read_fds)) {
+            int client_socket = accept_client_connection(server_socket);
+            if (client_socket < 0) {
+                if (server_running && errno != EINTR) {
+                    usleep(100000);
+                }
+                continue;
+            }
+            
+            // Verificar salida inmediatamente después de accept
+            if (!server_running) {
+                close(client_socket);
+                break;
+            }
+            
+            // Esperar semáforo con timeout
+            struct timespec ts;
+            clock_gettime(CLOCK_REALTIME, &ts);
+            ts.tv_sec += 1;
+            
+            if (sem_timedwait(&available_threads_semaphore, &ts) != 0) {
+                close(client_socket);
+                if (!server_running) break;
+                continue;
+            }
+            
+            // Asignar memoria y verificar
+            int *client_socket_ptr = malloc(sizeof(int));
+            if (client_socket_ptr == NULL) {
+                close(client_socket);
+                sem_post(&available_threads_semaphore);
+                continue;
+            }
+            *client_socket_ptr = client_socket;
+            
+            pthread_t client_thread;
+            if (pthread_create(&client_thread, NULL, process, client_socket_ptr) != 0) {
+                free(client_socket_ptr);
+                close(client_socket);
+                sem_post(&available_threads_semaphore);
+                continue;
+            }
+            
+            pthread_detach(client_thread);
+        }
     }
     
+    printf("Acceptor thread finished.\n");
     return NULL;
 }
-
+// read_counter_from_file(): Reads the counter value from the output file.
 int read_counter_from_file(void) {
     FILE *file = fopen(OUTPUT_FILENAME, "r");
     int counter = 0;
@@ -342,7 +427,6 @@ int read_counter_from_file(void) {
         }
         fclose(file);
     } else {
-        // File doesn't exist, create it with initial value 0
         file = fopen(OUTPUT_FILENAME, "w");
         if (file != NULL) {
             fprintf(file, "0");
@@ -353,6 +437,7 @@ int read_counter_from_file(void) {
     return counter;
 }
 
+// signal_handler(): Handles SIGINT to gracefully terminate the server.
 void signal_handler(int signal) {
     if (signal == SIGINT) {
         server_running = 0;
@@ -366,12 +451,14 @@ int main(int argc, char *argv[]) {
     
     setbuf(stdout, NULL);
     srand(time(NULL));
+
+    signal(SIGINT, signal_handler);
     
     if (parse_server_arguments(argc, argv, &server_port, &server_priority) != 0) {
         exit(EXIT_FAILURE);
     }
     
-    if (initialize_server_resources() != 0) {
+    if (initialize() != 0) {
         fprintf(stderr, "Error initializing server resources\n");
         exit(EXIT_FAILURE);
     }
@@ -381,25 +468,22 @@ int main(int argc, char *argv[]) {
     server_socket = initialize_server_socket(server_port);
     if (server_socket < 0) {
         fprintf(stderr, "Error creating server socket\n");
-        cleanup_server_resources();
+        cleanup_resources(server_socket);
         exit(EXIT_FAILURE);
     }
     
     printf("Server listening on port %d with %s priority\n", 
            server_port, server_priority ? "writers" : "readers");
     
-    // Crear thread aceptador
-    if (pthread_create(&acceptor_thread, NULL, acceptor_thread_function, &server_socket) != 0) {
+    // Create a thread to accept incoming client connections
+    if (pthread_create(&acceptor_thread, NULL, manager_thread, &server_socket) != 0) {
         fprintf(stderr, "Error creating acceptor thread\n");
-        close_server_socket(server_socket);
-        cleanup_server_resources();
+        close(server_socket);
+        cleanup_resources(server_socket);
         exit(EXIT_FAILURE);
     }
     
-    // Esperar a que el thread aceptador termine (nunca debería pasar)
     pthread_join(acceptor_thread, NULL);
-    
-    close_server_socket(server_socket);
-    cleanup_server_resources();
+    cleanup_resources(server_socket);
     return 0;
 }
