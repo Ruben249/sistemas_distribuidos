@@ -133,22 +133,34 @@ void enter_critical_section(struct request *client_req, struct timespec *start_t
     
     if (client_req->action == READ) {
         if (server_priority == 1) {
-            // Prioridad escritores: lectores esperan si hay escritores
+            // PRIORIDAD ESCRITORES: lectores esperan si hay escritores ACTIVOS o ESPERANDO
             while (is_writer_active || waiting_writers_count > 0) {
+                waiting_readers_count++;
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                waiting_readers_count--;
             }
         } else {
-            // Prioridad lectores: solo esperan si hay escritor activo
+            // PRIORIDAD LECTORES: lectores esperan solo si hay escritor ACTIVO
             while (is_writer_active) {
+                waiting_readers_count++;
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                waiting_readers_count--;
             }
         }
         active_readers_count++;
     } else {
         waiting_writers_count++;
-        // Escritores siempre esperan si hay actividad en sección crítica
-        while (is_writer_active || active_readers_count > 0) {
-            pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+        
+        if (server_priority == 0) {
+            // PRIORIDAD LECTORES: escritores esperan si hay lectores ACTIVOS o ESPERANDO
+            while (is_writer_active || active_readers_count > 0 || waiting_readers_count > 0) {
+                pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+            }
+        } else {
+            // PRIORIDAD ESCRITORES: escritores esperan si hay alguien ACTIVO
+            while (is_writer_active || active_readers_count > 0) {
+                pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+            }
         }
         waiting_writers_count--;
         is_writer_active = 1;
@@ -162,19 +174,49 @@ void exit_critical_section(struct request *client_req) {
     
     if (client_req->action == READ) {
         active_readers_count--;
-        // Solo notificar escritores si no quedan lectores
-        if (active_readers_count == 0 && waiting_writers_count > 0) {
-            pthread_cond_signal(&writers_can_enter);
+        
+        if (active_readers_count == 0) {
+            if (server_priority == 1) {
+                // PRIORIDAD ESCRITORES: dar paso a escritores primero
+                if (waiting_writers_count > 0) {
+                    pthread_cond_signal(&writers_can_enter);
+                }
+                // Solo si no hay escritores, dar paso a lectores
+                else if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                }
+            } else {
+                // PRIORIDAD LECTORES: dar paso a lectores primero
+                if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                }
+                // Solo si no hay lectores, dar paso a escritores
+                else if (waiting_writers_count > 0) {
+                    pthread_cond_signal(&writers_can_enter);
+                }
+            }
         }
     } else {
         is_writer_active = 0;
-        // Estrategia eficiente de notificación
-        if (waiting_writers_count > 0) {
-            // Prioridad a escritores si los hay esperando
-            pthread_cond_signal(&writers_can_enter);
+        
+        if (server_priority == 1) {
+            // PRIORIDAD ESCRITORES: escritores primero
+            if (waiting_writers_count > 0) {
+                pthread_cond_signal(&writers_can_enter);
+            }
+            // Solo si no hay escritores, dar paso a lectores
+            else if (waiting_readers_count > 0) {
+                pthread_cond_broadcast(&readers_can_enter);
+            }
         } else {
-            // Solo notificar lectores si no hay escritores esperando
-            pthread_cond_broadcast(&readers_can_enter);
+            // PRIORIDAD LECTORES: lectores primero
+            if (waiting_readers_count > 0) {
+                pthread_cond_broadcast(&readers_can_enter);
+            }
+            // Solo si no hay lectores, dar paso a escritores
+            else if (waiting_writers_count > 0) {
+                pthread_cond_signal(&writers_can_enter);
+            }
         }
     }
     
