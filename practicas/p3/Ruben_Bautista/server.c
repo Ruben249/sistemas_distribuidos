@@ -34,6 +34,9 @@ pthread_cond_t writers_can_enter;
 int active_threads_count = 0;
 pthread_mutex_t active_threads_mutex;
 sem_t available_threads_semaphore;
+pthread_t client_threads[MAX_CONCURRENT_THREADS];
+int client_threads_count = 0;
+pthread_mutex_t client_threads_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 volatile int server_running = 1;
 
@@ -57,7 +60,7 @@ int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
             } else if (strcmp(optarg, "writer") == 0) {
                 *priority = 1;
             } else {
-                fprintf(stderr, "Error: priority must be reader or writer\n");
+                fprintf(stderr, "Usage: %s --port PORT --priority reader/writer\n", argv[0]);
                 return -1;
             }
         } else {
@@ -81,11 +84,13 @@ int initialize(void) {
     waiting_readers_count = 0;
     is_writer_active = 0;
     active_threads_count = 0;
+    client_threads_count = 0;
     
     if (pthread_mutex_init(&counter_mutex, NULL) != 0) return -1;
     if (pthread_mutex_init(&file_mutex, NULL) != 0) return -1;
     if (pthread_mutex_init(&readers_writers_mutex, NULL) != 0) return -1;
     if (pthread_mutex_init(&active_threads_mutex, NULL) != 0) return -1;
+    if (pthread_mutex_init(&client_threads_mutex, NULL) != 0) return -1;
     if (pthread_cond_init(&readers_can_enter, NULL) != 0) return -1;
     if (pthread_cond_init(&writers_can_enter, NULL) != 0) return -1;
     if (sem_init(&available_threads_semaphore, 0, MAX_CONCURRENT_THREADS) != 0) return -1;
@@ -95,8 +100,6 @@ int initialize(void) {
 
 // cleanup_resources(): Cleans up ALL resources and forces thread termination
 void cleanup_resources(int server_socket) {
-    printf("Starting cleanup...\n");
-
     server_running = 0;
 
     if (server_socket >= 0) {
@@ -113,21 +116,19 @@ void cleanup_resources(int server_socket) {
         sem_post(&available_threads_semaphore);
     }
     
-    for (int i = 0; i < 5; i++) {
-        pthread_mutex_lock(&active_threads_mutex);
-        int remaining = active_threads_count;
-        pthread_mutex_unlock(&active_threads_mutex);
-        
-        if (remaining == 0) break;
-        
-        printf("Waiting for %d threads...\n", remaining);
-        usleep(100000); // 100ms
+    pthread_mutex_lock(&client_threads_mutex);
+
+    for (int i = 0; i < client_threads_count; i++) {
+        pthread_join(client_threads[i], NULL);
     }
-    
+    client_threads_count = 0;
+    pthread_mutex_unlock(&client_threads_mutex);
+
     pthread_mutex_destroy(&counter_mutex);
     pthread_mutex_destroy(&file_mutex);
     pthread_mutex_destroy(&readers_writers_mutex);
     pthread_mutex_destroy(&active_threads_mutex);
+    pthread_mutex_destroy(&client_threads_mutex);
     
     pthread_cond_destroy(&readers_can_enter);
     pthread_cond_destroy(&writers_can_enter);
@@ -361,7 +362,6 @@ void *manager_thread(void *server_socket_ptr) {
         }
         
         if (ready == 0) {
-            // Timeout - verificar salida
             if (!server_running) break;
             continue;
         }
@@ -401,6 +401,7 @@ void *manager_thread(void *server_socket_ptr) {
             }
             *client_socket_ptr = client_socket;
             
+            // CREAR THREAD SIN DETACH
             pthread_t client_thread;
             if (pthread_create(&client_thread, NULL, process, client_socket_ptr) != 0) {
                 free(client_socket_ptr);
@@ -409,11 +410,18 @@ void *manager_thread(void *server_socket_ptr) {
                 continue;
             }
             
-            pthread_detach(client_thread);
+            // GUARDAR thread para hacer join después
+            pthread_mutex_lock(&client_threads_mutex);
+            if (client_threads_count < MAX_CONCURRENT_THREADS) {
+                client_threads[client_threads_count] = client_thread;
+                client_threads_count++;
+            } else {
+                // Si no hay espacio, hacer detach como fallback
+                pthread_detach(client_thread);
+            }
+            pthread_mutex_unlock(&client_threads_mutex);
         }
     }
-    
-    printf("Acceptor thread finished.\n");
     return NULL;
 }
 // read_counter_from_file(): Reads the counter value from the output file.
@@ -471,9 +479,6 @@ int main(int argc, char *argv[]) {
         cleanup_resources(server_socket);
         exit(EXIT_FAILURE);
     }
-    
-    printf("Server listening on port %d with %s priority\n", 
-           server_port, server_priority ? "writers" : "readers");
     
     // Create a thread to accept incoming client connections
     if (pthread_create(&acceptor_thread, NULL, manager_thread, &server_socket) != 0) {
