@@ -87,7 +87,6 @@ int initialize(void) {
 }
 
 // cleanup_resources(): Cleans up ALL resources and forces thread termination
-// cleanup_resources(): Cleans up ALL resources and forces thread termination
 void cleanup_resources(int server_socket) {
     server_running = 0;
 
@@ -210,7 +209,6 @@ void priority_control(struct request *client_req) {
         if (active_readers_count == 0) {
             //server_priority =1 -> priority writers
             if (server_priority == 1) {
-                // Priority writers: give priority to writers first
                 if (waiting_writers_count > 0) {
                     pthread_cond_signal(&writers_can_enter);
                 }
@@ -219,7 +217,6 @@ void priority_control(struct request *client_req) {
                     pthread_cond_broadcast(&readers_can_enter);
                 }
             } else {
-                // Priority readers: give priority to readers first
                 if (waiting_readers_count > 0) {
                     pthread_cond_broadcast(&readers_can_enter);
                 }
@@ -234,7 +231,6 @@ void priority_control(struct request *client_req) {
         is_writer_active = 0;
         
         if (server_priority == 1) {
-            // Priority writers: give priority to writers first
             if (waiting_writers_count > 0) {
                 pthread_cond_signal(&writers_can_enter);
             }
@@ -243,7 +239,6 @@ void priority_control(struct request *client_req) {
                 pthread_cond_broadcast(&readers_can_enter);
             }
         } else {
-            // Priority readers: give priority to readers first
             if (waiting_readers_count > 0) {
                 pthread_cond_broadcast(&readers_can_enter);
             }
@@ -300,7 +295,8 @@ void *process(void *client_socket_ptr) {
     if (receive_request(client_socket, &client_req) <= 0) {
         close_connection(client_socket);
         pthread_mutex_lock(&active_threads_mutex);
-        active_threads_count--;  // Decrementar si hay error
+        //Decrease counter on error
+        active_threads_count--;
         pthread_mutex_unlock(&active_threads_mutex);
         sem_post(&available_threads_semaphore);
         return NULL;
@@ -310,6 +306,7 @@ void *process(void *client_socket_ptr) {
     can_pass(&client_req, &start_time);
     clock_gettime(CLOCK_MONOTONIC, &end_time);
     
+    // Calculate wait time
     long wait_time = calculate_latency(start_time, end_time);
     manage_request(&client_req, &client_resp, wait_time);
     priority_control(&client_req);
@@ -317,7 +314,6 @@ void *process(void *client_socket_ptr) {
     send_response(client_socket, &client_resp);
     close_connection(client_socket);
     
-    // Decrementar contador al final
     pthread_mutex_lock(&active_threads_mutex);
     active_threads_count--;
     pthread_mutex_unlock(&active_threads_mutex);
@@ -336,22 +332,21 @@ void *manager_thread(void *server_socket_ptr) {
         int client_socket = wait_for_client_connection(server_socket, 1, &server_running);
         
         if (client_socket < 0) {
-            // Si wait_for_client_connection retorna -1 y server_running es 0, salir
             if (!server_running) break;
             continue;
         }
         
-        // Si llegamos aquí, tenemos un cliente válido
         if (!server_running) {
-            // Doble verificación por si server_running cambió durante accept
             close_connection(client_socket);
             break;
         }
         
+        // Wait for an available thread slot with timeout
         struct timespec ts;
         clock_gettime(CLOCK_REALTIME, &ts);
         ts.tv_sec += 1;
         
+        // If timeout occurs, close connection and continue
         if (sem_timedwait(&available_threads_semaphore, &ts) != 0) {
             close_connection(client_socket);
             if (!server_running) break;
@@ -374,6 +369,7 @@ void *manager_thread(void *server_socket_ptr) {
             continue;
         }
         
+        // Store thread in the array for later joining
         pthread_mutex_lock(&client_threads_mutex);
         if (client_threads_count < MAX_CONCURRENT_THREADS) {
             client_threads[client_threads_count] = client_thread;
@@ -383,8 +379,7 @@ void *manager_thread(void *server_socket_ptr) {
         }
         pthread_mutex_unlock(&client_threads_mutex);
     }
-    
-    printf("Manager thread exiting...\n");
+
     return NULL;
 }
 

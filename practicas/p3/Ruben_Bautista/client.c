@@ -11,6 +11,7 @@ int server_port_number = 0;
 int client_mode = 0;
 int number_of_threads = 0;
 
+// print_thread_result(): Prints the result of a thread's operation.
 void print_thread_result(int thread_id, struct response *resp) {
     const char *mode_str;
     if (resp->action == READ) {
@@ -22,6 +23,7 @@ void print_thread_result(int thread_id, struct response *resp) {
            thread_id, mode_str, resp->counter, resp->latency_time);
 }
 
+// parse_client_arguments(): Parses command-line arguments for the client.
 int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mode, int *threads) {
     static struct option long_options[] = {
         {"ip", required_argument, 0, 'i'},
@@ -67,20 +69,19 @@ int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mo
     return 0;
 }
 
+// comunication_server(): Thread function to communicate with the server.
 void *comunication_server(void *thread_id_ptr) {
     int thread_id = *(int *)thread_id_ptr;
     int client_socket;
     struct request client_req;
     struct response server_resp;
     
-    // Conectar al servidor usando función del stub
     client_socket = connect_to_server(server_ip_address, server_port_number);
     if (client_socket < 0) {
         fprintf(stderr, "[Cliente #%d] Error connecting to server\n", thread_id);
         return NULL;
     }
     
-    // Preparar la solicitud
     if (client_mode == 0) {
         client_req.action = READ;
     } else {
@@ -88,14 +89,12 @@ void *comunication_server(void *thread_id_ptr) {
     }
     client_req.id = thread_id;
     
-    // Enviar solicitud usando función del stub
     if (send_request(client_socket, &client_req) <= 0) {
         fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
         close_connection(client_socket);
         return NULL;
     }
     
-    // Recibir respuesta usando función del stub
     if (receive_response(client_socket, &server_resp) <= 0) {
         fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
         close_connection(client_socket);

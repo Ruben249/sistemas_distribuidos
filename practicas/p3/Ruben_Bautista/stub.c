@@ -1,5 +1,6 @@
 #include "stub.h"
 
+// initialize_server_socket(): Initializes a server socket
 int initialize_server_socket(int port) {
     int server_socket;
     struct sockaddr_in server_addr;
@@ -34,28 +35,27 @@ int initialize_server_socket(int port) {
 }
 
 // wait_for_client_with_select(): Waits for client connection using select
-int wait_for_client_connection(int server_socket, int timeout_sec, int *running) {
+int wait_for_client_connection(int server_socket, int timeout_sec, volatile int *running) {
     struct timeval timeout;
     fd_set read_fds;
     int ready;
-    int total_timeout = timeout_sec * 1000; // Convert to milliseconds
-    int step_timeout = 100; // Check every 100 ms
+    int total_timeout = timeout_sec * 1000;
+    int step_timeout = 100;
 
     while (total_timeout > 0 && *running) {
         FD_ZERO(&read_fds);
         FD_SET(server_socket, &read_fds);
 
         timeout.tv_sec = 0;
-        timeout.tv_usec = step_timeout * 1000; // Convert to microseconds
+        timeout.tv_usec = step_timeout * 1000;
 
         ready = select(server_socket + 1, &read_fds, NULL, NULL, &timeout);
-
+        
+        // Check the result of select. If interrupted, continue; if error, sleep and retry
         if (ready < 0) {
             if (errno == EINTR) {
-                // Si fue interrumpido por una señal, revisamos running y continuamos
                 continue;
             } else {
-                // Error no relacionado con señal, esperamos un poco y continuamos?
                 usleep(step_timeout * 1000);
             }
         } else if (ready > 0) {
@@ -86,6 +86,7 @@ int accept_client_connection(int server_socket) {
     return client_socket;
 }
 
+// connect_to_server(): Connects to a server given its IP and port
 int connect_to_server(char *server_ip, int port) {
     int client_socket;
     struct sockaddr_in server_addr;
@@ -113,6 +114,7 @@ int connect_to_server(char *server_ip, int port) {
     return client_socket;
 }
 
+// send_request(): Sends a request structure over a socket
 int send_request(int socket, struct request *req) {
     char *request_ptr = (char *)req;
     int remaining_bytes = sizeof(struct request);
@@ -131,6 +133,7 @@ int send_request(int socket, struct request *req) {
     return total_sent;
 }
 
+// receive_request(): Receives a request structure from a socket
 int receive_request(int socket, struct request *req) {
     char *request_ptr = (char *)req;
     int remaining_bytes = sizeof(struct request);
@@ -149,6 +152,7 @@ int receive_request(int socket, struct request *req) {
     return total_received;
 }
 
+// send_response(): Sends a response structure over a socket
 int send_response(int socket, struct response *resp) {
     char *response_ptr = (char *)resp;
     int remaining_bytes = sizeof(struct response);
@@ -167,6 +171,7 @@ int send_response(int socket, struct response *resp) {
     return total_sent;
 }
 
+// receive_response(): Receives a response structure from a socket
 int receive_response(int socket, struct response *resp) {
     char *response_ptr = (char *)resp;
     int remaining_bytes = sizeof(struct response);
@@ -185,6 +190,7 @@ int receive_response(int socket, struct response *resp) {
     return total_received;
 }
 
+// close_connection(): Closes a socket connection
 void close_connection(int socket) {
     if (socket >= 0) {
         close(socket);

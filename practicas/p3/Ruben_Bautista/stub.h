@@ -35,6 +35,7 @@ struct response {
 // Server socket functions
 int initialize_server_socket(int port);
 int accept_client_connection(int server_socket);
+int wait_for_client_connection(int server_socket, int timeout_sec, volatile int *running);
 
 // Client socket functions  
 int connect_to_server(char *server_ip, int port);
@@ -44,8 +45,6 @@ int send_request(int socket, struct request *req);
 int receive_request(int socket, struct request *req);
 int send_response(int socket, struct response *resp);
 int receive_response(int socket, struct response *resp);
-
-int wait_for_client_connection(int server_socket, int timeout_sec, int *running);
 void close_connection(int socket);
 
 #endif
