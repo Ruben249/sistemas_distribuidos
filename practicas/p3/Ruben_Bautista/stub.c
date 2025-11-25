@@ -1,13 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include "stub.h"
 
-// initialize_server_socket(): Creates and configures the server socket
 int initialize_server_socket(int port) {
     int server_socket;
     struct sockaddr_in server_addr;
@@ -41,6 +33,49 @@ int initialize_server_socket(int port) {
     return server_socket;
 }
 
+// wait_for_client_with_select(): Waits for client connection using select
+int wait_for_client_connection(int server_socket, int timeout_sec, int *running) {
+    struct timeval timeout;
+    fd_set read_fds;
+    int ready;
+    int total_timeout = timeout_sec * 1000; // Convert to milliseconds
+    int step_timeout = 100; // Check every 100 ms
+
+    while (total_timeout > 0 && *running) {
+        FD_ZERO(&read_fds);
+        FD_SET(server_socket, &read_fds);
+
+        timeout.tv_sec = 0;
+        timeout.tv_usec = step_timeout * 1000; // Convert to microseconds
+
+        ready = select(server_socket + 1, &read_fds, NULL, NULL, &timeout);
+
+        if (ready < 0) {
+            if (errno == EINTR) {
+                // Si fue interrumpido por una señal, revisamos running y continuamos
+                continue;
+            } else {
+                // Error no relacionado con señal, esperamos un poco y continuamos?
+                usleep(step_timeout * 1000);
+            }
+        } else if (ready > 0) {
+            if (FD_ISSET(server_socket, &read_fds)) {
+                int client_socket = accept_client_connection(server_socket);
+                if (client_socket < 0) {
+                    if (errno != EINTR) {
+                        usleep(step_timeout * 1000);
+                    }
+                    return -1;
+                }
+                return client_socket;
+            }
+        }
+
+        total_timeout -= step_timeout;
+    }
+
+    return -1; // Timeout or server stopped
+}
 // accept_client_connection(): Accepts an incoming client connection
 int accept_client_connection(int server_socket) {
     int client_socket;
@@ -51,7 +86,6 @@ int accept_client_connection(int server_socket) {
     return client_socket;
 }
 
-// connect_to_server(): Establishes connection to the server from client
 int connect_to_server(char *server_ip, int port) {
     int client_socket;
     struct sockaddr_in server_addr;
@@ -79,7 +113,6 @@ int connect_to_server(char *server_ip, int port) {
     return client_socket;
 }
 
-// send_request(): Sends a request to the server
 int send_request(int socket, struct request *req) {
     char *request_ptr = (char *)req;
     int remaining_bytes = sizeof(struct request);
@@ -98,7 +131,6 @@ int send_request(int socket, struct request *req) {
     return total_sent;
 }
 
-// receive_request(): Receives a request from client
 int receive_request(int socket, struct request *req) {
     char *request_ptr = (char *)req;
     int remaining_bytes = sizeof(struct request);
@@ -117,7 +149,6 @@ int receive_request(int socket, struct request *req) {
     return total_received;
 }
 
-// send_response(): Sends a response to the client
 int send_response(int socket, struct response *resp) {
     char *response_ptr = (char *)resp;
     int remaining_bytes = sizeof(struct response);
@@ -136,7 +167,6 @@ int send_response(int socket, struct response *resp) {
     return total_sent;
 }
 
-// receive_response(): The client receives a response from server 
 int receive_response(int socket, struct response *resp) {
     char *response_ptr = (char *)resp;
     int remaining_bytes = sizeof(struct response);
@@ -153,4 +183,10 @@ int receive_response(int socket, struct response *resp) {
     }
     
     return total_received;
+}
+
+void close_connection(int socket) {
+    if (socket >= 0) {
+        close(socket);
+    }
 }

@@ -3,7 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <sys/socket.h>
 #include <getopt.h>
 #include "stub.h"
 
@@ -12,7 +11,6 @@ int server_port_number = 0;
 int client_mode = 0;
 int number_of_threads = 0;
 
-//print_thread_result(): Prints the result of a thread's operation.
 void print_thread_result(int thread_id, struct response *resp) {
     const char *mode_str;
     if (resp->action == READ) {
@@ -24,7 +22,6 @@ void print_thread_result(int thread_id, struct response *resp) {
            thread_id, mode_str, resp->counter, resp->latency_time);
 }
 
-// parse_client_arguments(): Parses command-line arguments for client configuration.
 int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mode, int *threads) {
     static struct option long_options[] = {
         {"ip", required_argument, 0, 'i'},
@@ -70,21 +67,20 @@ int parse_client_arguments(int argc, char *argv[], char **ip, int *port, int *mo
     return 0;
 }
 
-// comunication_server(): sends requests to the server and processes responses.
 void *comunication_server(void *thread_id_ptr) {
     int thread_id = *(int *)thread_id_ptr;
     int client_socket;
     struct request client_req;
     struct response server_resp;
-    int bytes_sent, bytes_received;
-    int total_sent = 0, total_received = 0;
     
+    // Conectar al servidor usando función del stub
     client_socket = connect_to_server(server_ip_address, server_port_number);
     if (client_socket < 0) {
         fprintf(stderr, "[Cliente #%d] Error connecting to server\n", thread_id);
         return NULL;
     }
     
+    // Preparar la solicitud
     if (client_mode == 0) {
         client_req.action = READ;
     } else {
@@ -92,40 +88,22 @@ void *comunication_server(void *thread_id_ptr) {
     }
     client_req.id = thread_id;
     
-    // Send the request to server
-    char *request_ptr = (char *)&client_req;
-    int remaining_request_bytes = sizeof(struct request);
-    
-    while (remaining_request_bytes > 0) {
-        bytes_sent = send(client_socket, request_ptr, remaining_request_bytes, MSG_NOSIGNAL);
-        if (bytes_sent <= 0) {
-            fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
-            close(client_socket);
-            return NULL;
-        }
-        request_ptr += bytes_sent;
-        remaining_request_bytes -= bytes_sent;
-        total_sent += bytes_sent;
+    // Enviar solicitud usando función del stub
+    if (send_request(client_socket, &client_req) <= 0) {
+        fprintf(stderr, "[Cliente #%d] Error sending request\n", thread_id);
+        close_connection(client_socket);
+        return NULL;
     }
     
-    // Reception from server
-    char *response_ptr = (char *)&server_resp;
-    int remaining_response_bytes = sizeof(struct response);
-    
-    while (remaining_response_bytes > 0) {
-        bytes_received = recv(client_socket, response_ptr, remaining_response_bytes, 0);
-        if (bytes_received <= 0) {
-            fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
-            close(client_socket);
-            return NULL;
-        }
-        response_ptr += bytes_received;
-        remaining_response_bytes -= bytes_received;
-        total_received += bytes_received;
+    // Recibir respuesta usando función del stub
+    if (receive_response(client_socket, &server_resp) <= 0) {
+        fprintf(stderr, "[Cliente #%d] Error receiving response\n", thread_id);
+        close_connection(client_socket);
+        return NULL;
     }
     
     print_thread_result(thread_id, &server_resp);
-    close(client_socket);
+    close_connection(client_socket);
     
     return NULL;
 }
@@ -142,7 +120,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    // Save memory for threads and their IDs
     threads = malloc(number_of_threads * sizeof(pthread_t));
     thread_ids = malloc(number_of_threads * sizeof(int));
     if (threads == NULL || thread_ids == NULL) {
@@ -150,7 +127,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    // Create client threads
     for (i = 0; i < number_of_threads; i++) {
         thread_ids[i] = i;
         if (pthread_create(&threads[i], NULL, comunication_server, &thread_ids[i]) != 0) {
@@ -159,7 +135,6 @@ int main(int argc, char *argv[]) {
         }
     }
     
-    // Wait for all threads to finish
     for (i = 0; i < number_of_threads; i++) {
         pthread_join(threads[i], NULL);
     }

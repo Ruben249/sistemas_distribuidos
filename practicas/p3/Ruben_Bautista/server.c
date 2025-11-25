@@ -1,15 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <time.h>
-#include <sys/time.h>
-#include <sys/socket.h>
-#include <getopt.h>
-#include <signal.h>
-#include <errno.h>
 #include "stub.h"
 
 #define MAX_CONCURRENT_THREADS 600
@@ -98,6 +86,7 @@ int initialize(void) {
     return 0;
 }
 
+// cleanup_resources(): Cleans up ALL resources and forces thread termination
 // cleanup_resources(): Cleans up ALL resources and forces thread termination
 void cleanup_resources(int server_socket) {
     server_running = 0;
@@ -309,7 +298,7 @@ void *process(void *client_socket_ptr) {
     struct timespec start_time, end_time;
     
     if (receive_request(client_socket, &client_req) <= 0) {
-        close(client_socket);
+        close_connection(client_socket);
         pthread_mutex_lock(&active_threads_mutex);
         active_threads_count--;  // Decrementar si hay error
         pthread_mutex_unlock(&active_threads_mutex);
@@ -326,7 +315,7 @@ void *process(void *client_socket_ptr) {
     priority_control(&client_req);
     
     send_response(client_socket, &client_resp);
-    close(client_socket);
+    close_connection(client_socket);
     
     // Decrementar contador al final
     pthread_mutex_lock(&active_threads_mutex);
@@ -342,88 +331,63 @@ void *process(void *client_socket_ptr) {
  and spawns threads to handle them. */
 void *manager_thread(void *server_socket_ptr) {
     int server_socket = *(int *)server_socket_ptr;
-    struct timeval timeout;
-    fd_set read_fds;
     
     while (server_running) {
-        FD_ZERO(&read_fds);
-        FD_SET(server_socket, &read_fds);
+        int client_socket = wait_for_client_connection(server_socket, 1, &server_running);
         
-        timeout.tv_sec = 1;
-        timeout.tv_usec = 0;
-        
-        int ready = select(server_socket + 1, &read_fds, NULL, NULL, &timeout);
-        
-        if (ready < 0) {
-            if (server_running && errno != EINTR) {
-                usleep(100000);
-            }
-            continue;
-        }
-        
-        if (ready == 0) {
+        if (client_socket < 0) {
+            // Si wait_for_client_connection retorna -1 y server_running es 0, salir
             if (!server_running) break;
             continue;
         }
         
-        if (FD_ISSET(server_socket, &read_fds)) {
-            int client_socket = accept_client_connection(server_socket);
-            if (client_socket < 0) {
-                if (server_running && errno != EINTR) {
-                    usleep(100000);
-                }
-                continue;
-            }
-            
-            // Verificar salida inmediatamente después de accept
-            if (!server_running) {
-                close(client_socket);
-                break;
-            }
-            
-            // Esperar semáforo con timeout
-            struct timespec ts;
-            clock_gettime(CLOCK_REALTIME, &ts);
-            ts.tv_sec += 1;
-            
-            if (sem_timedwait(&available_threads_semaphore, &ts) != 0) {
-                close(client_socket);
-                if (!server_running) break;
-                continue;
-            }
-            
-            // Asignar memoria y verificar
-            int *client_socket_ptr = malloc(sizeof(int));
-            if (client_socket_ptr == NULL) {
-                close(client_socket);
-                sem_post(&available_threads_semaphore);
-                continue;
-            }
-            *client_socket_ptr = client_socket;
-            
-            // CREAR THREAD SIN DETACH
-            pthread_t client_thread;
-            if (pthread_create(&client_thread, NULL, process, client_socket_ptr) != 0) {
-                free(client_socket_ptr);
-                close(client_socket);
-                sem_post(&available_threads_semaphore);
-                continue;
-            }
-            
-            // GUARDAR thread para hacer join después
-            pthread_mutex_lock(&client_threads_mutex);
-            if (client_threads_count < MAX_CONCURRENT_THREADS) {
-                client_threads[client_threads_count] = client_thread;
-                client_threads_count++;
-            } else {
-                // Si no hay espacio, hacer detach como fallback
-                pthread_detach(client_thread);
-            }
-            pthread_mutex_unlock(&client_threads_mutex);
+        // Si llegamos aquí, tenemos un cliente válido
+        if (!server_running) {
+            // Doble verificación por si server_running cambió durante accept
+            close_connection(client_socket);
+            break;
         }
+        
+        struct timespec ts;
+        clock_gettime(CLOCK_REALTIME, &ts);
+        ts.tv_sec += 1;
+        
+        if (sem_timedwait(&available_threads_semaphore, &ts) != 0) {
+            close_connection(client_socket);
+            if (!server_running) break;
+            continue;
+        }
+        
+        int *client_socket_ptr = malloc(sizeof(int));
+        if (client_socket_ptr == NULL) {
+            close_connection(client_socket);
+            sem_post(&available_threads_semaphore);
+            continue;
+        }
+        *client_socket_ptr = client_socket;
+        
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, process, client_socket_ptr) != 0) {
+            free(client_socket_ptr);
+            close_connection(client_socket);
+            sem_post(&available_threads_semaphore);
+            continue;
+        }
+        
+        pthread_mutex_lock(&client_threads_mutex);
+        if (client_threads_count < MAX_CONCURRENT_THREADS) {
+            client_threads[client_threads_count] = client_thread;
+            client_threads_count++;
+        } else {
+            pthread_detach(client_thread);
+        }
+        pthread_mutex_unlock(&client_threads_mutex);
     }
+    
+    printf("Manager thread exiting...\n");
     return NULL;
 }
+
 // read_counter_from_file(): Reads the counter value from the output file.
 int read_counter_from_file(void) {
     FILE *file = fopen(OUTPUT_FILENAME, "r");
