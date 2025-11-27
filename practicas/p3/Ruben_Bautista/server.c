@@ -375,7 +375,7 @@ void *manager_thread(void *server_socket_ptr) {
             client_threads[client_threads_count] = client_thread;
             client_threads_count++;
         } else {
-            pthread_detach(client_thread);
+            pthread_join(client_thread, NULL);
         }
         pthread_mutex_unlock(&client_threads_mutex);
     }
@@ -439,7 +439,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    // Create a thread to accept incoming client connections
     if (pthread_create(&acceptor_thread, NULL, manager_thread, &server_socket) != 0) {
         fprintf(stderr, "Error creating acceptor thread\n");
         close(server_socket);

@@ -109,7 +109,6 @@ void *comunication_server(void *thread_id_ptr) {
 // handle_signal(): Signal handler for SIGINT (Ctrl+C).
 void handle_signal(int sig) {
     interrupted = 1;
-    printf("\n[Cliente] Señal Ctrl+C recibida. Terminando...\n");
 }
 
 // cleanup_resources(): Frees allocated resources and waits for threads to finish.
