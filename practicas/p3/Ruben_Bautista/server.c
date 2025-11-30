@@ -30,6 +30,7 @@ volatile int server_running = 1;
 
 int ratio = 0;
 int writers_since_last_reader = 0;
+int readers_since_last_writer = 0;
 
 // parse_server_arguments(): Parses command-line arguments for server configuration.
 int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
@@ -169,8 +170,6 @@ void sleep_random(void) {
 
 /* can_pass(): Manages entry into the critical section
  based on reader/writer priority.*/
-/* can_pass(): Manages entry into the critical section
- based on reader/writer priority.*/
 void can_pass(struct request *client_req, struct timespec *start_time) {
     pthread_mutex_lock(&readers_writers_mutex);
     
@@ -194,25 +193,55 @@ void can_pass(struct request *client_req, struct timespec *start_time) {
                 }
             }
         } else {
-            // Priority readers: comportamiento original (sin cambios)
-            while (is_writer_active) {
-                waiting_readers_count++;
-                pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
-                waiting_readers_count--;
+            // Priority readers: con o sin ratio
+            if (ratio > 0) {
+                // Con ratio: los lectores esperan solo si hay un escritor activo o si hay escritores esperando y no se ha cumplido el ratio de lectores
+                while (is_writer_active || (waiting_writers_count > 0 && readers_since_last_writer >= ratio)) {
+                    waiting_readers_count++;
+                    pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                    waiting_readers_count--;
+                }
+                // Incrementamos el contador de lectores desde el último escritor
+                readers_since_last_writer++;
+            } else {
+                // Sin ratio: comportamiento original
+                while (is_writer_active) {
+                    waiting_readers_count++;
+                    pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                    waiting_readers_count--;
+                }
             }
         }
         active_readers_count++;
     } else {
-        // WRITER - COMPORTAMIENTO ORIGINAL (sin cambios)
+        // WRITER
         waiting_writers_count++;
         
         if (server_priority == 0) {
-            while (is_writer_active || active_readers_count > 0 || waiting_readers_count > 0) {
-                pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+            if (ratio > 0) {
+                // Con ratio: los escritores esperan hasta que no hay escritores activos, no hay lectores activos y (no hay lectores esperando o se ha cumplido el ratio de lectores)
+                while (is_writer_active || active_readers_count > 0 || 
+                       (waiting_readers_count > 0 && readers_since_last_writer < ratio)) {
+                    pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+                }
+            } else {
+                // Sin ratio: comportamiento original
+                while (is_writer_active || active_readers_count > 0 || waiting_readers_count > 0) {
+                    pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+                }
             }
         } else {
-            while (is_writer_active || active_readers_count > 0) {
-                pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+            // Priority writers: con o sin ratio
+            if (ratio > 0) {
+                // Con ratio: los escritores esperan hasta que no hay escritores activos y no hay lectores activos
+                while (is_writer_active || active_readers_count > 0) {
+                    pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+                }
+            } else {
+                // Sin ratio: comportamiento original
+                while (is_writer_active || active_readers_count > 0) {
+                    pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
+                }
             }
         }
         waiting_writers_count--;
@@ -223,20 +252,63 @@ void can_pass(struct request *client_req, struct timespec *start_time) {
 }
 
 // priority_control(): Lets threads exit the critical section and signals waiting threads.
+// priority_control(): Lets threads exit the critical section and signals waiting threads.
 void priority_control(struct request *client_req) {
     pthread_mutex_lock(&readers_writers_mutex);
     
     if (client_req->action == READ) {
         active_readers_count--;
         
-        if (active_readers_count == 0) {
-            if (waiting_writers_count > 0) {
-                pthread_cond_signal(&writers_can_enter);
-            } else if (waiting_readers_count > 0) {
-                pthread_cond_broadcast(&readers_can_enter);
+        if (server_priority == 0) {
+            if (ratio > 0) {
+                // Con ratio: cuando un lector sale, no resetear el contador de lectores, pero verificar si se debe permitir un escritor
+                if (active_readers_count == 0) {
+                    // Si no hay lectores activos, podemos permitir un escritor si hay escritores esperando y se ha cumplido el ratio de lectores
+                    if (waiting_writers_count > 0 && readers_since_last_writer >= ratio) {
+                        pthread_cond_signal(&writers_can_enter);
+                    } else if (waiting_readers_count > 0) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    }
+                } else {
+                    // Si aún hay lectores activos, solo despertar lectores si no se ha alcanzado el ratio
+                    if (waiting_readers_count > 0 && readers_since_last_writer < ratio) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    }
+                }
+            } else {
+                // Sin ratio: comportamiento original
+                if (active_readers_count == 0) {
+                    if (waiting_writers_count > 0) {
+                        pthread_cond_signal(&writers_can_enter);
+                    } else if (waiting_readers_count > 0) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    }
+                }
+            }
+        } else {
+            // Priority writers: con o sin ratio
+            if (ratio > 0) {
+                // Con ratio: cuando un lector sale, no hacemos nada especial, solo comprobamos condiciones normales
+                if (active_readers_count == 0) {
+                    if (waiting_writers_count > 0) {
+                        pthread_cond_signal(&writers_can_enter);
+                    } else if (waiting_readers_count > 0) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    }
+                }
+            } else {
+                // Sin ratio: comportamiento original
+                if (active_readers_count == 0) {
+                    if (waiting_writers_count > 0) {
+                        pthread_cond_signal(&writers_can_enter);
+                    } else if (waiting_readers_count > 0) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    }
+                }
             }
         }
     } else {
+        // ESCRITOR
         is_writer_active = 0;
         
         if (server_priority == 1) {
@@ -265,11 +337,22 @@ void priority_control(struct request *client_req) {
                 }
             }
         } else {
-            // Priority readers: comportamiento original (sin cambios)
-            if (waiting_readers_count > 0) {
-                pthread_cond_broadcast(&readers_can_enter);
-            } else if (waiting_writers_count > 0) {
-                pthread_cond_signal(&writers_can_enter);
+            // Priority readers: con o sin ratio
+            if (ratio > 0) {
+                // Con ratio: cuando un escritor sale, resetear el contador de lectores
+                readers_since_last_writer = 0;
+                if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                } else if (waiting_writers_count > 0) {
+                    pthread_cond_signal(&writers_can_enter);
+                }
+            } else {
+                // Sin ratio: comportamiento original
+                if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                } else if (waiting_writers_count > 0) {
+                    pthread_cond_signal(&writers_can_enter);
+                }
             }
         }
     }
