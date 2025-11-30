@@ -250,6 +250,7 @@ void can_pass(struct request *client_req, struct timespec *start_time) {
     
     pthread_mutex_unlock(&readers_writers_mutex);
 }
+
 // priority_control(): Lets threads exit the critical section and signals waiting threads.
 void priority_control(struct request *client_req) {
     pthread_mutex_lock(&readers_writers_mutex);
