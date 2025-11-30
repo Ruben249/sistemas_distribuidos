@@ -28,18 +28,22 @@ pthread_mutex_t client_threads_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 volatile int server_running = 1;
 
+int ratio = 0;
+int writers_since_last_reader = 0;
+
 // parse_server_arguments(): Parses command-line arguments for server configuration.
 int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
     static struct option long_options[] = {
         {"port", required_argument, 0, 'p'},
         {"priority", required_argument, 0, 'r'},
+        {"ratio", required_argument, 0, 't'},
         {0, 0, 0, 0}
     };
     
     int opt;
     int option_index = 0;
     
-    while ((opt = getopt_long(argc, argv, "p:r:", long_options, &option_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "p:r:t:", long_options, &option_index)) != -1) {
         if (opt == 'p') {
             *port = atoi(optarg);
         } else if (opt == 'r') {
@@ -48,7 +52,13 @@ int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
             } else if (strcmp(optarg, "writer") == 0) {
                 *priority = 1;
             } else {
-                fprintf(stderr, "Usage: %s --port PORT --priority reader/writer\n", argv[0]);
+                fprintf(stderr, "Usage: %s --port PORT --priority reader/writer [--ratio N]\n", argv[0]);
+                return -1;
+            }
+        } else if (opt == 't') {
+            ratio = atoi(optarg);
+            if (ratio <= 0) {
+                fprintf(stderr, "Ratio must be a positive integer\n");
                 return -1;
             }
         } else {
@@ -57,7 +67,7 @@ int parse_server_arguments(int argc, char *argv[], int *port, int *priority) {
     }
     
     if (*port == 0) {
-        fprintf(stderr, "Usage: %s --port PORT --priority reader/writer\n", argv[0]);
+        fprintf(stderr, "Usage: %s --port PORT --priority reader/writer [--ratio N]\n", argv[0]);
         return -1;
     }
     
@@ -73,6 +83,7 @@ int initialize(void) {
     is_writer_active = 0;
     active_threads_count = 0;
     client_threads_count = 0;
+    writers_since_last_reader = 0;
     
     if (pthread_mutex_init(&counter_mutex, NULL) != 0) return -1;
     if (pthread_mutex_init(&file_mutex, NULL) != 0) return -1;
@@ -158,19 +169,32 @@ void sleep_random(void) {
 
 /* can_pass(): Manages entry into the critical section
  based on reader/writer priority.*/
+/* can_pass(): Manages entry into the critical section
+ based on reader/writer priority.*/
 void can_pass(struct request *client_req, struct timespec *start_time) {
     pthread_mutex_lock(&readers_writers_mutex);
     
     if (client_req->action == READ) {
         if (server_priority == 1) {
-            // Priority writers: readers wait if there's an active writer or waiting writers
-            while (is_writer_active || waiting_writers_count > 0) {
-                waiting_readers_count++;
-                pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
-                waiting_readers_count--;
+            if (ratio > 0) {
+                // CON RATIO: lectores esperan solo si hay escritor activo O si el ratio no se ha cumplido Y hay escritores esperando
+                while (is_writer_active || (waiting_writers_count > 0 && writers_since_last_reader < ratio)) {
+                    waiting_readers_count++;
+                    pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                    waiting_readers_count--;
+                }
+                // Cuando un lector pasa, reiniciamos el contador de escritores desde el último lector
+                writers_since_last_reader = 0;
+            } else {
+                // SIN RATIO: comportamiento original
+                while (is_writer_active || waiting_writers_count > 0) {
+                    waiting_readers_count++;
+                    pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
+                    waiting_readers_count--;
+                }
             }
         } else {
-            // Priority readers: readers wait only if there's an active writer
+            // Priority readers: comportamiento original (sin cambios)
             while (is_writer_active) {
                 waiting_readers_count++;
                 pthread_cond_wait(&readers_can_enter, &readers_writers_mutex);
@@ -179,15 +203,14 @@ void can_pass(struct request *client_req, struct timespec *start_time) {
         }
         active_readers_count++;
     } else {
+        // WRITER - COMPORTAMIENTO ORIGINAL (sin cambios)
         waiting_writers_count++;
         
         if (server_priority == 0) {
-            // Priority readers: writers wait if there are active or waiting readers
             while (is_writer_active || active_readers_count > 0 || waiting_readers_count > 0) {
                 pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
             }
         } else {
-            // Priority writers: writers wait if there is anyone active
             while (is_writer_active || active_readers_count > 0) {
                 pthread_cond_wait(&writers_can_enter, &readers_writers_mutex);
             }
@@ -195,7 +218,7 @@ void can_pass(struct request *client_req, struct timespec *start_time) {
         waiting_writers_count--;
         is_writer_active = 1;
     }
-    // unlock readers_writers_mutex before returning to allow other threads to proceed
+    
     pthread_mutex_unlock(&readers_writers_mutex);
 }
 
@@ -207,43 +230,45 @@ void priority_control(struct request *client_req) {
         active_readers_count--;
         
         if (active_readers_count == 0) {
-            //server_priority =1 -> priority writers
-            if (server_priority == 1) {
-                if (waiting_writers_count > 0) {
-                    pthread_cond_signal(&writers_can_enter);
-                }
-                // Only if there are no writers, give priority to readers
-                else if (waiting_readers_count > 0) {
-                    pthread_cond_broadcast(&readers_can_enter);
-                }
-            } else {
-                if (waiting_readers_count > 0) {
-                    pthread_cond_broadcast(&readers_can_enter);
-                }
-                // Only if there are no readers, give priority to writers
-                else if (waiting_writers_count > 0) {
-                    pthread_cond_signal(&writers_can_enter);
-                }
+            if (waiting_writers_count > 0) {
+                pthread_cond_signal(&writers_can_enter);
+            } else if (waiting_readers_count > 0) {
+                pthread_cond_broadcast(&readers_can_enter);
             }
         }
-        // server_priority = 0 -> priority readers
     } else {
         is_writer_active = 0;
         
         if (server_priority == 1) {
-            if (waiting_writers_count > 0) {
-                pthread_cond_signal(&writers_can_enter);
-            }
-            // Only if there are no writers, give priority to readers
-            else if (waiting_readers_count > 0) {
-                pthread_cond_broadcast(&readers_can_enter);
+            if (ratio > 0) {
+                // CON RATIO: incrementar contador de escritores
+                writers_since_last_reader++;
+                
+                // SI HAY ESCRITORES ESPERANDO: respetar el ratio
+                if (waiting_writers_count > 0) {
+                    if (writers_since_last_reader >= ratio && waiting_readers_count > 0) {
+                        pthread_cond_broadcast(&readers_can_enter);
+                    } else {
+                        pthread_cond_signal(&writers_can_enter);
+                    }
+                } 
+                // SI NO HAY ESCRITORES ESPERANDO: permitir lectores inmediatamente
+                else if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                }
+            } else {
+                // SIN RATIO: comportamiento original
+                if (waiting_writers_count > 0) {
+                    pthread_cond_signal(&writers_can_enter);
+                } else if (waiting_readers_count > 0) {
+                    pthread_cond_broadcast(&readers_can_enter);
+                }
             }
         } else {
+            // Priority readers: comportamiento original (sin cambios)
             if (waiting_readers_count > 0) {
                 pthread_cond_broadcast(&readers_can_enter);
-            }
-            // Only if there are no readers, give priority to writers
-            else if (waiting_writers_count > 0) {
+            } else if (waiting_writers_count > 0) {
                 pthread_cond_signal(&writers_can_enter);
             }
         }

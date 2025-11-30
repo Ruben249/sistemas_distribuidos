@@ -113,7 +113,6 @@ void handle_signal(int sig) {
 
 // cleanup_resources(): Frees allocated resources and waits for threads to finish.
 void cleanup_resources() {
-    printf("[Cliente] Esperando a que terminen los hilos en ejecución...\n");
     
     if (threads != NULL) {
         for (int i = 0; i < number_of_created_threads; i++) {
