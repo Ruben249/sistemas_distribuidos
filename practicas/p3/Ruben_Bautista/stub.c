@@ -74,7 +74,7 @@ int wait_for_client_connection(int server_socket, int timeout_sec, volatile int 
         total_timeout -= step_timeout;
     }
 
-    return -1; // Timeout or server stopped
+    return -1;
 }
 // accept_client_connection(): Accepts an incoming client connection
 int accept_client_connection(int server_socket) {
