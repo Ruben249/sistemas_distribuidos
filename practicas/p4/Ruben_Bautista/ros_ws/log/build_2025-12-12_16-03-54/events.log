@@ -1,0 +1,186 @@
+[0.000000] (-) TimerEvent: {}
+[0.000263] (sdc_p4) JobQueued: {'identifier': 'sdc_p4', 'dependencies': OrderedDict()}
+[0.001181] (sdc_p4) JobStarted: {'identifier': 'sdc_p4'}
+[0.026278] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'cmake'}
+[0.028883] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'build'}
+[0.028991] (sdc_p4) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', '--', '-j8', '-l8'], 'cwd': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2147450879', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/rolling/share/', 'USER': 'rubenb', 'LC_TIME': 'es_ES.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/rolling/opt/gz_sim_vendor/share/gz:/opt/ros/rolling/opt/sdformat_vendor/share/gz:/opt/ros/rolling/opt/gz_gui_vendor/share/gz:/opt/ros/rolling/opt/gz_transport_vendor/share/gz:/opt/ros/rolling/opt/gz_rendering_vendor/share/gz:/opt/ros/rolling/opt/gz_plugin_vendor/share/gz:/opt/ros/rolling/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/rolling/opt/gz_msgs_vendor/share/gz:/opt/ros/rolling/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib:/opt/ros/rolling/opt/gz_sim_vendor/lib:/opt/ros/rolling/opt/gz_sensors_vendor/lib:/opt/ros/rolling/opt/gz_physics_vendor/lib:/opt/ros/rolling/opt/sdformat_vendor/lib:/opt/ros/rolling/opt/gz_gui_vendor/lib:/opt/ros/rolling/opt/gz_transport_vendor/lib:/opt/ros/rolling/opt/gz_rendering_vendor/lib:/opt/ros/rolling/opt/gz_plugin_vendor/lib:/opt/ros/rolling/opt/gz_fuel_tools_vendor/lib:/opt/ros/rolling/opt/gz_msgs_vendor/lib:/opt/ros/rolling/opt/gz_common_vendor/lib:/opt/ros/rolling/opt/gz_math_vendor/lib:/opt/ros/rolling/opt/gz_utils_vendor/lib:/opt/ros/rolling/opt/rviz_ogre_vendor/lib:/opt/ros/rolling/lib/x86_64-linux-gnu:/opt/ros/rolling/opt/gz_tools_vendor/lib:/opt/ros/rolling/opt/gz_ogre_next_vendor/lib:/opt/ros/rolling/opt/gz_dartsim_vendor/lib:/opt/ros/rolling/opt/gz_cmake_vendor/lib:/opt/ros/rolling/lib', 'LESS': '-R', 'HOME': '/home/rubenb', 'OLDPWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'LSCOLORS': 'Gxfxcxdxdxegedabagacad', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'less', 'LC_MONETARY': 'es_ES.UTF-8', 'SYSTEMD_EXEC_PID': '3228', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install', 'ROS_DISTRO': 'rolling', 'LOGNAME': 'rubenb', 'OSH': '/home/rubenb/.oh-my-bash', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'rubenb', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/rolling/opt/gz_msgs_vendor/bin:/opt/ros/rolling/opt/gz_tools_vendor/bin:/opt/ros/rolling/opt/gz_ogre_next_vendor/bin:/opt/ros/rolling/bin:/home/rubenb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:@/tmp/.ICE-unix/3184,unix/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:/tmp/.ICE-unix/3184', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'es_ES.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/45cdb91e_d961_434b_9732_5fefb16e8c32', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'HISTSIZE': '2147450879', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'es_ES.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.105', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling', 'SHELL': '/bin/bash', 'LC_NAME': 'es_ES.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'es_ES.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'es_ES.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/rolling/lib/python3.12/site-packages', 'LC_NUMERIC': 'es_ES.UTF-8', 'LC_PAPER': 'es_ES.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling/opt/gz_sim_vendor:/opt/ros/rolling/opt/gz_sensors_vendor:/opt/ros/rolling/opt/gz_physics_vendor:/opt/ros/rolling/opt/sdformat_vendor:/opt/ros/rolling/opt/gz_gui_vendor:/opt/ros/rolling/opt/gz_transport_vendor:/opt/ros/rolling/opt/gz_rendering_vendor:/opt/ros/rolling/opt/gz_plugin_vendor:/opt/ros/rolling/opt/gz_fuel_tools_vendor:/opt/ros/rolling/opt/gz_msgs_vendor:/opt/ros/rolling/opt/gz_common_vendor:/opt/ros/rolling/opt/gz_math_vendor:/opt/ros/rolling/opt/gz_utils_vendor:/opt/ros/rolling/opt/gz_tools_vendor:/opt/ros/rolling/opt/gz_ogre_next_vendor:/opt/ros/rolling/opt/gz_dartsim_vendor:/opt/ros/rolling/opt/gz_cmake_vendor:/opt/ros/rolling'}), 'shell': False}
+[0.099690] (-) TimerEvent: {}
+[0.168914] (sdc_p4) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o\x1b[0m\n'}
+[0.199845] (-) TimerEvent: {}
+[0.300328] (-) TimerEvent: {}
+[0.400805] (-) TimerEvent: {}
+[0.501280] (-) TimerEvent: {}
+[0.601829] (-) TimerEvent: {}
+[0.702262] (-) TimerEvent: {}
+[0.802671] (-) TimerEvent: {}
+[0.903070] (-) TimerEvent: {}
+[1.003467] (-) TimerEvent: {}
+[1.103859] (-) TimerEvent: {}
+[1.204270] (-) TimerEvent: {}
+[1.304736] (-) TimerEvent: {}
+[1.405230] (-) TimerEvent: {}
+[1.505606] (-) TimerEvent: {}
+[1.606046] (-) TimerEvent: {}
+[1.706651] (-) TimerEvent: {}
+[1.807065] (-) TimerEvent: {}
+[1.907480] (-) TimerEvent: {}
+[2.007874] (-) TimerEvent: {}
+[2.108309] (-) TimerEvent: {}
+[2.208818] (-) TimerEvent: {}
+[2.309432] (-) TimerEvent: {}
+[2.409956] (-) TimerEvent: {}
+[2.510535] (-) TimerEvent: {}
+[2.611057] (-) TimerEvent: {}
+[2.711532] (-) TimerEvent: {}
+[2.811983] (-) TimerEvent: {}
+[2.912435] (-) TimerEvent: {}
+[3.012895] (-) TimerEvent: {}
+[3.113372] (-) TimerEvent: {}
+[3.213854] (-) TimerEvent: {}
+[3.314308] (-) TimerEvent: {}
+[3.414792] (-) TimerEvent: {}
+[3.515312] (-) TimerEvent: {}
+[3.615752] (-) TimerEvent: {}
+[3.716225] (-) TimerEvent: {}
+[3.816728] (-) TimerEvent: {}
+[3.917151] (-) TimerEvent: {}
+[4.017591] (-) TimerEvent: {}
+[4.118001] (-) TimerEvent: {}
+[4.218468] (-) TimerEvent: {}
+[4.318922] (-) TimerEvent: {}
+[4.419427] (-) TimerEvent: {}
+[4.519853] (-) TimerEvent: {}
+[4.620326] (-) TimerEvent: {}
+[4.724561] (-) TimerEvent: {}
+[4.795622] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Ksdc_p4::BullyNode::\x1b[01;32m\x1b[KBullyNode\x1b[m\x1b[K(const rclcpp::NodeOptions&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.796838] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:80:43:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, std::_Bind_helper<false, void (sdc_p4::BullyNode::*)(), sdc_p4::BullyNode*>::type, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.797026] (sdc_p4) StderrLine: {'line': b'   80 |     leader_init_timer_ = \x1b[01;31m\x1b[Kcreate_wall_timer(\x1b[m\x1b[K\n'}
+[4.797177] (sdc_p4) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[4.797345] (sdc_p4) StderrLine: {'line': b'   81 | \x1b[01;31m\x1b[K      std::chrono::milliseconds(1000),\x1b[m\x1b[K\n'}
+[4.797490] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K     \n'}
+[4.797646] (sdc_p4) StderrLine: {'line': b'   82 | \x1b[01;31m\x1b[K      std::bind(&BullyNode::leader_init_callback, this),\x1b[m\x1b[K\n'}
+[4.797821] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.797965] (sdc_p4) StderrLine: {'line': b'   83 | \x1b[01;31m\x1b[K      true)\x1b[m\x1b[K;  // oneshot timer\n'}
+[4.798107] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~\x1b[m\x1b[K                                \n'}
+[4.798268] (sdc_p4) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node.hpp:1646\x1b[m\x1b[K,\n'}
+[4.798422] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[4.798562] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[4.798702] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:172\x1b[m\x1b[K,\n'}
+[4.798841] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/include/sdc_p4/bully.hpp:9\x1b[m\x1b[K,\n'}
+[4.798981] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:6\x1b[m\x1b[K:\n'}
+[4.799138] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::\x1b[01;32m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.799327] (sdc_p4) StderrLine: {'line': b'  111 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_wall_timer(\n'}
+[4.799470] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.799605] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.799741] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:83:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  cannot convert \xe2\x80\x98\x1b[01m\x1b[Ktrue\x1b[m\x1b[K\xe2\x80\x99 (type \xe2\x80\x98\x1b[01m\x1b[Kbool\x1b[m\x1b[K\xe2\x80\x99) to type \xe2\x80\x98\x1b[01m\x1b[Krclcpp::CallbackGroup::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::CallbackGroup>\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[4.799899] (sdc_p4) StderrLine: {'line': b'   83 |       \x1b[01;36m\x1b[Ktrue\x1b[m\x1b[K);  // oneshot timer\n'}
+[4.800034] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.817618] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid sdc_p4::BullyNode::\x1b[01;32m\x1b[Khandle_election_start\x1b[m\x1b[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.818108] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:191:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, std::_Bind_helper<false, void (sdc_p4::BullyNode::*)(), sdc_p4::BullyNode*>::type, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.818430] (sdc_p4) StderrLine: {'line': b'  191 |   election_timer_ = \x1b[01;31m\x1b[Kcreate_wall_timer(\x1b[m\x1b[K\n'}
+[4.818680] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[4.818922] (sdc_p4) StderrLine: {'line': b'  192 | \x1b[01;31m\x1b[K    std::chrono::milliseconds(ELECTION_DURATION),\x1b[m\x1b[K\n'}
+[4.819161] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.819425] (sdc_p4) StderrLine: {'line': b'  193 | \x1b[01;31m\x1b[K    std::bind(&BullyNode::election_timeout_callback, this),\x1b[m\x1b[K\n'}
+[4.819667] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.819916] (sdc_p4) StderrLine: {'line': b'  194 | \x1b[01;31m\x1b[K    true)\x1b[m\x1b[K;  // oneshot timer\n'}
+[4.820150] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K~~~~~\x1b[m\x1b[K                             \n'}
+[4.820417] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::\x1b[01;32m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.820657] (sdc_p4) StderrLine: {'line': b'  111 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_wall_timer(\n'}
+[4.820800] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.820996] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.821139] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  cannot convert \xe2\x80\x98\x1b[01m\x1b[Ktrue\x1b[m\x1b[K\xe2\x80\x99 (type \xe2\x80\x98\x1b[01m\x1b[Kbool\x1b[m\x1b[K\xe2\x80\x99) to type \xe2\x80\x98\x1b[01m\x1b[Krclcpp::CallbackGroup::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::CallbackGroup>\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[4.821328] (sdc_p4) StderrLine: {'line': b'  194 |     \x1b[01;36m\x1b[Ktrue\x1b[m\x1b[K);  // oneshot timer\n'}
+[4.821546] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.824675] (-) TimerEvent: {}
+[4.825923] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid sdc_p4::BullyNode::\x1b[01;32m\x1b[Kend_election\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.826294] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:272:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, sdc_p4::BullyNode::end_election()::<lambda()>, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.826519] (sdc_p4) StderrLine: {'line': b'  272 |     auto backup_timer = \x1b[01;31m\x1b[Kcreate_wall_timer(\x1b[m\x1b[K\n'}
+[4.826738] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[4.826970] (sdc_p4) StderrLine: {'line': b'  273 | \x1b[01;31m\x1b[K      std::chrono::milliseconds(ELECTION_DURATION + 1000),\x1b[m\x1b[K\n'}
+[4.827215] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.827466] (sdc_p4) StderrLine: {'line': b'  274 | \x1b[01;31m\x1b[K      [this]() {\x1b[m\x1b[K\n'}
+[4.827694] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~~~~~~\x1b[m\x1b[K                          \n'}
+[4.827923] (sdc_p4) StderrLine: {'line': b'  275 | \x1b[01;31m\x1b[K        if (current_state_ == NodeState::ELECTION) {\x1b[m\x1b[K\n'}
+[4.828151] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.828395] (sdc_p4) StderrLine: {'line': b'  276 | \x1b[01;31m\x1b[K          RCLCPP_WARN(get_logger(), "[election] No leader announced, restarting election");\x1b[m\x1b[K\n'}
+[4.828569] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.828707] (sdc_p4) StderrLine: {'line': b'  277 | \x1b[01;31m\x1b[K          start_election();\x1b[m\x1b[K\n'}
+[4.828841] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~\x1b[m\x1b[K               \n'}
+[4.828973] (sdc_p4) StderrLine: {'line': b'  278 | \x1b[01;31m\x1b[K        }\x1b[m\x1b[K\n'}
+[4.829107] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~\x1b[m\x1b[K                                 \n'}
+[4.829252] (sdc_p4) StderrLine: {'line': b'  279 | \x1b[01;31m\x1b[K      },\x1b[m\x1b[K\n'}
+[4.829397] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~\x1b[m\x1b[K                                  \n'}
+[4.829529] (sdc_p4) StderrLine: {'line': b'  280 | \x1b[01;31m\x1b[K      true)\x1b[m\x1b[K;  // oneshot\n'}
+[4.829732] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~\x1b[m\x1b[K                               \n'}
+[4.829960] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::\x1b[01;32m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.830166] (sdc_p4) StderrLine: {'line': b'  111 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_wall_timer(\n'}
+[4.830344] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.830493] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.830631] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  cannot convert \xe2\x80\x98\x1b[01m\x1b[Ktrue\x1b[m\x1b[K\xe2\x80\x99 (type \xe2\x80\x98\x1b[01m\x1b[Kbool\x1b[m\x1b[K\xe2\x80\x99) to type \xe2\x80\x98\x1b[01m\x1b[Krclcpp::CallbackGroup::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::CallbackGroup>\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[4.830810] (sdc_p4) StderrLine: {'line': b'  280 |       \x1b[01;36m\x1b[Ktrue\x1b[m\x1b[K);  // oneshot\n'}
+[4.830950] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.924835] (-) TimerEvent: {}
+[5.025281] (-) TimerEvent: {}
+[5.125702] (-) TimerEvent: {}
+[5.226118] (-) TimerEvent: {}
+[5.326553] (-) TimerEvent: {}
+[5.426996] (-) TimerEvent: {}
+[5.527451] (-) TimerEvent: {}
+[5.627901] (-) TimerEvent: {}
+[5.728409] (-) TimerEvent: {}
+[5.828854] (-) TimerEvent: {}
+[5.929342] (-) TimerEvent: {}
+[6.029823] (-) TimerEvent: {}
+[6.130279] (-) TimerEvent: {}
+[6.230719] (-) TimerEvent: {}
+[6.331137] (-) TimerEvent: {}
+[6.431571] (-) TimerEvent: {}
+[6.532009] (-) TimerEvent: {}
+[6.632450] (-) TimerEvent: {}
+[6.732901] (-) TimerEvent: {}
+[6.833340] (-) TimerEvent: {}
+[6.933786] (-) TimerEvent: {}
+[7.034266] (-) TimerEvent: {}
+[7.134699] (-) TimerEvent: {}
+[7.235125] (-) TimerEvent: {}
+[7.335631] (-) TimerEvent: {}
+[7.436115] (-) TimerEvent: {}
+[7.536566] (-) TimerEvent: {}
+[7.637148] (-) TimerEvent: {}
+[7.737742] (-) TimerEvent: {}
+[7.838343] (-) TimerEvent: {}
+[7.938881] (-) TimerEvent: {}
+[8.039309] (-) TimerEvent: {}
+[8.139744] (-) TimerEvent: {}
+[8.240213] (-) TimerEvent: {}
+[8.340629] (-) TimerEvent: {}
+[8.441057] (-) TimerEvent: {}
+[8.541559] (-) TimerEvent: {}
+[8.642059] (-) TimerEvent: {}
+[8.742622] (-) TimerEvent: {}
+[8.843082] (-) TimerEvent: {}
+[8.943513] (-) TimerEvent: {}
+[9.043961] (-) TimerEvent: {}
+[9.144497] (-) TimerEvent: {}
+[9.245049] (-) TimerEvent: {}
+[9.345518] (-) TimerEvent: {}
+[9.445982] (-) TimerEvent: {}
+[9.546404] (-) TimerEvent: {}
+[9.646898] (-) TimerEvent: {}
+[9.747466] (-) TimerEvent: {}
+[9.848100] (-) TimerEvent: {}
+[9.948607] (-) TimerEvent: {}
+[10.049129] (-) TimerEvent: {}
+[10.149688] (-) TimerEvent: {}
+[10.250185] (-) TimerEvent: {}
+[10.350649] (-) TimerEvent: {}
+[10.451078] (-) TimerEvent: {}
+[10.551555] (-) TimerEvent: {}
+[10.652066] (-) TimerEvent: {}
+[10.701479] (sdc_p4) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1\n'}
+[10.702058] (sdc_p4) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2\n'}
+[10.702382] (sdc_p4) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[10.706570] (sdc_p4) CommandEnded: {'returncode': 2}
+[10.731721] (sdc_p4) JobEnded: {'identifier': 'sdc_p4', 'rc': 2}
+[10.742376] (-) EventReactorShutdown: {}

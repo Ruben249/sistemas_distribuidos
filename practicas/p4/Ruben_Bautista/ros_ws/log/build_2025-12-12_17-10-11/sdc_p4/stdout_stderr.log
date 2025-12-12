@@ -1,0 +1,670 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:87:5:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kelse[m[K’
+   87 |   } [01;31m[Kelse[m[K {
+      |     [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+   97 | void [01;31m[KBullyNode[m[K::change_state(NodeState new_state)
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:6:[m[K [01;31m[Kerror: [m[Kvariable or field ‘[01m[Kchange_state[m[K’ declared void
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:30:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ was not declared in this scope
+   97 | void BullyNode::change_state([01;31m[KNodeState[m[K new_state)
+      |                              [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:103:13:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  103 | std::string [01;31m[KBullyNode[m[K::state_to_string(NodeState state)
+      |             [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:103:40:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ was not declared in this scope
+  103 | std::string BullyNode::state_to_string([01;31m[KNodeState[m[K state)
+      |                                        [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:104:1:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[K{[m[K’ token
+  104 | [01;31m[K{[m[K
+      | [01;31m[K^[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:113:8:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  113 | double [01;31m[KBullyNode[m[K::get_current_epoch()
+      |        [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kdouble[01;32m[K get_current_epoch[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:115:14:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  115 |   auto now = [01;31m[Kthis[m[K->now();
+      |              [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:119:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  119 | void [01;31m[KBullyNode[m[K::heartbeat_callback()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K heartbeat_callback[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:121:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  121 |   if ([01;31m[Kcurrent_state_[m[K != NodeState::LEADER) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:121:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  121 |   if (current_state_ != [01;31m[KNodeState[m[K::LEADER) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:127:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_pub_[m[K’ was not declared in this scope
+  127 |   [01;31m[Kheartbeat_pub_[m[K->publish(msg);
+      |   [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:171[m[K,
+                 from [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/include/sdc_p4/bully.hpp:4[m[K,
+                 from [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:6[m[K:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  129 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Sending heartbeat", role_str_.c_str());
+      |               [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:26[m[K:
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  129 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  129 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  129 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logging.hpp:24[m[K:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:55:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  129 |   RCLCPP_INFO(get_logger(), "[%s] Sending heartbeat", [01;31m[Krole_str_[m[K.c_str());
+      |                                                       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:132:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  132 | void [01;31m[KBullyNode[m[K::timeout_callback()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K timeout_callback[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:134:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  134 |   if ([01;31m[Kcurrent_state_[m[K != NodeState::FOLLOWER) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:134:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  134 |   if (current_state_ != [01;31m[KNodeState[m[K::FOLLOWER) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:138:31:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+  138 |   rclcpp::Time current_time = [01;31m[Know[m[K();
+      |                               [01;31m[K^~~[m[K
+      |                               [32m[Kpow[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:139:54:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_heartbeat_time_[m[K’ was not declared in this scope
+  139 |   double time_since_last_heartbeat = (current_time - [01;31m[Klast_heartbeat_time_[m[K).seconds();
+      |                                                      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:141:42:[m[K [01;31m[Kerror: [m[K‘[01m[KHEARTBEAT_TIMEOUT[m[K’ was not declared in this scope
+  141 |   if (time_since_last_heartbeat * 1000 > [01;31m[KHEARTBEAT_TIMEOUT[m[K) {
+      |                                          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  142 |     RCLCPP_WARN([01;31m[Kget_logger[m[K(), "[%s] No heartbeat received in the last %.0f seconds!",
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  142 |     [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  142 |     [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  142 |     [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:143:17:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  143 |                 [01;31m[Krole_str_[m[K.c_str(), time_since_last_heartbeat);
+      |                 [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:145:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_election[m[K’ was not declared in this scope
+  145 |     [01;31m[Kstart_election[m[K();
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:149:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  149 | void [01;31m[KBullyNode[m[K::handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg)
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K handle_heartbeat[m[K(std_msgs::msg::Float64_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:151:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  151 |   if ([01;31m[Kcurrent_state_[m[K == NodeState::ELECTION) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:151:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  151 |   if (current_state_ == [01;31m[KNodeState[m[K::ELECTION) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:155:3:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_heartbeat_time_[m[K’ was not declared in this scope
+  155 |   [01;31m[Klast_heartbeat_time_[m[K = now();
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:155:26:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+  155 |   last_heartbeat_time_ = [01;31m[Know[m[K();
+      |                          [01;31m[K^~~[m[K
+      |                          [32m[Kpow[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:157:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  157 |   if ([01;31m[Kcurrent_state_[m[K == NodeState::FOLLOWER) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:157:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  157 |   if (current_state_ == [01;31m[KNodeState[m[K::FOLLOWER) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  158 |     RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Received heartbeat", role_str_.c_str());
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  158 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  158 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  158 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:58:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  158 |     RCLCPP_INFO(get_logger(), "[%s] Received heartbeat", [01;31m[Krole_str_[m[K.c_str());
+      |                                                          [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:162:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  162 | void [01;31m[KBullyNode[m[K::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K handle_election_start[m[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:165:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_in_progress_[m[K’ was not declared in this scope
+  165 |   if ([01;31m[Kelection_in_progress_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:169:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_start_time_[m[K’ was not declared in this scope
+  169 |   [01;31m[Kelection_start_time_[m[K = this->now();
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:169:26:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  169 |   election_start_time_ = [01;31m[Kthis[m[K->now();
+      |                          [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:170:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_in_progress_[m[K’ was not declared in this scope
+  170 |   [01;31m[Kelection_in_progress_[m[K = true;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:171:16:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  171 |   change_state([01;31m[KNodeState[m[K::ELECTION);
+      |                [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:171:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kchange_state[m[K’ was not declared in this scope
+  171 |   [01;31m[Kchange_state[m[K(NodeState::ELECTION);
+      |   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  173 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Received message for starting the election",
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  173 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received message for starting the election",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  173 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received message for starting the election",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  173 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received message for starting the election",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:174:15:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  174 |               [01;31m[Krole_str_[m[K.c_str());
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:177:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcandidates_[m[K’ was not declared in this scope
+  177 |   [01;31m[Kcandidates_[m[K.clear();
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:178:3:[m[K [01;31m[Kerror: [m[K‘[01m[Khighest_candidate_pid_[m[K’ was not declared in this scope
+  178 |   [01;31m[Khighest_candidate_pid_[m[K = -1;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:181:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimeout_timer_[m[K’ was not declared in this scope
+  181 |   if ([01;31m[Ktimeout_timer_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:185:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_timer_[m[K’ was not declared in this scope
+  185 |   if ([01;31m[Kheartbeat_timer_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:191:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  191 |   candidate_msg.data = [01;31m[Kpid_[m[K;
+      |                        [01;31m[K^~~~[m[K
+      |                        [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:192:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcandidates_pub_[m[K’ was not declared in this scope; did you mean ‘[01m[Kcandidate_msg[m[K’?
+  192 |   [01;31m[Kcandidates_pub_[m[K->publish(candidate_msg);
+      |   [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |   [32m[Kcandidate_msg[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  194 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Sending my PID for leader election: %d",
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  194 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID for leader election: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  194 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID for leader election: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  194 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID for leader election: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:195:15:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  195 |               [01;31m[Krole_str_[m[K.c_str(), pid_);
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:204:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_timer_[m[K’ was not declared in this scope
+  204 |   [01;31m[Kelection_timer_[m[K = create_wall_timer(
+      |   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:205:31:[m[K [01;31m[Kerror: [m[K‘[01m[KELECTION_DURATION[m[K’ was not declared in this scope
+  205 |     std::chrono::milliseconds([01;31m[KELECTION_DURATION[m[K),
+      |                               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:206:16:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  206 |     std::bind(&[01;31m[KBullyNode[m[K::election_timeout_callback, this),
+      |                [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:206:54:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  206 |     std::bind(&BullyNode::election_timeout_callback, [01;31m[Kthis[m[K),
+      |                                                      [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:204:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kcreate_wall_timer[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::create_wall_timer[m[K’?
+  204 |   election_timer_ = [01;31m[Kcreate_wall_timer[m[K(
+      |                     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                     [32m[Krclcpp::create_wall_timer[m[K
+In file included from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/create_subscription.hpp:33[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:44[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node.hpp:1646[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:172[m[K:
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::create_wall_timer[m[K’ declared here
+  191 | [01;36m[Kcreate_wall_timer[m[K(
+      | [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:211:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  211 | void [01;31m[KBullyNode[m[K::start_election()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K start_election[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:213:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_in_progress_[m[K’ was not declared in this scope
+  213 |   if ([01;31m[Kelection_in_progress_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:217:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ki_started_election_[m[K’ was not declared in this scope; did you mean ‘[01m[Kstart_election[m[K’?
+  217 |   [01;31m[Ki_started_election_[m[K = true;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |   [32m[Kstart_election[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  219 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Send message to start election", role_str_.c_str());
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  219 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  219 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  219 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:68:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  219 |   RCLCPP_INFO(get_logger(), "[%s] Send message to start election", [01;31m[Krole_str_[m[K.c_str());
+      |                                                                    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:224:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_start_pub_[m[K’ was not declared in this scope
+  224 |   [01;31m[Kelection_start_pub_[m[K->publish(election_msg);
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:231:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  231 | void [01;31m[KBullyNode[m[K::handle_candidate(const std_msgs::msg::Int32::SharedPtr msg)
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K handle_candidate[m[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:233:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  233 |   if ([01;31m[Kcurrent_state_[m[K != NodeState::ELECTION) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:233:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  233 |   if (current_state_ != [01;31m[KNodeState[m[K::ELECTION) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:240:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  240 |   if (candidate_pid == [01;31m[Kpid_[m[K) {
+      |                        [01;31m[K^~~~[m[K
+      |                        [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  244 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Received candidate leader %d",
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  244 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received candidate leader %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  244 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received candidate leader %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  244 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Received candidate leader %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:245:15:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  245 |               [01;31m[Krole_str_[m[K.c_str(), candidate_pid);
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:247:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcandidates_[m[K’ was not declared in this scope; did you mean ‘[01m[Kcandidate_pid[m[K’?
+  247 |   [01;31m[Kcandidates_[m[K.insert(candidate_pid);
+      |   [01;31m[K^~~~~~~~~~~[m[K
+      |   [32m[Kcandidate_pid[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:249:23:[m[K [01;31m[Kerror: [m[K‘[01m[Khighest_candidate_pid_[m[K’ was not declared in this scope
+  249 |   if (candidate_pid > [01;31m[Khighest_candidate_pid_[m[K) {
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:254:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  254 | void [01;31m[KBullyNode[m[K::election_timeout_callback()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K election_timeout_callback[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:256:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  256 |   if ([01;31m[Kcurrent_state_[m[K != NodeState::ELECTION) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:256:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  256 |   if (current_state_ != [01;31m[KNodeState[m[K::ELECTION) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:262:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kcandidates_[m[K’ was not declared in this scope
+  262 |   for (int pid : [01;31m[Kcandidates_[m[K) {
+      |                  [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:270:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  270 |     max_pid = [01;31m[Kpid_[m[K;
+      |               [01;31m[K^~~~[m[K
+      |               [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:275:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  275 |   if ([01;31m[Kpid_[m[K == max_pid) {
+      |       [01;31m[K^~~~[m[K
+      |       [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:276:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kannounce_new_leader[m[K’ was not declared in this scope
+  276 |     [01;31m[Kannounce_new_leader[m[K();
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  280 |     RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  280 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  280 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  280 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:284:7:[m[K [01;31m[Kerror: [m[Kunable to find numeric literal operator ‘[01m[Koperator""ms[m[K’
+  284 |       [01;31m[K3000ms[m[K,
+      |       [01;31m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:285:8:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  285 |       [[01;31m[Kthis[m[K]() {
+      |        [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In lambda function:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:286:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  286 |         if ([01;31m[Kcurrent_state_[m[K == NodeState::ELECTION) {
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:286:31:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  286 |         if (current_state_ == [01;31m[KNodeState[m[K::ELECTION) {
+      |                               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  288 |           RCLCPP_WARN([01;31m[Kget_logger[m[K(), "[election] No leader announced, restarting election");
+      |                       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  288 |           [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[election] No leader announced, restarting election");
+      |           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  288 |           [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[election] No leader announced, restarting election");
+      |           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  288 |           [01;31m[KRCLCPP_WARN[m[K(get_logger(), "[election] No leader announced, restarting election");
+      |           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:289:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kreset_election[m[K’ was not declared in this scope; did you mean ‘[01m[Kstart_election[m[K’?
+  289 |           [01;31m[Kreset_election[m[K();
+      |           [01;31m[K^~~~~~~~~~~~~~[m[K
+      |           [32m[Kstart_election[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K election_timeout_callback[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:283:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kcreate_wall_timer[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::create_wall_timer[m[K’?
+  283 |     auto backup_timer = [01;31m[Kcreate_wall_timer[m[K(
+      |                         [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                         [32m[Krclcpp::create_wall_timer[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::create_wall_timer[m[K’ declared here
+  191 | [01;36m[Kcreate_wall_timer[m[K(
+      | [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:298:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  298 | void [01;31m[KBullyNode[m[K::announce_new_leader()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K announce_new_leader[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:301:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  301 |   if ([01;31m[Kcurrent_state_[m[K != NodeState::ELECTION) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:301:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  301 |   if (current_state_ != [01;31m[KNodeState[m[K::ELECTION) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:306:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  306 |   leader_msg.data = [01;31m[Kpid_[m[K;
+      |                     [01;31m[K^~~~[m[K
+      |                     [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:307:3:[m[K [01;31m[Kerror: [m[K‘[01m[Knew_leader_pub_[m[K’ was not declared in this scope
+  307 |   [01;31m[Knew_leader_pub_[m[K->publish(leader_msg);
+      |   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  309 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Sending my PID to set the new leader: %d",
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  309 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  309 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  309 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:310:15:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  310 |               [01;31m[Krole_str_[m[K.c_str(), pid_);
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:313:16:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  313 |   change_state([01;31m[KNodeState[m[K::LEADER);
+      |                [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:313:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kchange_state[m[K’ was not declared in this scope
+  313 |   [01;31m[Kchange_state[m[K(NodeState::LEADER);
+      |   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  316 |   RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] I'm the new leader", role_str_.c_str());
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  316 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] I'm the new leader", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  316 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] I'm the new leader", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  316 |   [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] I'm the new leader", role_str_.c_str());
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:56:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  316 |   RCLCPP_INFO(get_logger(), "[%s] I'm the new leader", [01;31m[Krole_str_[m[K.c_str());
+      |                                                        [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:319:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_heartbeat[m[K’ was not declared in this scope
+  319 |   [01;31m[Kstart_heartbeat[m[K();
+      |   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:321:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kreset_election[m[K’ was not declared in this scope; did you mean ‘[01m[Kstart_election[m[K’?
+  321 |   [01;31m[Kreset_election[m[K();
+      |   [01;31m[K^~~~~~~~~~~~~~[m[K
+      |   [32m[Kstart_election[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:324:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  324 | void [01;31m[KBullyNode[m[K::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K handle_new_leader[m[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:331:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  331 |   if (new_leader_pid == [01;31m[Kpid_[m[K) {
+      |                         [01;31m[K^~~~[m[K
+      |                         [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:337:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kpid_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpid_t[m[K’?
+  337 |   if (new_leader_pid > [01;31m[Kpid_[m[K) {
+      |                        [01;31m[K^~~~[m[K
+      |                        [32m[Kpid_t[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  338 |     RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] There is a new leader %d",
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  338 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] There is a new leader %d",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  338 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] There is a new leader %d",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  338 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] There is a new leader %d",
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:339:17:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  339 |                 [01;31m[Krole_str_[m[K.c_str(), new_leader_pid);
+      |                 [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:342:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  342 |     if ([01;31m[Kcurrent_state_[m[K == NodeState::LEADER) {
+      |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:342:27:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  342 |     if (current_state_ == [01;31m[KNodeState[m[K::LEADER) {
+      |                           [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:343:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_timer_[m[K’ was not declared in this scope
+  343 |       if ([01;31m[Kheartbeat_timer_[m[K) {
+      |           [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:348:18:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  348 |     change_state([01;31m[KNodeState[m[K::FOLLOWER);
+      |                  [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:348:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kchange_state[m[K’ was not declared in this scope
+  348 |     [01;31m[Kchange_state[m[K(NodeState::FOLLOWER);
+      |     [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:349:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kreset_election[m[K’ was not declared in this scope; did you mean ‘[01m[Kstart_election[m[K’?
+  349 |     [01;31m[Kreset_election[m[K();
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+      |     [32m[Kstart_election[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:352:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_heartbeat_time_[m[K’ was not declared in this scope
+  352 |     [01;31m[Klast_heartbeat_time_[m[K = now();
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:352:28:[m[K [01;31m[Kerror: [m[K‘[01m[Know[m[K’ was not declared in this scope; did you mean ‘[01m[Kpow[m[K’?
+  352 |     last_heartbeat_time_ = [01;31m[Know[m[K();
+      |                            [01;31m[K^~~[m[K
+      |                            [32m[Kpow[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:353:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimeout_timer_[m[K’ was not declared in this scope
+  353 |     if ([01;31m[Ktimeout_timer_[m[K) {
+      |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:356:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimeout_timer_[m[K’ was not declared in this scope
+  356 |     [01;31m[Ktimeout_timer_[m[K = create_wall_timer(
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:357:33:[m[K [01;31m[Kerror: [m[K‘[01m[KHEARTBEAT_TIMEOUT[m[K’ was not declared in this scope
+  357 |       std::chrono::milliseconds([01;31m[KHEARTBEAT_TIMEOUT[m[K),
+      |                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:358:18:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  358 |       std::bind(&[01;31m[KBullyNode[m[K::timeout_callback, this));
+      |                  [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:358:47:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  358 |       std::bind(&BullyNode::timeout_callback, [01;31m[Kthis[m[K));
+      |                                               [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:356:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcreate_wall_timer[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::create_wall_timer[m[K’?
+  356 |     timeout_timer_ = [01;31m[Kcreate_wall_timer[m[K(
+      |                      [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                      [32m[Krclcpp::create_wall_timer[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::create_wall_timer[m[K’ declared here
+  191 | [01;36m[Kcreate_wall_timer[m[K(
+      | [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:362:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  362 | void [01;31m[KBullyNode[m[K::reset_election()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K reset_election[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:364:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_in_progress_[m[K’ was not declared in this scope
+  364 |   [01;31m[Kelection_in_progress_[m[K = false;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:365:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ki_started_election_[m[K’ was not declared in this scope; did you mean ‘[01m[Kstart_election[m[K’?
+  365 |   [01;31m[Ki_started_election_[m[K = false;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |   [32m[Kstart_election[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:366:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcandidates_[m[K’ was not declared in this scope
+  366 |   [01;31m[Kcandidates_[m[K.clear();
+      |   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:367:3:[m[K [01;31m[Kerror: [m[K‘[01m[Khighest_candidate_pid_[m[K’ was not declared in this scope
+  367 |   [01;31m[Khighest_candidate_pid_[m[K = -1;
+      |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:369:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_timer_[m[K’ was not declared in this scope
+  369 |   if ([01;31m[Kelection_timer_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:375:6:[m[K [01;31m[Kerror: [m[K‘[01m[KBullyNode[m[K’ has not been declared
+  375 | void [01;31m[KBullyNode[m[K::start_heartbeat()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K start_heartbeat[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:378:7:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimeout_timer_[m[K’ was not declared in this scope
+  378 |   if ([01;31m[Ktimeout_timer_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:383:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_timer_[m[K’ was not declared in this scope
+  383 |   if ([01;31m[Kheartbeat_timer_[m[K) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:388:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_timer_[m[K’ was not declared in this scope
+  388 |   [01;31m[Kheartbeat_timer_[m[K = create_wall_timer(
+      |   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:389:31:[m[K [01;31m[Kerror: [m[K‘[01m[KHEARTBEAT_PERIOD[m[K’ was not declared in this scope
+  389 |     std::chrono::milliseconds([01;31m[KHEARTBEAT_PERIOD[m[K),
+      |                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:390:6:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  390 |     [[01;31m[Kthis[m[K]() {
+      |      [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In lambda function:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:391:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  391 |       if ([01;31m[Kthis[m[K->current_state_ == NodeState::LEADER) {
+      |           [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:391:35:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  391 |       if (this->current_state_ == [01;31m[KNodeState[m[K::LEADER) {
+      |                                   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:393:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  393 |         msg.data = [01;31m[Kthis[m[K->get_current_epoch();
+      |                    [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:394:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  394 |         [01;31m[Kthis[m[K->heartbeat_pub_->publish(msg);
+      |         [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+  396 |         RCLCPP_INFO([01;31m[Kthis[m[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |                     [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  396 |         [01;31m[KRCLCPP_INFO[m[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  396 |         [01;31m[KRCLCPP_INFO[m[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  396 |         [01;31m[KRCLCPP_INFO[m[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  396 |         RCLCPP_INFO([01;31m[Kthis[m[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |                     [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  396 |         RCLCPP_INFO([01;31m[Kthis[m[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());
+      |                     [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:67:[m[K [01;31m[Kerror: [m[K‘[01m[Kthis[m[K’ was not captured for this lambda function
+  396 |         RCLCPP_INFO(this->get_logger(), "[%s] Sending heartbeat", [01;31m[Kthis[m[K->role_str_.c_str());
+      |                                                                   [01;31m[K^~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K start_heartbeat[m[K()[m[K’:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:388:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcreate_wall_timer[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::create_wall_timer[m[K’?
+  388 |   heartbeat_timer_ = [01;31m[Kcreate_wall_timer[m[K(
+      |                      [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                      [32m[Krclcpp::create_wall_timer[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::create_wall_timer[m[K’ declared here
+  191 | [01;36m[Kcreate_wall_timer[m[K(
+      | [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:401:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_state_[m[K’ was not declared in this scope
+  401 |   if ([01;31m[Kcurrent_state_[m[K == NodeState::LEADER) {
+      |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:401:25:[m[K [01;31m[Kerror: [m[K‘[01m[KNodeState[m[K’ has not been declared
+  401 |   if (current_state_ == [01;31m[KNodeState[m[K::LEADER) {
+      |                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:404:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kheartbeat_pub_[m[K’ was not declared in this scope
+  404 |     [01;31m[Kheartbeat_pub_[m[K->publish(msg);
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_logger[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::get_logger[m[K’?
+  406 |     RCLCPP_INFO([01;31m[Kget_logger[m[K(), "[%s] Sending heartbeat", role_str_.c_str());
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::get_logger[m[K’ declared here
+  136 |   friend Logger [01;36m[Krclcpp[m[K::get_logger(const std::string & name);
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  406 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  406 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  406 |     [01;31m[KRCLCPP_INFO[m[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:57:[m[K [01;31m[Kerror: [m[K‘[01m[Krole_str_[m[K’ was not declared in this scope
+  406 |     RCLCPP_INFO(get_logger(), "[%s] Sending heartbeat", [01;31m[Krole_str_[m[K.c_str());
+      |                                                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K At global scope:
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:410:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+  410 | [01;31m[K}[m[K  // namespace sdc_p4
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

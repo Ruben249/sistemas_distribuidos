@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4" FILES "/opt/ros/rolling/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/sdc_p4/environment")

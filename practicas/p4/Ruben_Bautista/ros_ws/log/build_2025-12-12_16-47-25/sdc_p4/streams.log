@@ -1,0 +1,15 @@
+[0.031s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8
+[0.161s] [ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[4.747s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In constructor ‘[01m[Ksdc_p4::BullyNode::[01;32m[KBullyNode[m[K(const rclcpp::NodeOptions&)[m[K’:
+[4.747s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:25:3:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[Ksdc_p4::BullyNode[m[K’ does not have any field named ‘[01m[Kelection_start_time_[m[K’
+[4.747s]    25 |   [01;31m[Kelection_start_time_[m[K(this->now())
+[4.747s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[4.821s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In member function ‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Khandle_election_start[m[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)[m[K’:
+[4.822s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:155:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kelection_start_time_[m[K’ was not declared in this scope; did you mean ‘[01m[Kelection_start_pub_[m[K’?
+[4.822s]   155 |   [01;31m[Kelection_start_time_[m[K = this->now();
+[4.822s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[4.822s]       |   [32m[Kelection_start_pub_[m[K
+[10.856s] gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+[10.856s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+[10.857s] gmake: *** [Makefile:146: all] Error 2
+[10.862s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8

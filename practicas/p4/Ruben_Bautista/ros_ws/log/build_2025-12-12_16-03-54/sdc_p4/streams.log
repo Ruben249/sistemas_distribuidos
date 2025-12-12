@@ -1,0 +1,73 @@
+[0.031s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8
+[0.168s] [ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[4.796s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In constructor ‘[01m[Ksdc_p4::BullyNode::[01;32m[KBullyNode[m[K(const rclcpp::NodeOptions&)[m[K’:
+[4.796s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:80:43:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, std::_Bind_helper<false, void (sdc_p4::BullyNode::*)(), sdc_p4::BullyNode*>::type, bool)[m[K’
+[4.796s]    80 |     leader_init_timer_ = [01;31m[Kcreate_wall_timer([m[K
+[4.796s]       |                          [01;31m[K~~~~~~~~~~~~~~~~~^[m[K
+[4.796s]    81 | [01;31m[K      std::chrono::milliseconds(1000),[m[K
+[4.796s]       |       [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[4.797s]    82 | [01;31m[K      std::bind(&BullyNode::leader_init_callback, this),[m[K
+[4.797s]       |       [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.797s]    83 | [01;31m[K      true)[m[K;  // oneshot timer
+[4.797s]       |       [01;31m[K~~~~~[m[K                                
+[4.797s] In file included from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node.hpp:1646[m[K,
+[4.797s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[4.797s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[4.798s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:172[m[K,
+[4.798s]                  from [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/include/sdc_p4/bully.hpp:9[m[K,
+[4.798s]                  from [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:6[m[K:
+[4.798s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::[01;32m[Kcreate_wall_timer[m[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)[m[K’
+[4.798s]   111 | [01;36m[KNode[m[K::create_wall_timer(
+[4.798s]       | [01;36m[K^~~~[m[K
+[4.799s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.799s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:83:7:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Ktrue[m[K’ (type ‘[01m[Kbool[m[K’) to type ‘[01m[Krclcpp::CallbackGroup::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::CallbackGroup>[m[K’}
+[4.799s]    83 |       [01;36m[Ktrue[m[K);  // oneshot timer
+[4.799s]       |       [01;36m[K^~~~[m[K
+[4.817s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In member function ‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Khandle_election_start[m[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)[m[K’:
+[4.817s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:191:38:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, std::_Bind_helper<false, void (sdc_p4::BullyNode::*)(), sdc_p4::BullyNode*>::type, bool)[m[K’
+[4.817s]   191 |   election_timer_ = [01;31m[Kcreate_wall_timer([m[K
+[4.818s]       |                     [01;31m[K~~~~~~~~~~~~~~~~~^[m[K
+[4.818s]   192 | [01;31m[K    std::chrono::milliseconds(ELECTION_DURATION),[m[K
+[4.818s]       |     [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.818s]   193 | [01;31m[K    std::bind(&BullyNode::election_timeout_callback, this),[m[K
+[4.819s]       |     [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.819s]   194 | [01;31m[K    true)[m[K;  // oneshot timer
+[4.819s]       |     [01;31m[K~~~~~[m[K                             
+[4.819s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::[01;32m[Kcreate_wall_timer[m[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)[m[K’
+[4.820s]   111 | [01;36m[KNode[m[K::create_wall_timer(
+[4.820s]       | [01;36m[K^~~~[m[K
+[4.820s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.820s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:5:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Ktrue[m[K’ (type ‘[01m[Kbool[m[K’) to type ‘[01m[Krclcpp::CallbackGroup::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::CallbackGroup>[m[K’}
+[4.820s]   194 |     [01;36m[Ktrue[m[K);  // oneshot timer
+[4.821s]       |     [01;36m[K^~~~[m[K
+[4.825s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:[m[K In member function ‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Kend_election[m[K()[m[K’:
+[4.825s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:272:42:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksdc_p4::BullyNode::create_wall_timer(std::chrono::milliseconds, sdc_p4::BullyNode::end_election()::<lambda()>, bool)[m[K’
+[4.825s]   272 |     auto backup_timer = [01;31m[Kcreate_wall_timer([m[K
+[4.826s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~^[m[K
+[4.826s]   273 | [01;31m[K      std::chrono::milliseconds(ELECTION_DURATION + 1000),[m[K
+[4.826s]       |       [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.826s]   274 | [01;31m[K      [this]() {[m[K
+[4.827s]       |       [01;31m[K~~~~~~~~~~[m[K                          
+[4.827s]   275 | [01;31m[K        if (current_state_ == NodeState::ELECTION) {[m[K
+[4.827s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.827s]   276 | [01;31m[K          RCLCPP_WARN(get_logger(), "[election] No leader announced, restarting election");[m[K
+[4.827s]       |           [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.828s]   277 | [01;31m[K          start_election();[m[K
+[4.828s]       |           [01;31m[K~~~~~~~~~~~~~~~~~[m[K               
+[4.828s]   278 | [01;31m[K        }[m[K
+[4.828s]       |         [01;31m[K~[m[K                                 
+[4.828s]   279 | [01;31m[K      },[m[K
+[4.828s]       |       [01;31m[K~~[m[K                                  
+[4.828s]   280 | [01;31m[K      true)[m[K;  // oneshot
+[4.829s]       |       [01;31m[K~~~~~[m[K                               
+[4.829s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::[01;32m[Kcreate_wall_timer[m[K(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr, bool)[m[K’
+[4.829s]   111 | [01;36m[KNode[m[K::create_wall_timer(
+[4.829s]       | [01;36m[K^~~~[m[K
+[4.829s] [01m[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:111:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.830s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:7:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Ktrue[m[K’ (type ‘[01m[Kbool[m[K’) to type ‘[01m[Krclcpp::CallbackGroup::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::CallbackGroup>[m[K’}
+[4.830s]   280 |       [01;36m[Ktrue[m[K);  // oneshot
+[4.830s]       |       [01;36m[K^~~~[m[K
+[10.701s] gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+[10.701s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+[10.701s] gmake: *** [Makefile:146: all] Error 2
+[10.706s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8

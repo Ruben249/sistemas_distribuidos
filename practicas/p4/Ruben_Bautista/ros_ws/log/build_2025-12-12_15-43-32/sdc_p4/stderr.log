@@ -1,0 +1,7 @@
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Ksdc_p4/include/bully.hpp: No such file or directory
+    1 | #include [01;31m[K"sdc_p4/include/bully.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

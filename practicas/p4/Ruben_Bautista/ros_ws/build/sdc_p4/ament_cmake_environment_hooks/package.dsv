@@ -1,0 +1,4 @@
+source;share/sdc_p4/local_setup.bash
+source;share/sdc_p4/local_setup.dsv
+source;share/sdc_p4/local_setup.sh
+source;share/sdc_p4/local_setup.zsh

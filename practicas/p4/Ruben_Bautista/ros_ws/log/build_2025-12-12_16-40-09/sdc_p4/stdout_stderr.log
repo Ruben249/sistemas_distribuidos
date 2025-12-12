@@ -1,0 +1,10 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:390:6:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Kstart_heartbeat[m[K()[m[K’
+  390 | void [01;31m[KBullyNode[m[K::start_heartbeat()
+      |      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:361:6:[m[K [01;36m[Knote: [m[K‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Kstart_heartbeat[m[K()[m[K’ previously defined here
+  361 | void [01;36m[KBullyNode[m[K::start_heartbeat()
+      |      [01;36m[K^~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

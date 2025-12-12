@@ -1,0 +1,12 @@
+[0.033s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8
+[0.167s] [ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[4.751s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:390:6:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Kstart_heartbeat[m[K()[m[K’
+[4.751s]   390 | void [01;31m[KBullyNode[m[K::start_heartbeat()
+[4.751s]       |      [01;31m[K^~~~~~~~~[m[K
+[4.751s] [01m[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:361:6:[m[K [01;36m[Knote: [m[K‘[01m[Kvoid sdc_p4::BullyNode::[01;32m[Kstart_heartbeat[m[K()[m[K’ previously defined here
+[4.752s]   361 | void [01;36m[KBullyNode[m[K::start_heartbeat()
+[4.752s]       |      [01;36m[K^~~~~~~~~[m[K
+[10.631s] gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1
+[10.632s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2
+[10.632s] gmake: *** [Makefile:146: all] Error 2
+[10.636s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8

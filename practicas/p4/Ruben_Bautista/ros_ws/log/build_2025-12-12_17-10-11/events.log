@@ -1,0 +1,797 @@
+[0.000000] (-) TimerEvent: {}
+[0.000567] (sdc_p4) JobQueued: {'identifier': 'sdc_p4', 'dependencies': OrderedDict()}
+[0.001190] (sdc_p4) JobStarted: {'identifier': 'sdc_p4'}
+[0.027561] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'cmake'}
+[0.028815] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'build'}
+[0.030159] (sdc_p4) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', '--', '-j8', '-l8'], 'cwd': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2147450879', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/rolling/share/', 'USER': 'rubenb', 'LC_TIME': 'es_ES.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/rolling/opt/gz_sim_vendor/share/gz:/opt/ros/rolling/opt/sdformat_vendor/share/gz:/opt/ros/rolling/opt/gz_gui_vendor/share/gz:/opt/ros/rolling/opt/gz_transport_vendor/share/gz:/opt/ros/rolling/opt/gz_rendering_vendor/share/gz:/opt/ros/rolling/opt/gz_plugin_vendor/share/gz:/opt/ros/rolling/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/rolling/opt/gz_msgs_vendor/share/gz:/opt/ros/rolling/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib:/opt/ros/rolling/opt/gz_sim_vendor/lib:/opt/ros/rolling/opt/gz_sensors_vendor/lib:/opt/ros/rolling/opt/gz_physics_vendor/lib:/opt/ros/rolling/opt/sdformat_vendor/lib:/opt/ros/rolling/opt/gz_gui_vendor/lib:/opt/ros/rolling/opt/gz_transport_vendor/lib:/opt/ros/rolling/opt/gz_rendering_vendor/lib:/opt/ros/rolling/opt/gz_plugin_vendor/lib:/opt/ros/rolling/opt/gz_fuel_tools_vendor/lib:/opt/ros/rolling/opt/gz_msgs_vendor/lib:/opt/ros/rolling/opt/gz_common_vendor/lib:/opt/ros/rolling/opt/gz_math_vendor/lib:/opt/ros/rolling/opt/gz_utils_vendor/lib:/opt/ros/rolling/opt/rviz_ogre_vendor/lib:/opt/ros/rolling/lib/x86_64-linux-gnu:/opt/ros/rolling/opt/gz_tools_vendor/lib:/opt/ros/rolling/opt/gz_ogre_next_vendor/lib:/opt/ros/rolling/opt/gz_dartsim_vendor/lib:/opt/ros/rolling/opt/gz_cmake_vendor/lib:/opt/ros/rolling/lib', 'LESS': '-R', 'HOME': '/home/rubenb', 'OLDPWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'LSCOLORS': 'Gxfxcxdxdxegedabagacad', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'less', 'LC_MONETARY': 'es_ES.UTF-8', 'SYSTEMD_EXEC_PID': '3228', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install', 'ROS_DISTRO': 'rolling', 'LOGNAME': 'rubenb', 'OSH': '/home/rubenb/.oh-my-bash', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'rubenb', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/rolling/opt/gz_msgs_vendor/bin:/opt/ros/rolling/opt/gz_tools_vendor/bin:/opt/ros/rolling/opt/gz_ogre_next_vendor/bin:/opt/ros/rolling/bin:/home/rubenb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:@/tmp/.ICE-unix/3184,unix/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:/tmp/.ICE-unix/3184', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'es_ES.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/45cdb91e_d961_434b_9732_5fefb16e8c32', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'HISTSIZE': '2147450879', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'es_ES.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.105', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling', 'SHELL': '/bin/bash', 'LC_NAME': 'es_ES.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'es_ES.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'es_ES.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/rolling/lib/python3.12/site-packages', 'LC_NUMERIC': 'es_ES.UTF-8', 'LC_PAPER': 'es_ES.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling/opt/gz_sim_vendor:/opt/ros/rolling/opt/gz_sensors_vendor:/opt/ros/rolling/opt/gz_physics_vendor:/opt/ros/rolling/opt/sdformat_vendor:/opt/ros/rolling/opt/gz_gui_vendor:/opt/ros/rolling/opt/gz_transport_vendor:/opt/ros/rolling/opt/gz_rendering_vendor:/opt/ros/rolling/opt/gz_plugin_vendor:/opt/ros/rolling/opt/gz_fuel_tools_vendor:/opt/ros/rolling/opt/gz_msgs_vendor:/opt/ros/rolling/opt/gz_common_vendor:/opt/ros/rolling/opt/gz_math_vendor:/opt/ros/rolling/opt/gz_utils_vendor:/opt/ros/rolling/opt/gz_tools_vendor:/opt/ros/rolling/opt/gz_ogre_next_vendor:/opt/ros/rolling/opt/gz_dartsim_vendor:/opt/ros/rolling/opt/gz_cmake_vendor:/opt/ros/rolling'}), 'shell': False}
+[0.099480] (-) TimerEvent: {}
+[0.176267] (sdc_p4) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o\x1b[0m\n'}
+[0.199666] (-) TimerEvent: {}
+[0.300196] (-) TimerEvent: {}
+[0.400665] (-) TimerEvent: {}
+[0.501148] (-) TimerEvent: {}
+[0.603702] (-) TimerEvent: {}
+[0.704242] (-) TimerEvent: {}
+[0.804666] (-) TimerEvent: {}
+[0.905091] (-) TimerEvent: {}
+[1.005497] (-) TimerEvent: {}
+[1.105971] (-) TimerEvent: {}
+[1.206387] (-) TimerEvent: {}
+[1.306824] (-) TimerEvent: {}
+[1.407254] (-) TimerEvent: {}
+[1.507695] (-) TimerEvent: {}
+[1.608117] (-) TimerEvent: {}
+[1.708523] (-) TimerEvent: {}
+[1.808982] (-) TimerEvent: {}
+[1.909403] (-) TimerEvent: {}
+[2.009856] (-) TimerEvent: {}
+[2.110290] (-) TimerEvent: {}
+[2.210704] (-) TimerEvent: {}
+[2.311137] (-) TimerEvent: {}
+[2.411584] (-) TimerEvent: {}
+[2.512033] (-) TimerEvent: {}
+[2.612566] (-) TimerEvent: {}
+[2.713070] (-) TimerEvent: {}
+[2.813557] (-) TimerEvent: {}
+[2.914037] (-) TimerEvent: {}
+[3.014514] (-) TimerEvent: {}
+[3.115033] (-) TimerEvent: {}
+[3.215552] (-) TimerEvent: {}
+[3.316060] (-) TimerEvent: {}
+[3.416593] (-) TimerEvent: {}
+[3.517144] (-) TimerEvent: {}
+[3.617667] (-) TimerEvent: {}
+[3.718100] (-) TimerEvent: {}
+[3.818513] (-) TimerEvent: {}
+[3.918939] (-) TimerEvent: {}
+[4.019374] (-) TimerEvent: {}
+[4.119888] (-) TimerEvent: {}
+[4.220288] (-) TimerEvent: {}
+[4.320701] (-) TimerEvent: {}
+[4.421092] (-) TimerEvent: {}
+[4.521523] (-) TimerEvent: {}
+[4.621967] (-) TimerEvent: {}
+[4.722428] (-) TimerEvent: {}
+[4.822863] (-) TimerEvent: {}
+[4.923273] (-) TimerEvent: {}
+[5.023703] (-) TimerEvent: {}
+[5.044894] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:87:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[Kelse\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.045303] (sdc_p4) StderrLine: {'line': b'   87 |   } \x1b[01;31m\x1b[Kelse\x1b[m\x1b[K {\n'}
+[5.045466] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.045632] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.045786] (sdc_p4) StderrLine: {'line': b'   97 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::change_state(NodeState new_state)\n'}
+[5.045927] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.046063] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kvariable or field \xe2\x80\x98\x1b[01m\x1b[Kchange_state\x1b[m\x1b[K\xe2\x80\x99 declared void\n'}
+[5.055553] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:97:30:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.055928] (sdc_p4) StderrLine: {'line': b'   97 | void BullyNode::change_state(\x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K new_state)\n'}
+[5.056086] (sdc_p4) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.056228] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:103:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.056371] (sdc_p4) StderrLine: {'line': b'  103 | std::string \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::state_to_string(NodeState state)\n'}
+[5.056510] (sdc_p4) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.065552] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:103:40:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.066558] (sdc_p4) StderrLine: {'line': b'  103 | std::string BullyNode::state_to_string(\x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K state)\n'}
+[5.066861] (sdc_p4) StderrLine: {'line': b'      |                                        \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.067112] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:104:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K,\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K{\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[5.067364] (sdc_p4) StderrLine: {'line': b'  104 | \x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[5.067618] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[5.067881] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:113:8:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.068125] (sdc_p4) StderrLine: {'line': b'  113 | double \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::get_current_epoch()\n'}
+[5.068363] (sdc_p4) StderrLine: {'line': b'      |        \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.068610] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[01;32m\x1b[K get_current_epoch\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.068893] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:115:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.069135] (sdc_p4) StderrLine: {'line': b'  115 |   auto now = \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->now();\n'}
+[5.069375] (sdc_p4) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.069619] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.069870] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:119:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.070136] (sdc_p4) StderrLine: {'line': b'  119 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::heartbeat_callback()\n'}
+[5.070375] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.078216] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K heartbeat_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.078567] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:121:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.078839] (sdc_p4) StderrLine: {'line': b'  121 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K != NodeState::LEADER) {\n'}
+[5.079083] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.079347] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:121:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.079634] (sdc_p4) StderrLine: {'line': b'  121 |   if (current_state_ != \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::LEADER) {\n'}
+[5.079886] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.091286] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:127:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_pub_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.091746] (sdc_p4) StderrLine: {'line': b'  127 |   \x1b[01;31m\x1b[Kheartbeat_pub_\x1b[m\x1b[K->publish(msg);\n'}
+[5.092026] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.092454] (sdc_p4) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27\x1b[m\x1b[K,\n'}
+[5.092835] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:171\x1b[m\x1b[K,\n'}
+[5.093080] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/include/sdc_p4/bully.hpp:4\x1b[m\x1b[K,\n'}
+[5.093323] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:6\x1b[m\x1b[K:\n'}
+[5.093565] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.093838] (sdc_p4) StderrLine: {'line': b'  129 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.094085] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.094332] (sdc_p4) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:26\x1b[m\x1b[K:\n'}
+[5.094582] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.094842] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.095082] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.095323] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.095570] (sdc_p4) StderrLine: {'line': b'  129 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.095858] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.096106] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.096354] (sdc_p4) StderrLine: {'line': b'  129 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.096609] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.096859] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.097130] (sdc_p4) StderrLine: {'line': b'  129 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.097368] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.103107] (sdc_p4) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K:\n'}
+[5.103666] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:129:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.104022] (sdc_p4) StderrLine: {'line': b'  129 |   RCLCPP_INFO(get_logger(), "[%s] Sending heartbeat", \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.104307] (sdc_p4) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.104572] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.104846] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:132:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.105054] (sdc_p4) StderrLine: {'line': b'  132 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::timeout_callback()\n'}
+[5.105256] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.116619] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K timeout_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.117156] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:134:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.117465] (sdc_p4) StderrLine: {'line': b'  134 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K != NodeState::FOLLOWER) {\n'}
+[5.117743] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.117963] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:134:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.118170] (sdc_p4) StderrLine: {'line': b'  134 |   if (current_state_ != \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::FOLLOWER) {\n'}
+[5.118370] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.123825] (-) TimerEvent: {}
+[5.124466] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:138:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Know\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpow\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.124870] (sdc_p4) StderrLine: {'line': b'  138 |   rclcpp::Time current_time = \x1b[01;31m\x1b[Know\x1b[m\x1b[K();\n'}
+[5.125146] (sdc_p4) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[5.125382] (sdc_p4) StderrLine: {'line': b'      |                               \x1b[32m\x1b[Kpow\x1b[m\x1b[K\n'}
+[5.141086] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:139:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.141558] (sdc_p4) StderrLine: {'line': b'  139 |   double time_since_last_heartbeat = (current_time - \x1b[01;31m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K).seconds();\n'}
+[5.141851] (sdc_p4) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.155542] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:141:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KHEARTBEAT_TIMEOUT\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.155986] (sdc_p4) StderrLine: {'line': b'  141 |   if (time_since_last_heartbeat * 1000 > \x1b[01;31m\x1b[KHEARTBEAT_TIMEOUT\x1b[m\x1b[K) {\n'}
+[5.156241] (sdc_p4) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.156662] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.157020] (sdc_p4) StderrLine: {'line': b'  142 |     RCLCPP_WARN(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] No heartbeat received in the last %.0f seconds!",\n'}
+[5.157280] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.157522] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.157801] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.158044] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.158244] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.158474] (sdc_p4) StderrLine: {'line': b'  142 |     \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",\n'}
+[5.158719] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.158926] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.159125] (sdc_p4) StderrLine: {'line': b'  142 |     \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",\n'}
+[5.159318] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.159505] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:142:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.159713] (sdc_p4) StderrLine: {'line': b'  142 |     \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!",\n'}
+[5.159903] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.166330] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:143:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.166708] (sdc_p4) StderrLine: {'line': b'  143 |                 \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str(), time_since_last_heartbeat);\n'}
+[5.166942] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.177198] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:145:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.177715] (sdc_p4) StderrLine: {'line': b'  145 |     \x1b[01;31m\x1b[Kstart_election\x1b[m\x1b[K();\n'}
+[5.177987] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.178232] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.178483] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:149:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.178766] (sdc_p4) StderrLine: {'line': b'  149 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg)\n'}
+[5.179010] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.191849] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K handle_heartbeat\x1b[m\x1b[K(std_msgs::msg::Float64_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.192241] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:151:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.192477] (sdc_p4) StderrLine: {'line': b'  151 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K == NodeState::ELECTION) {\n'}
+[5.192730] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.192938] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:151:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.193147] (sdc_p4) StderrLine: {'line': b'  151 |   if (current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION) {\n'}
+[5.193348] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.206795] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:155:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.207130] (sdc_p4) StderrLine: {'line': b'  155 |   \x1b[01;31m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K = now();\n'}
+[5.207344] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.212830] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:155:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Know\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpow\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.213179] (sdc_p4) StderrLine: {'line': b'  155 |   last_heartbeat_time_ = \x1b[01;31m\x1b[Know\x1b[m\x1b[K();\n'}
+[5.213394] (sdc_p4) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[5.213612] (sdc_p4) StderrLine: {'line': b'      |                          \x1b[32m\x1b[Kpow\x1b[m\x1b[K\n'}
+[5.222961] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:157:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.223297] (sdc_p4) StderrLine: {'line': b'  157 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K == NodeState::FOLLOWER) {\n'}
+[5.223524] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.223774] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:157:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.224021] (-) TimerEvent: {}
+[5.224451] (sdc_p4) StderrLine: {'line': b'  157 |   if (current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::FOLLOWER) {\n'}
+[5.224748] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.224950] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.225150] (sdc_p4) StderrLine: {'line': b'  158 |     RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Received heartbeat", role_str_.c_str());\n'}
+[5.225337] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.225520] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.225740] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.225933] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.226121] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.226358] (sdc_p4) StderrLine: {'line': b'  158 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());\n'}
+[5.226560] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.226770] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.226972] (sdc_p4) StderrLine: {'line': b'  158 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());\n'}
+[5.227160] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.227347] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.227553] (sdc_p4) StderrLine: {'line': b'  158 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received heartbeat", role_str_.c_str());\n'}
+[5.227771] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.233644] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:158:58:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.234405] (sdc_p4) StderrLine: {'line': b'  158 |     RCLCPP_INFO(get_logger(), "[%s] Received heartbeat", \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.234717] (sdc_p4) StderrLine: {'line': b'      |                                                          \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.234982] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.235250] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:162:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.235506] (sdc_p4) StderrLine: {'line': b'  162 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)\n'}
+[5.235810] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.255335] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K handle_election_start\x1b[m\x1b[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.255799] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:165:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_in_progress_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.256045] (sdc_p4) StderrLine: {'line': b'  165 |   if (\x1b[01;31m\x1b[Kelection_in_progress_\x1b[m\x1b[K) {\n'}
+[5.256254] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.271007] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:169:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_start_time_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.271412] (sdc_p4) StderrLine: {'line': b'  169 |   \x1b[01;31m\x1b[Kelection_start_time_\x1b[m\x1b[K = this->now();\n'}
+[5.271660] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.271878] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:169:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.272098] (sdc_p4) StderrLine: {'line': b'  169 |   election_start_time_ = \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->now();\n'}
+[5.272292] (sdc_p4) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.286872] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:170:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_in_progress_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.287245] (sdc_p4) StderrLine: {'line': b'  170 |   \x1b[01;31m\x1b[Kelection_in_progress_\x1b[m\x1b[K = true;\n'}
+[5.287453] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.287684] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:171:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.287911] (sdc_p4) StderrLine: {'line': b'  171 |   change_state(\x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION);\n'}
+[5.288109] (sdc_p4) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.296338] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:171:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kchange_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.296678] (sdc_p4) StderrLine: {'line': b'  171 |   \x1b[01;31m\x1b[Kchange_state\x1b[m\x1b[K(NodeState::ELECTION);\n'}
+[5.297151] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.297386] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.297686] (sdc_p4) StderrLine: {'line': b'  173 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Received message for starting the election",\n'}
+[5.297944] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.298163] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.298370] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.298564] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.298781] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.298983] (sdc_p4) StderrLine: {'line': b'  173 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received message for starting the election",\n'}
+[5.299173] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.299359] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.299547] (sdc_p4) StderrLine: {'line': b'  173 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received message for starting the election",\n'}
+[5.299753] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.299940] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:173:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.300129] (sdc_p4) StderrLine: {'line': b'  173 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received message for starting the election",\n'}
+[5.300316] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.306535] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:174:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.306920] (sdc_p4) StderrLine: {'line': b'  174 |               \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.307152] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.315934] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:177:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcandidates_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.316275] (sdc_p4) StderrLine: {'line': b'  177 |   \x1b[01;31m\x1b[Kcandidates_\x1b[m\x1b[K.clear();\n'}
+[5.316485] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.324127] (-) TimerEvent: {}
+[5.332779] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:178:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.333200] (sdc_p4) StderrLine: {'line': b'  178 |   \x1b[01;31m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K = -1;\n'}
+[5.333463] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.343782] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:181:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimeout_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.344174] (sdc_p4) StderrLine: {'line': b'  181 |   if (\x1b[01;31m\x1b[Ktimeout_timer_\x1b[m\x1b[K) {\n'}
+[5.344393] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.356109] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:185:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.356529] (sdc_p4) StderrLine: {'line': b'  185 |   if (\x1b[01;31m\x1b[Kheartbeat_timer_\x1b[m\x1b[K) {\n'}
+[5.356799] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.362564] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:191:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.362949] (sdc_p4) StderrLine: {'line': b'  191 |   candidate_msg.data = \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K;\n'}
+[5.363167] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.363376] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.372092] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:192:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcandidates_pub_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcandidate_msg\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.372442] (sdc_p4) StderrLine: {'line': b'  192 |   \x1b[01;31m\x1b[Kcandidates_pub_\x1b[m\x1b[K->publish(candidate_msg);\n'}
+[5.372714] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.373119] (sdc_p4) StderrLine: {'line': b'      |   \x1b[32m\x1b[Kcandidate_msg\x1b[m\x1b[K\n'}
+[5.373368] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.373697] (sdc_p4) StderrLine: {'line': b'  194 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Sending my PID for leader election: %d",\n'}
+[5.373957] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.374173] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.374378] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.374571] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.374797] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.374995] (sdc_p4) StderrLine: {'line': b'  194 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID for leader election: %d",\n'}
+[5.375185] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.375373] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.375563] (sdc_p4) StderrLine: {'line': b'  194 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID for leader election: %d",\n'}
+[5.375769] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.375961] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:194:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.376151] (sdc_p4) StderrLine: {'line': b'  194 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID for leader election: %d",\n'}
+[5.376337] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.382328] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:195:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.382683] (sdc_p4) StderrLine: {'line': b'  195 |               \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str(), pid_);\n'}
+[5.382841] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.393475] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:204:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.393761] (sdc_p4) StderrLine: {'line': b'  204 |   \x1b[01;31m\x1b[Kelection_timer_\x1b[m\x1b[K = create_wall_timer(\n'}
+[5.393900] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.406550] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:205:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KELECTION_DURATION\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.406824] (sdc_p4) StderrLine: {'line': b'  205 |     std::chrono::milliseconds(\x1b[01;31m\x1b[KELECTION_DURATION\x1b[m\x1b[K),\n'}
+[5.406964] (sdc_p4) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.407089] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:206:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.407366] (sdc_p4) StderrLine: {'line': b'  206 |     std::bind(&\x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::election_timeout_callback, this),\n'}
+[5.407485] (sdc_p4) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.407623] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:206:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.407757] (sdc_p4) StderrLine: {'line': b'  206 |     std::bind(&BullyNode::election_timeout_callback, \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K),\n'}
+[5.407881] (sdc_p4) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.408004] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:204:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcreate_wall_timer\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.408132] (sdc_p4) StderrLine: {'line': b'  204 |   election_timer_ = \x1b[01;31m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.408256] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.408381] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[32m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\n'}
+[5.408505] (sdc_p4) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/create_subscription.hpp:33\x1b[m\x1b[K,\n'}
+[5.408641] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node_impl.hpp:44\x1b[m\x1b[K,\n'}
+[5.408999] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/node.hpp:1646\x1b[m\x1b[K,\n'}
+[5.409175] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[5.409303] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[5.409423] (sdc_p4) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/rclcpp.hpp:172\x1b[m\x1b[K:\n'}
+[5.409539] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.409682] (sdc_p4) StderrLine: {'line': b'  191 | \x1b[01;36m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.409802] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.409914] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.410036] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:211:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.410167] (sdc_p4) StderrLine: {'line': b'  211 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::start_election()\n'}
+[5.410285] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.423243] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K start_election\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.423476] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:213:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_in_progress_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.423647] (sdc_p4) StderrLine: {'line': b'  213 |   if (\x1b[01;31m\x1b[Kelection_in_progress_\x1b[m\x1b[K) {\n'}
+[5.423788] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.424201] (-) TimerEvent: {}
+[5.434515] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:217:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ki_started_election_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.434863] (sdc_p4) StderrLine: {'line': b'  217 |   \x1b[01;31m\x1b[Ki_started_election_\x1b[m\x1b[K = true;\n'}
+[5.435002] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.435124] (sdc_p4) StderrLine: {'line': b'      |   \x1b[32m\x1b[Kstart_election\x1b[m\x1b[K\n'}
+[5.435668] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.436108] (sdc_p4) StderrLine: {'line': b'  219 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Send message to start election", role_str_.c_str());\n'}
+[5.436256] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.436385] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.436517] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.436696] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.436831] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.436963] (sdc_p4) StderrLine: {'line': b'  219 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());\n'}
+[5.437091] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.437217] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.437348] (sdc_p4) StderrLine: {'line': b'  219 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());\n'}
+[5.437496] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.437630] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.437763] (sdc_p4) StderrLine: {'line': b'  219 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Send message to start election", role_str_.c_str());\n'}
+[5.437884] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.445492] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:219:68:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.445767] (sdc_p4) StderrLine: {'line': b'  219 |   RCLCPP_INFO(get_logger(), "[%s] Send message to start election", \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.445933] (sdc_p4) StderrLine: {'line': b'      |                                                                    \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.460427] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:224:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_start_pub_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.460703] (sdc_p4) StderrLine: {'line': b'  224 |   \x1b[01;31m\x1b[Kelection_start_pub_\x1b[m\x1b[K->publish(election_msg);\n'}
+[5.460840] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.462735] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.463009] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:231:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.463158] (sdc_p4) StderrLine: {'line': b'  231 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::handle_candidate(const std_msgs::msg::Int32::SharedPtr msg)\n'}
+[5.463290] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.474341] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K handle_candidate\x1b[m\x1b[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.474647] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:233:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.474806] (sdc_p4) StderrLine: {'line': b'  233 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K != NodeState::ELECTION) {\n'}
+[5.474940] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.475071] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:233:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.475202] (sdc_p4) StderrLine: {'line': b'  233 |   if (current_state_ != \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION) {\n'}
+[5.475341] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.481402] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:240:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.481695] (sdc_p4) StderrLine: {'line': b'  240 |   if (candidate_pid == \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K) {\n'}
+[5.481844] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.482183] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.482319] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.482454] (sdc_p4) StderrLine: {'line': b'  244 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Received candidate leader %d",\n'}
+[5.482591] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.482731] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.482859] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.482984] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.483110] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.483241] (sdc_p4) StderrLine: {'line': b'  244 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received candidate leader %d",\n'}
+[5.483368] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.483494] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.483628] (sdc_p4) StderrLine: {'line': b'  244 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received candidate leader %d",\n'}
+[5.483760] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.483882] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:244:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.484004] (sdc_p4) StderrLine: {'line': b'  244 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Received candidate leader %d",\n'}
+[5.484125] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.491522] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:245:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.491836] (sdc_p4) StderrLine: {'line': b'  245 |               \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str(), candidate_pid);\n'}
+[5.491982] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.500247] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:247:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcandidates_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcandidate_pid\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.500491] (sdc_p4) StderrLine: {'line': b'  247 |   \x1b[01;31m\x1b[Kcandidates_\x1b[m\x1b[K.insert(candidate_pid);\n'}
+[5.500639] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.500767] (sdc_p4) StderrLine: {'line': b'      |   \x1b[32m\x1b[Kcandidate_pid\x1b[m\x1b[K\n'}
+[5.516077] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:249:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.516383] (sdc_p4) StderrLine: {'line': b'  249 |   if (candidate_pid > \x1b[01;31m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K) {\n'}
+[5.516519] (sdc_p4) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.516672] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.516808] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:254:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.516941] (sdc_p4) StderrLine: {'line': b'  254 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::election_timeout_callback()\n'}
+[5.517070] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.524316] (-) TimerEvent: {}
+[5.527151] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K election_timeout_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.527392] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:256:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.527535] (sdc_p4) StderrLine: {'line': b'  256 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K != NodeState::ELECTION) {\n'}
+[5.527694] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.527827] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:256:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.527958] (sdc_p4) StderrLine: {'line': b'  256 |   if (current_state_ != \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION) {\n'}
+[5.528085] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.538188] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:262:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcandidates_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.538493] (sdc_p4) StderrLine: {'line': b'  262 |   for (int pid : \x1b[01;31m\x1b[Kcandidates_\x1b[m\x1b[K) {\n'}
+[5.538651] (sdc_p4) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.545660] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:270:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.545963] (sdc_p4) StderrLine: {'line': b'  270 |     max_pid = \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K;\n'}
+[5.546107] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.546239] (sdc_p4) StderrLine: {'line': b'      |               \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.552242] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:275:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.552507] (sdc_p4) StderrLine: {'line': b'  275 |   if (\x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K == max_pid) {\n'}
+[5.552667] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.552799] (sdc_p4) StderrLine: {'line': b'      |       \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.568389] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:276:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kannounce_new_leader\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.568743] (sdc_p4) StderrLine: {'line': b'  276 |     \x1b[01;31m\x1b[Kannounce_new_leader\x1b[m\x1b[K();\n'}
+[5.568892] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.569743] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.569989] (sdc_p4) StderrLine: {'line': b'  280 |     RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);\n'}
+[5.570163] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.570310] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.570451] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.570601] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.570749] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.570986] (sdc_p4) StderrLine: {'line': b'  280 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);\n'}
+[5.571121] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.571250] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.571376] (sdc_p4) StderrLine: {'line': b'  280 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);\n'}
+[5.571516] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.571664] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:280:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.571850] (sdc_p4) StderrLine: {'line': b'  280 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);\n'}
+[5.571988] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.572188] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:284:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kunable to find numeric literal operator \xe2\x80\x98\x1b[01m\x1b[Koperator""ms\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.572336] (sdc_p4) StderrLine: {'line': b'  284 |       \x1b[01;31m\x1b[K3000ms\x1b[m\x1b[K,\n'}
+[5.572477] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.572633] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:285:8:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.572780] (sdc_p4) StderrLine: {'line': b'  285 |       [\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K]() {\n'}
+[5.572914] (sdc_p4) StderrLine: {'line': b'      |        \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.588975] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In lambda function:\n'}
+[5.589258] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:286:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.589406] (sdc_p4) StderrLine: {'line': b'  286 |         if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K == NodeState::ELECTION) {\n'}
+[5.589541] (sdc_p4) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.589726] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:286:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.589883] (sdc_p4) StderrLine: {'line': b'  286 |         if (current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION) {\n'}
+[5.590022] (sdc_p4) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.590361] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.590612] (sdc_p4) StderrLine: {'line': b'  288 |           RCLCPP_WARN(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[election] No leader announced, restarting election");\n'}
+[5.590770] (sdc_p4) StderrLine: {'line': b'      |                       \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.590903] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.591036] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.591191] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.591319] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.591446] (sdc_p4) StderrLine: {'line': b'  288 |           \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[election] No leader announced, restarting election");\n'}
+[5.591573] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.591723] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.591860] (sdc_p4) StderrLine: {'line': b'  288 |           \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[election] No leader announced, restarting election");\n'}
+[5.591994] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.592122] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:288:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.592247] (sdc_p4) StderrLine: {'line': b'  288 |           \x1b[01;31m\x1b[KRCLCPP_WARN\x1b[m\x1b[K(get_logger(), "[election] No leader announced, restarting election");\n'}
+[5.592371] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.606100] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:289:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kreset_election\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.606376] (sdc_p4) StderrLine: {'line': b'  289 |           \x1b[01;31m\x1b[Kreset_election\x1b[m\x1b[K();\n'}
+[5.606520] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.606675] (sdc_p4) StderrLine: {'line': b'      |           \x1b[32m\x1b[Kstart_election\x1b[m\x1b[K\n'}
+[5.607273] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K election_timeout_callback\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.607521] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:283:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcreate_wall_timer\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.607748] (sdc_p4) StderrLine: {'line': b'  283 |     auto backup_timer = \x1b[01;31m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.607936] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.608111] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[32m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\n'}
+[5.608284] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.608461] (sdc_p4) StderrLine: {'line': b'  191 | \x1b[01;36m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.608724] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.608899] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.609031] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:298:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.609163] (sdc_p4) StderrLine: {'line': b'  298 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::announce_new_leader()\n'}
+[5.609292] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.618469] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K announce_new_leader\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.618734] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:301:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.618886] (sdc_p4) StderrLine: {'line': b'  301 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K != NodeState::ELECTION) {\n'}
+[5.619021] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.619148] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:301:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.619278] (sdc_p4) StderrLine: {'line': b'  301 |   if (current_state_ != \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::ELECTION) {\n'}
+[5.619405] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.624433] (-) TimerEvent: {}
+[5.625360] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:306:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.625631] (sdc_p4) StderrLine: {'line': b'  306 |   leader_msg.data = \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K;\n'}
+[5.625783] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.625915] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.638192] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:307:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knew_leader_pub_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.638530] (sdc_p4) StderrLine: {'line': b'  307 |   \x1b[01;31m\x1b[Knew_leader_pub_\x1b[m\x1b[K->publish(leader_msg);\n'}
+[5.638729] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.639718] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.639888] (sdc_p4) StderrLine: {'line': b'  309 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Sending my PID to set the new leader: %d",\n'}
+[5.640033] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.640174] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.640306] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.640435] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.640561] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.640709] (sdc_p4) StderrLine: {'line': b'  309 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",\n'}
+[5.640838] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.640962] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.641092] (sdc_p4) StderrLine: {'line': b'  309 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",\n'}
+[5.641217] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.641342] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:309:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.641464] (sdc_p4) StderrLine: {'line': b'  309 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending my PID to set the new leader: %d",\n'}
+[5.641595] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.649758] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:310:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.650067] (sdc_p4) StderrLine: {'line': b'  310 |               \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str(), pid_);\n'}
+[5.650217] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.650350] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:313:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.650481] (sdc_p4) StderrLine: {'line': b'  313 |   change_state(\x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::LEADER);\n'}
+[5.650627] (sdc_p4) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.661477] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:313:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kchange_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.661805] (sdc_p4) StderrLine: {'line': b'  313 |   \x1b[01;31m\x1b[Kchange_state\x1b[m\x1b[K(NodeState::LEADER);\n'}
+[5.662032] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.663016] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.663294] (sdc_p4) StderrLine: {'line': b'  316 |   RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] I\'m the new leader", role_str_.c_str());\n'}
+[5.663445] (sdc_p4) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.663605] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.663763] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.663982] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.664134] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.664267] (sdc_p4) StderrLine: {'line': b'  316 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] I\'m the new leader", role_str_.c_str());\n'}
+[5.664406] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.664532] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.664695] (sdc_p4) StderrLine: {'line': b'  316 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] I\'m the new leader", role_str_.c_str());\n'}
+[5.664825] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.664962] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.665113] (sdc_p4) StderrLine: {'line': b'  316 |   \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] I\'m the new leader", role_str_.c_str());\n'}
+[5.665247] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.673264] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:316:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.673524] (sdc_p4) StderrLine: {'line': b'  316 |   RCLCPP_INFO(get_logger(), "[%s] I\'m the new leader", \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.673713] (sdc_p4) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.685276] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:319:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstart_heartbeat\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.685544] (sdc_p4) StderrLine: {'line': b'  319 |   \x1b[01;31m\x1b[Kstart_heartbeat\x1b[m\x1b[K();\n'}
+[5.685703] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.695014] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:321:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kreset_election\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.695356] (sdc_p4) StderrLine: {'line': b'  321 |   \x1b[01;31m\x1b[Kreset_election\x1b[m\x1b[K();\n'}
+[5.695501] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.695681] (sdc_p4) StderrLine: {'line': b'      |   \x1b[32m\x1b[Kstart_election\x1b[m\x1b[K\n'}
+[5.695814] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.695945] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:324:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.696076] (sdc_p4) StderrLine: {'line': b'  324 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)\n'}
+[5.696206] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.702191] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K handle_new_leader\x1b[m\x1b[K(std_msgs::msg::Int32_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.702453] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:331:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.702620] (sdc_p4) StderrLine: {'line': b'  331 |   if (new_leader_pid == \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K) {\n'}
+[5.702762] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.702890] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.708901] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:337:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpid_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.709183] (sdc_p4) StderrLine: {'line': b'  337 |   if (new_leader_pid > \x1b[01;31m\x1b[Kpid_\x1b[m\x1b[K) {\n'}
+[5.709340] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.709483] (sdc_p4) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kpid_t\x1b[m\x1b[K\n'}
+[5.709872] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.710047] (sdc_p4) StderrLine: {'line': b'  338 |     RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] There is a new leader %d",\n'}
+[5.710199] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.710328] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.710461] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.710606] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.710745] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.710882] (sdc_p4) StderrLine: {'line': b'  338 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] There is a new leader %d",\n'}
+[5.711009] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.711135] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.711277] (sdc_p4) StderrLine: {'line': b'  338 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] There is a new leader %d",\n'}
+[5.711400] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.711525] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:338:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.711662] (sdc_p4) StderrLine: {'line': b'  338 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] There is a new leader %d",\n'}
+[5.711785] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.718935] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:339:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.719198] (sdc_p4) StderrLine: {'line': b'  339 |                 \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str(), new_leader_pid);\n'}
+[5.719345] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.724558] (-) TimerEvent: {}
+[5.730983] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:342:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.731349] (sdc_p4) StderrLine: {'line': b'  342 |     if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K == NodeState::LEADER) {\n'}
+[5.731495] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.731664] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:342:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.731814] (sdc_p4) StderrLine: {'line': b'  342 |     if (current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::LEADER) {\n'}
+[5.731951] (sdc_p4) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.745598] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:343:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.745900] (sdc_p4) StderrLine: {'line': b'  343 |       if (\x1b[01;31m\x1b[Kheartbeat_timer_\x1b[m\x1b[K) {\n'}
+[5.746055] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.746197] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:348:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.746337] (sdc_p4) StderrLine: {'line': b'  348 |     change_state(\x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::FOLLOWER);\n'}
+[5.746473] (sdc_p4) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.755612] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:348:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kchange_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.755918] (sdc_p4) StderrLine: {'line': b'  348 |     \x1b[01;31m\x1b[Kchange_state\x1b[m\x1b[K(NodeState::FOLLOWER);\n'}
+[5.756071] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.764714] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:349:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kreset_election\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.764959] (sdc_p4) StderrLine: {'line': b'  349 |     \x1b[01;31m\x1b[Kreset_election\x1b[m\x1b[K();\n'}
+[5.765096] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.765221] (sdc_p4) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kstart_election\x1b[m\x1b[K\n'}
+[5.778640] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:352:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.778895] (sdc_p4) StderrLine: {'line': b'  352 |     \x1b[01;31m\x1b[Klast_heartbeat_time_\x1b[m\x1b[K = now();\n'}
+[5.779030] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.784558] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:352:28:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Know\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpow\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.784832] (sdc_p4) StderrLine: {'line': b'  352 |     last_heartbeat_time_ = \x1b[01;31m\x1b[Know\x1b[m\x1b[K();\n'}
+[5.784977] (sdc_p4) StderrLine: {'line': b'      |                            \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[5.785105] (sdc_p4) StderrLine: {'line': b'      |                            \x1b[32m\x1b[Kpow\x1b[m\x1b[K\n'}
+[5.794233] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:353:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimeout_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.794479] (sdc_p4) StderrLine: {'line': b'  353 |     if (\x1b[01;31m\x1b[Ktimeout_timer_\x1b[m\x1b[K) {\n'}
+[5.794642] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.804028] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:356:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimeout_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.804299] (sdc_p4) StderrLine: {'line': b'  356 |     \x1b[01;31m\x1b[Ktimeout_timer_\x1b[m\x1b[K = create_wall_timer(\n'}
+[5.804434] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.816673] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:357:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KHEARTBEAT_TIMEOUT\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.816905] (sdc_p4) StderrLine: {'line': b'  357 |       std::chrono::milliseconds(\x1b[01;31m\x1b[KHEARTBEAT_TIMEOUT\x1b[m\x1b[K),\n'}
+[5.817082] (sdc_p4) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.817211] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:358:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.817351] (sdc_p4) StderrLine: {'line': b'  358 |       std::bind(&\x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::timeout_callback, this));\n'}
+[5.817475] (sdc_p4) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.817617] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:358:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.817754] (sdc_p4) StderrLine: {'line': b'  358 |       std::bind(&BullyNode::timeout_callback, \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K));\n'}
+[5.817879] (sdc_p4) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.818213] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:356:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcreate_wall_timer\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.818435] (sdc_p4) StderrLine: {'line': b'  356 |     timeout_timer_ = \x1b[01;31m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.818564] (sdc_p4) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.818712] (sdc_p4) StderrLine: {'line': b'      |                      \x1b[32m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\n'}
+[5.818835] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.818960] (sdc_p4) StderrLine: {'line': b'  191 | \x1b[01;36m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.819080] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.819197] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.819318] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:362:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.819438] (sdc_p4) StderrLine: {'line': b'  362 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::reset_election()\n'}
+[5.819555] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.824652] (-) TimerEvent: {}
+[5.833899] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K reset_election\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.834229] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:364:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_in_progress_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.834372] (sdc_p4) StderrLine: {'line': b'  364 |   \x1b[01;31m\x1b[Kelection_in_progress_\x1b[m\x1b[K = false;\n'}
+[5.834503] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.845670] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:365:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ki_started_election_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kstart_election\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.845954] (sdc_p4) StderrLine: {'line': b'  365 |   \x1b[01;31m\x1b[Ki_started_election_\x1b[m\x1b[K = false;\n'}
+[5.846101] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.846233] (sdc_p4) StderrLine: {'line': b'      |   \x1b[32m\x1b[Kstart_election\x1b[m\x1b[K\n'}
+[5.855240] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:366:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcandidates_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.855506] (sdc_p4) StderrLine: {'line': b'  366 |   \x1b[01;31m\x1b[Kcandidates_\x1b[m\x1b[K.clear();\n'}
+[5.855669] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.872055] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:367:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.872343] (sdc_p4) StderrLine: {'line': b'  367 |   \x1b[01;31m\x1b[Khighest_candidate_pid_\x1b[m\x1b[K = -1;\n'}
+[5.872500] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.883327] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:369:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kelection_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.883569] (sdc_p4) StderrLine: {'line': b'  369 |   if (\x1b[01;31m\x1b[Kelection_timer_\x1b[m\x1b[K) {\n'}
+[5.883732] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.883855] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.883981] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:375:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBullyNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.884113] (sdc_p4) StderrLine: {'line': b'  375 | void \x1b[01;31m\x1b[KBullyNode\x1b[m\x1b[K::start_heartbeat()\n'}
+[5.884240] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.893613] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K start_heartbeat\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.893871] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:378:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktimeout_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.894020] (sdc_p4) StderrLine: {'line': b'  378 |   if (\x1b[01;31m\x1b[Ktimeout_timer_\x1b[m\x1b[K) {\n'}
+[5.894151] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.905057] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:383:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.905302] (sdc_p4) StderrLine: {'line': b'  383 |   if (\x1b[01;31m\x1b[Kheartbeat_timer_\x1b[m\x1b[K) {\n'}
+[5.905438] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.916281] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:388:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_timer_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.916517] (sdc_p4) StderrLine: {'line': b'  388 |   \x1b[01;31m\x1b[Kheartbeat_timer_\x1b[m\x1b[K = create_wall_timer(\n'}
+[5.916675] (sdc_p4) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.924779] (-) TimerEvent: {}
+[5.931602] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:389:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KHEARTBEAT_PERIOD\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.932372] (sdc_p4) StderrLine: {'line': b'  389 |     std::chrono::milliseconds(\x1b[01;31m\x1b[KHEARTBEAT_PERIOD\x1b[m\x1b[K),\n'}
+[5.932692] (sdc_p4) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.932955] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:390:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.933386] (sdc_p4) StderrLine: {'line': b'  390 |     [\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K]() {\n'}
+[5.933711] (sdc_p4) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.933985] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In lambda function:\n'}
+[5.934243] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:391:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.934488] (sdc_p4) StderrLine: {'line': b'  391 |       if (\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->current_state_ == NodeState::LEADER) {\n'}
+[5.934730] (sdc_p4) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.934945] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:391:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.935210] (sdc_p4) StderrLine: {'line': b'  391 |       if (this->current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::LEADER) {\n'}
+[5.935471] (sdc_p4) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.935890] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:393:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.936112] (sdc_p4) StderrLine: {'line': b'  393 |         msg.data = \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_current_epoch();\n'}
+[5.936329] (sdc_p4) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.936543] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:394:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.936789] (sdc_p4) StderrLine: {'line': b'  394 |         \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->heartbeat_pub_->publish(msg);\n'}
+[5.936983] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.937163] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.937393] (sdc_p4) StderrLine: {'line': b'  396 |         RCLCPP_INFO(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.937613] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.937819] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid use of \xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 in non-member function\n'}
+[5.938011] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.938210] (sdc_p4) StderrLine: {'line': b'  396 |         \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.938397] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.938592] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.938794] (sdc_p4) StderrLine: {'line': b'  396 |         \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.938984] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.939170] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.939359] (sdc_p4) StderrLine: {'line': b'  396 |         \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(this->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.939551] (sdc_p4) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.939753] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.939947] (sdc_p4) StderrLine: {'line': b'  396 |         RCLCPP_INFO(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.940153] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.940341] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.940541] (sdc_p4) StderrLine: {'line': b'  396 |         RCLCPP_INFO(\x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->get_logger(), "[%s] Sending heartbeat", this->role_str_.c_str());\n'}
+[5.940766] (sdc_p4) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.940957] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:396:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kthis\x1b[m\x1b[K\xe2\x80\x99 was not captured for this lambda function\n'}
+[5.941147] (sdc_p4) StderrLine: {'line': b'  396 |         RCLCPP_INFO(this->get_logger(), "[%s] Sending heartbeat", \x1b[01;31m\x1b[Kthis\x1b[m\x1b[K->role_str_.c_str());\n'}
+[5.941337] (sdc_p4) StderrLine: {'line': b'      |                                                                   \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[5.941527] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K start_heartbeat\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.941741] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:388:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcreate_wall_timer\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.941953] (sdc_p4) StderrLine: {'line': b'  388 |   heartbeat_timer_ = \x1b[01;31m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.942161] (sdc_p4) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.942368] (sdc_p4) StderrLine: {'line': b'      |                      \x1b[32m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\n'}
+[5.942570] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/create_timer.hpp:191:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::create_wall_timer\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.942793] (sdc_p4) StderrLine: {'line': b'  191 | \x1b[01;36m\x1b[Kcreate_wall_timer\x1b[m\x1b[K(\n'}
+[5.942984] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.948513] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:401:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_state_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.948954] (sdc_p4) StderrLine: {'line': b'  401 |   if (\x1b[01;31m\x1b[Kcurrent_state_\x1b[m\x1b[K == NodeState::LEADER) {\n'}
+[5.949234] (sdc_p4) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.949486] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:401:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNodeState\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[5.949743] (sdc_p4) StderrLine: {'line': b'  401 |   if (current_state_ == \x1b[01;31m\x1b[KNodeState\x1b[m\x1b[K::LEADER) {\n'}
+[5.949944] (sdc_p4) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.960486] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:404:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kheartbeat_pub_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.960884] (sdc_p4) StderrLine: {'line': b'  404 |     \x1b[01;31m\x1b[Kheartbeat_pub_\x1b[m\x1b[K->publish(msg);\n'}
+[5.961122] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.961587] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kget_logger\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[5.961886] (sdc_p4) StderrLine: {'line': b'  406 |     RCLCPP_INFO(\x1b[01;31m\x1b[Kget_logger\x1b[m\x1b[K(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.962132] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.962369] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/rolling/include/rclcpp/rclcpp/logger.hpp:136:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::get_logger\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[5.962626] (sdc_p4) StderrLine: {'line': b'  136 |   friend Logger \x1b[01;36m\x1b[Krclcpp\x1b[m\x1b[K::get_logger(const std::string & name);\n'}
+[5.962858] (sdc_p4) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.963060] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.963259] (sdc_p4) StderrLine: {'line': b'  406 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.963488] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.963707] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.963907] (sdc_p4) StderrLine: {'line': b'  406 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.964095] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.964282] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[5.964471] (sdc_p4) StderrLine: {'line': b'  406 |     \x1b[01;31m\x1b[KRCLCPP_INFO\x1b[m\x1b[K(get_logger(), "[%s] Sending heartbeat", role_str_.c_str());\n'}
+[5.964671] (sdc_p4) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.971112] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:406:57:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krole_str_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[5.971530] (sdc_p4) StderrLine: {'line': b'  406 |     RCLCPP_INFO(get_logger(), "[%s] Sending heartbeat", \x1b[01;31m\x1b[Krole_str_\x1b[m\x1b[K.c_str());\n'}
+[5.971834] (sdc_p4) StderrLine: {'line': b'      |                                                         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[5.972096] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:\x1b[m\x1b[K At global scope:\n'}
+[5.972337] (sdc_p4) StderrLine: {'line': b'\x1b[01m\x1b[K/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4/src/bully.cpp:410:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected declaration before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[5.972597] (sdc_p4) StderrLine: {'line': b'  410 | \x1b[01;31m\x1b[K}\x1b[m\x1b[K  // namespace sdc_p4\n'}
+[5.972851] (sdc_p4) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[6.024955] (-) TimerEvent: {}
+[6.125506] (-) TimerEvent: {}
+[6.226134] (-) TimerEvent: {}
+[6.326704] (-) TimerEvent: {}
+[6.427249] (-) TimerEvent: {}
+[6.527851] (-) TimerEvent: {}
+[6.628465] (-) TimerEvent: {}
+[6.729111] (-) TimerEvent: {}
+[6.829789] (-) TimerEvent: {}
+[6.930411] (-) TimerEvent: {}
+[7.031137] (-) TimerEvent: {}
+[7.131917] (-) TimerEvent: {}
+[7.232442] (-) TimerEvent: {}
+[7.333003] (-) TimerEvent: {}
+[7.433481] (-) TimerEvent: {}
+[7.534019] (-) TimerEvent: {}
+[7.634498] (-) TimerEvent: {}
+[7.735004] (-) TimerEvent: {}
+[7.835412] (-) TimerEvent: {}
+[7.935868] (-) TimerEvent: {}
+[8.036411] (-) TimerEvent: {}
+[8.136947] (-) TimerEvent: {}
+[8.237403] (-) TimerEvent: {}
+[8.337902] (-) TimerEvent: {}
+[8.438446] (-) TimerEvent: {}
+[8.539085] (-) TimerEvent: {}
+[8.639665] (-) TimerEvent: {}
+[8.740222] (-) TimerEvent: {}
+[8.840852] (-) TimerEvent: {}
+[8.941373] (-) TimerEvent: {}
+[9.042039] (-) TimerEvent: {}
+[9.142644] (-) TimerEvent: {}
+[9.243192] (-) TimerEvent: {}
+[9.343759] (-) TimerEvent: {}
+[9.444182] (-) TimerEvent: {}
+[9.544617] (-) TimerEvent: {}
+[9.645073] (-) TimerEvent: {}
+[9.745561] (-) TimerEvent: {}
+[9.846051] (-) TimerEvent: {}
+[9.946519] (-) TimerEvent: {}
+[10.047027] (-) TimerEvent: {}
+[10.147604] (-) TimerEvent: {}
+[10.248040] (-) TimerEvent: {}
+[10.348511] (-) TimerEvent: {}
+[10.449047] (-) TimerEvent: {}
+[10.549554] (-) TimerEvent: {}
+[10.650011] (-) TimerEvent: {}
+[10.750556] (-) TimerEvent: {}
+[10.851042] (-) TimerEvent: {}
+[10.951609] (-) TimerEvent: {}
+[11.052191] (-) TimerEvent: {}
+[11.152740] (-) TimerEvent: {}
+[11.253306] (-) TimerEvent: {}
+[11.353874] (-) TimerEvent: {}
+[11.454349] (-) TimerEvent: {}
+[11.554891] (-) TimerEvent: {}
+[11.655380] (-) TimerEvent: {}
+[11.755914] (-) TimerEvent: {}
+[11.854538] (sdc_p4) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/bully.dir/build.make:76: CMakeFiles/bully.dir/src/bully.cpp.o] Error 1\n'}
+[11.855068] (sdc_p4) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/bully.dir/all] Error 2\n'}
+[11.855369] (sdc_p4) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[11.855985] (-) TimerEvent: {}
+[11.860877] (sdc_p4) CommandEnded: {'returncode': 2}
+[11.887631] (sdc_p4) JobEnded: {'identifier': 'sdc_p4', 'rc': 2}
+[11.901089] (-) EventReactorShutdown: {}
