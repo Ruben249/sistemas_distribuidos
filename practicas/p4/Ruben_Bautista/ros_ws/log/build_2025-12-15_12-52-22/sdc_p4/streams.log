@@ -1,0 +1,32 @@
+[0.037s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4
+[0.258s] -- The C compiler identification is GNU 13.3.0
+[0.433s] -- The CXX compiler identification is GNU 13.3.0
+[0.473s] -- Detecting C compiler ABI info
+[0.655s] -- Detecting C compiler ABI info - done
+[0.679s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.688s] -- Detecting C compile features
+[0.689s] -- Detecting C compile features - done
+[0.708s] -- Detecting CXX compiler ABI info
+[0.942s] -- Detecting CXX compiler ABI info - done
+[0.968s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.969s] -- Detecting CXX compile features
+[0.970s] -- Detecting CXX compile features - done
+[0.996s] [31mCMake Error at CMakeLists.txt:10 (find_package):
+[0.996s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[0.996s]   has asked CMake to find a package configuration file provided by
+[0.997s]   "ament_cmake", but CMake did not find one.
+[0.997s] 
+[0.997s]   Could not find a package configuration file provided by "ament_cmake" with
+[0.997s]   any of the following names:
+[0.997s] 
+[0.998s]     ament_cmakeConfig.cmake
+[0.998s]     ament_cmake-config.cmake
+[0.998s] 
+[0.998s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[0.999s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[0.999s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[0.999s]   has been installed.
+[0.999s] 
+[0.999s] [0m
+[1.000s] -- Configuring incomplete, errors occurred!
+[1.004s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/src/sdc_p4 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4

@@ -1,0 +1,3 @@
+source;share/sdc_p4/environment/ament_prefix_path.sh
+source;share/sdc_p4/environment/library_path.sh
+source;share/sdc_p4/environment/path.sh

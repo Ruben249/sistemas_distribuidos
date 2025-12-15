@@ -1,8 +1,3 @@
-/*
-  Bully Algorithm Implementation for ROS2
-  Distributed and Concurrent Systems
- */
-
 #include "sdc_p4/bully.hpp"
 
 #include <unistd.h>
@@ -18,7 +13,7 @@ using namespace std::chrono_literals;
 BullyNode::BullyNode(const rclcpp::NodeOptions & options)
 : Node("bully_node_" + std::to_string(getpid()), options),
   pid_(getpid()),
-  current_state_(NodeState::FOLLOWER),  // Siempre comenzar como follower
+  current_state_(NodeState::FOLLOWER),
   election_in_progress_(false),
   highest_candidate_pid_(-1),
   i_started_election_(false),
@@ -26,6 +21,9 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
 {
   declare_parameter("role", "follower");
   start_role_ = get_parameter("role").as_string();
+  
+  // **AÑADIR: Inicializar role_str_ desde el principio**
+  role_str_ = "follower";  // Estado inicial por defecto
   
   // Primero inicializar TODOS los publishers y subscribers
   rclcpp::QoS qos_settings(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
@@ -62,14 +60,15 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
     std::bind(&BullyNode::handle_new_leader, this, std::placeholders::_1));
 
   if (start_role_ == "leader") {
-    RCLCPP_INFO(get_logger(), "Node started with role 'leader' with PID: %d. Will start election after 1 second", pid_);
+    // **CORRECCIÓN: Cambiar estado a follower primero (como todos)**
+    change_state(NodeState::FOLLOWER);
+    RCLCPP_INFO(get_logger(), "[%s] Node started with PID: %d", role_str_.c_str(), pid_);
     
     // Esperar 1 segundo y luego iniciar elecciones
     init_timer_ = this->create_wall_timer(
       std::chrono::milliseconds(LEADER_START_DELAY),
       [this]() {
         is_initializing_ = false;
-        RCLCPP_INFO(get_logger(), "[follower] Initialization delay complete, starting election");
         // Cancelar el timer después de usarlo
         if (init_timer_) {
           init_timer_->cancel();
@@ -78,8 +77,9 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
       });
     
   } else {
-    // Configurar como follower inicialmente dormido
-    RCLCPP_INFO(get_logger(), "Node started as follower with PID: %d. Sleeping for 7 seconds...", pid_);
+    // **CORRECCIÓN: Asegurar que se llama a change_state()**
+    change_state(NodeState::FOLLOWER);
+    RCLCPP_INFO(get_logger(), "[%s] Node started with PID: %d", role_str_.c_str(), pid_);
     
     // Configurar timer de timeout para followers DESPUÉS de 7 segundos
     last_heartbeat_time_ = now();
@@ -89,7 +89,6 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
       std::chrono::milliseconds(FOLLOWER_START_DELAY),
       [this]() {
         is_initializing_ = false;
-        RCLCPP_INFO(get_logger(), "[follower] Waking up after 7 seconds delay");
         // Cancelar el timer después de usarlo
         if (init_timer_) {
           init_timer_->cancel();
@@ -100,7 +99,8 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
         double time_since_last_heartbeat = (current_time - last_heartbeat_time_).seconds();
         
         if (time_since_last_heartbeat * 1000 > HEARTBEAT_TIMEOUT) {
-          RCLCPP_WARN(get_logger(), "[follower] No heartbeat received while sleeping, starting election");
+          RCLCPP_WARN(get_logger(), "[%s] No heartbeat received in the last %.0f seconds!", 
+                      role_str_.c_str(), time_since_last_heartbeat);
           start_election();
         } else {
           // Configurar timeout timer normal
@@ -111,6 +111,7 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
       });
   }
 }
+
 void BullyNode::change_state(NodeState new_state)
 {
   current_state_ = new_state;
@@ -173,24 +174,21 @@ void BullyNode::handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg)
   // Si estamos inicializando como follower, ignorar heartbeats hasta despertar
   if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
     return;
-  }
-  
-  if (current_state_ == NodeState::ELECTION) {
+  } else if (current_state_ == NodeState::ELECTION) {
+    return;
+  } else if (current_state_ == NodeState::LEADER) {
     return;
   }
 
   last_heartbeat_time_ = now();
   
-  if (current_state_ == NodeState::FOLLOWER) {
-    RCLCPP_INFO(get_logger(), "[%s] Received heartbeat", role_str_.c_str());
-  }
+  RCLCPP_INFO(get_logger(), "[%s] Received heartbeat", role_str_.c_str());
 }
 
 void BullyNode::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)
 {
   // Si estamos inicializando como follower, ignorar mensajes de elección
   if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
-    RCLCPP_INFO(get_logger(), "[follower] Ignoring election start while initializing (sleeping)");
     return;
   }
   
@@ -245,7 +243,6 @@ void BullyNode::start_election()
 {
   // Si estamos inicializando como follower, no iniciar elecciones
   if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
-    RCLCPP_INFO(get_logger(), "[follower] Cannot start election while initializing (sleeping)");
     return;
   }
   
@@ -319,17 +316,12 @@ void BullyNode::election_timeout_callback()
   if (pid_ == max_pid) {
     announce_new_leader();
   } else {
-    // Si no somos el más alto, solo esperar
-    // El nodo con PID más alto debería anunciarse
-    RCLCPP_INFO(get_logger(), "[election] Waiting for new leader announcement. Highest PID: %d", max_pid);
-    
     // Timer de backup por si el nodo más alto falla
     auto backup_timer = create_wall_timer(
       3000ms,
       [this]() {
         if (current_state_ == NodeState::ELECTION) {
           // Si aún no hay líder, reiniciar elección
-          RCLCPP_WARN(get_logger(), "[election] No leader announced, restarting election");
           reset_election();
           start_election();
         }
@@ -349,10 +341,7 @@ void BullyNode::announce_new_leader()
   auto leader_msg = std_msgs::msg::Int32();
   leader_msg.data = pid_;
   new_leader_pub_->publish(leader_msg);
-  
-  RCLCPP_INFO(get_logger(), "[%s] Sending my PID to set the new leader: %d", 
-              role_str_.c_str(), pid_);
-  
+    
   // Cambiar estado primero
   change_state(NodeState::LEADER);
   
@@ -369,7 +358,6 @@ void BullyNode::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
 {
   // Si estamos inicializando como follower, ignorar líderes hasta despertar
   if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
-    RCLCPP_INFO(get_logger(), "[follower] Ignoring new leader while initializing (sleeping)");
     return;
   }
   
@@ -380,24 +368,16 @@ void BullyNode::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
     // Solo si estamos en elección significa que ya nos anunciamos
     if (current_state_ == NodeState::ELECTION) {
       change_state(NodeState::LEADER);
-      RCLCPP_INFO(get_logger(), "[leader] Confirmed as leader with PID: %d", pid_);
       start_heartbeat();
       reset_election();
     }
     return;
-  }
-  
-  // IMPORTANTE: Siempre aceptar líder con PID mayor, incluso si estamos en elección
-  if (new_leader_pid > pid_) {
-    RCLCPP_INFO(get_logger(), "[%s] Accepting new leader %d (my PID: %d)", 
-                role_str_.c_str(), new_leader_pid, pid_);
-    
+  } else if (new_leader_pid > pid_) {
     // Si éramos líder, dejar de serlo
     if (current_state_ == NodeState::LEADER) {
       if (heartbeat_timer_) {
         heartbeat_timer_->cancel();
       }
-      RCLCPP_INFO(get_logger(), "[leader] Stepping down for higher PID leader");
     }
     
     change_state(NodeState::FOLLOWER);
@@ -415,11 +395,7 @@ void BullyNode::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
         std::chrono::milliseconds(HEARTBEAT_TIMEOUT),
         std::bind(&BullyNode::timeout_callback, this));
     }
-  } else if (new_leader_pid < pid_) {
-    // Si recibimos líder con PID menor, ignorarlo y continuar nuestra elección
-    RCLCPP_INFO(get_logger(), "[%s] Ignoring leader with lower PID %d (my PID: %d)", 
-                role_str_.c_str(), new_leader_pid, pid_);
-  }
+  }   
 }
 
 void BullyNode::reset_election()
