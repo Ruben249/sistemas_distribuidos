@@ -23,7 +23,6 @@ public:
   explicit BullyNode(const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
 private:
-  // Node state enumeration
   enum class NodeState
   {
     FOLLOWER,
@@ -33,10 +32,12 @@ private:
 
   // Constants
   static constexpr int HEARTBEAT_PERIOD = 5000;
-  static constexpr int START_DELAY = 5000;
-  static constexpr int HEARTBEAT_TIMEOUT = 8000;
+  static constexpr int LEADER_START_DELAY = 1000;
+  static constexpr int FOLLOWER_START_DELAY = 7000;
+  static constexpr int HEARTBEAT_TIMEOUT = 15000;
   static constexpr int ELECTION_DURATION = 5000;
   static constexpr int DEBOUNCE_TIME = 500;
+  static constexpr int START_DELAY = 5000;
 
   int pid_;
   NodeState current_state_;
@@ -48,14 +49,15 @@ private:
   std::set<int> candidates_;
   int highest_candidate_pid_;
   bool i_started_election_;
+  bool is_initializing_;
 
-  // Timers
   rclcpp::TimerBase::SharedPtr heartbeat_timer_;
   rclcpp::TimerBase::SharedPtr timeout_timer_;
   rclcpp::TimerBase::SharedPtr election_timer_;
   rclcpp::TimerBase::SharedPtr debounce_timer_;
   rclcpp::TimerBase::SharedPtr leader_init_timer_;
-   rclcpp::Time election_start_time_;
+  rclcpp::TimerBase::SharedPtr init_timer_;
+  rclcpp::Time election_start_time_;
 
   // Publishers
   rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr heartbeat_pub_;

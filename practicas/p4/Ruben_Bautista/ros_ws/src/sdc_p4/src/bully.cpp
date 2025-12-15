@@ -18,10 +18,11 @@ using namespace std::chrono_literals;
 BullyNode::BullyNode(const rclcpp::NodeOptions & options)
 : Node("bully_node_" + std::to_string(getpid()), options),
   pid_(getpid()),
-  current_state_(NodeState::FOLLOWER),
+  current_state_(NodeState::FOLLOWER),  // Siempre comenzar como follower
   election_in_progress_(false),
   highest_candidate_pid_(-1),
-  i_started_election_(false)
+  i_started_election_(false),
+  is_initializing_(true)
 {
   declare_parameter("role", "follower");
   start_role_ = get_parameter("role").as_string();
@@ -60,39 +61,56 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
     "/sdc/p4/new_leader", qos_settings,
     std::bind(&BullyNode::handle_new_leader, this, std::placeholders::_1));
 
-  // AHORA configurar el estado basado en el rol
   if (start_role_ == "leader") {
-    // Configurar como líder inmediatamente
-    change_state(NodeState::LEADER);
-    RCLCPP_INFO(get_logger(), "[leader] Node started as leader with PID: %d", pid_);
+    RCLCPP_INFO(get_logger(), "Node started with role 'leader' with PID: %d. Will start election after 1 second", pid_);
     
-    // Anunciarse como líder (solo después de que los publishers estén creados)
-    auto leader_msg = std_msgs::msg::Int32();
-    leader_msg.data = pid_;
-    new_leader_pub_->publish(leader_msg);
-    RCLCPP_INFO(get_logger(), "[leader] Announcing myself as leader: %d", pid_);
-
-    auto init_timer = this->create_wall_timer(
-      std::chrono::milliseconds(START_DELAY),
+    // Esperar 1 segundo y luego iniciar elecciones
+    init_timer_ = this->create_wall_timer(
+      std::chrono::milliseconds(LEADER_START_DELAY),
       [this]() {
+        is_initializing_ = false;
+        RCLCPP_INFO(get_logger(), "[follower] Initialization delay complete, starting election");
+        // Cancelar el timer después de usarlo
+        if (init_timer_) {
+          init_timer_->cancel();
+        }
         start_election();
-      },
-      nullptr, true);
+      });
     
-    // Iniciar heartbeats inmediatamente
-    start_heartbeat();
-    
-    // No necesitamos el timeout_timer para líderes
   } else {
+    // Configurar como follower inicialmente dormido
+    RCLCPP_INFO(get_logger(), "Node started as follower with PID: %d. Sleeping for 7 seconds...", pid_);
     
-    // Configurar timer de timeout para followers
+    // Configurar timer de timeout para followers DESPUÉS de 7 segundos
     last_heartbeat_time_ = now();
-    timeout_timer_ = create_wall_timer(
-      std::chrono::milliseconds(HEARTBEAT_TIMEOUT),
-      std::bind(&BullyNode::timeout_callback, this));
+    
+    // Crear un timer para activar el follower después de 7 segundos
+    init_timer_ = create_wall_timer(
+      std::chrono::milliseconds(FOLLOWER_START_DELAY),
+      [this]() {
+        is_initializing_ = false;
+        RCLCPP_INFO(get_logger(), "[follower] Waking up after 7 seconds delay");
+        // Cancelar el timer después de usarlo
+        if (init_timer_) {
+          init_timer_->cancel();
+        }
+        
+        // Verificar si ya recibimos heartbeat mientras dormíamos
+        rclcpp::Time current_time = now();
+        double time_since_last_heartbeat = (current_time - last_heartbeat_time_).seconds();
+        
+        if (time_since_last_heartbeat * 1000 > HEARTBEAT_TIMEOUT) {
+          RCLCPP_WARN(get_logger(), "[follower] No heartbeat received while sleeping, starting election");
+          start_election();
+        } else {
+          // Configurar timeout timer normal
+          timeout_timer_ = create_wall_timer(
+            std::chrono::milliseconds(HEARTBEAT_TIMEOUT),
+            std::bind(&BullyNode::timeout_callback, this));
+        }
+      });
   }
 }
-
 void BullyNode::change_state(NodeState new_state)
 {
   current_state_ = new_state;
@@ -130,6 +148,11 @@ void BullyNode::heartbeat_callback()
 
 void BullyNode::timeout_callback()
 {
+  // Si estamos en inicialización, no hacer nada
+  if (is_initializing_) {
+    return;
+  }
+  
   if (current_state_ != NodeState::FOLLOWER) {
     return;
   }
@@ -147,6 +170,11 @@ void BullyNode::timeout_callback()
 
 void BullyNode::handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg)
 {
+  // Si estamos inicializando como follower, ignorar heartbeats hasta despertar
+  if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
+    return;
+  }
+  
   if (current_state_ == NodeState::ELECTION) {
     return;
   }
@@ -160,6 +188,12 @@ void BullyNode::handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg)
 
 void BullyNode::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)
 {
+  // Si estamos inicializando como follower, ignorar mensajes de elección
+  if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
+    RCLCPP_INFO(get_logger(), "[follower] Ignoring election start while initializing (sleeping)");
+    return;
+  }
+  
   // SI ya hay una elección en curso, ignorar (evitar múltiples elecciones)
   if (election_in_progress_) {
     return;
@@ -199,7 +233,7 @@ void BullyNode::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)
     highest_candidate_pid_ = pid_;
   }
   
-  // Iniciar timer de elección (2 segundos)
+  // Iniciar timer de elección (5 segundos)
   election_timer_ = create_wall_timer(
     std::chrono::milliseconds(ELECTION_DURATION),
     std::bind(&BullyNode::election_timeout_callback, this),
@@ -209,6 +243,12 @@ void BullyNode::handle_election_start(const std_msgs::msg::Int32::SharedPtr msg)
 
 void BullyNode::start_election()
 {
+  // Si estamos inicializando como follower, no iniciar elecciones
+  if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
+    RCLCPP_INFO(get_logger(), "[follower] Cannot start election while initializing (sleeping)");
+    return;
+  }
+  
   if (election_in_progress_) {
     return;
   }
@@ -229,6 +269,11 @@ void BullyNode::start_election()
 
 void BullyNode::handle_candidate(const std_msgs::msg::Int32::SharedPtr msg)
 {
+  // Si estamos inicializando como follower, ignorar candidatos
+  if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
+    return;
+  }
+  
   if (current_state_ != NodeState::ELECTION) {
     return;
   }
@@ -322,39 +367,58 @@ void BullyNode::announce_new_leader()
 
 void BullyNode::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
 {
-  int new_leader_pid = msg->data;
-  
-  // IMPORTANTE: Si recibimos un líder con PID mayor, ACEPTARLO inmediatamente
-  // incluso si ya nos habíamos declarado líder
-  
-  if (new_leader_pid == pid_) {
-    // Si somos nosotros, ya lo manejamos en announce_new_leader
+  // Si estamos inicializando como follower, ignorar líderes hasta despertar
+  if (is_initializing_ && current_state_ == NodeState::FOLLOWER) {
+    RCLCPP_INFO(get_logger(), "[follower] Ignoring new leader while initializing (sleeping)");
     return;
   }
   
-  // CORRECCIÓN: Si recibimos un líder con PID mayor, aceptarlo
+  int new_leader_pid = msg->data;
+  
+  // Si somos nosotros, solo procesar si ya nos habíamos anunciado como líder
+  if (new_leader_pid == pid_) {
+    // Solo si estamos en elección significa que ya nos anunciamos
+    if (current_state_ == NodeState::ELECTION) {
+      change_state(NodeState::LEADER);
+      RCLCPP_INFO(get_logger(), "[leader] Confirmed as leader with PID: %d", pid_);
+      start_heartbeat();
+      reset_election();
+    }
+    return;
+  }
+  
+  // IMPORTANTE: Siempre aceptar líder con PID mayor, incluso si estamos en elección
   if (new_leader_pid > pid_) {
-    RCLCPP_INFO(get_logger(), "[%s] There is a new leader %d", 
-                role_str_.c_str(), new_leader_pid);
+    RCLCPP_INFO(get_logger(), "[%s] Accepting new leader %d (my PID: %d)", 
+                role_str_.c_str(), new_leader_pid, pid_);
     
     // Si éramos líder, dejar de serlo
     if (current_state_ == NodeState::LEADER) {
       if (heartbeat_timer_) {
         heartbeat_timer_->cancel();
       }
+      RCLCPP_INFO(get_logger(), "[leader] Stepping down for higher PID leader");
     }
     
     change_state(NodeState::FOLLOWER);
     reset_election();
     
-    // Resetear timer de heartbeat
+    // Resetear heartbeat tracking
     last_heartbeat_time_ = now();
-    if (timeout_timer_) {
-      timeout_timer_->cancel();
+    
+    // Configurar timeout timer solo si ya no estamos inicializando
+    if (!is_initializing_) {
+      if (timeout_timer_) {
+        timeout_timer_->cancel();
+      }
+      timeout_timer_ = create_wall_timer(
+        std::chrono::milliseconds(HEARTBEAT_TIMEOUT),
+        std::bind(&BullyNode::timeout_callback, this));
     }
-    timeout_timer_ = create_wall_timer(
-      std::chrono::milliseconds(HEARTBEAT_TIMEOUT),
-      std::bind(&BullyNode::timeout_callback, this));
+  } else if (new_leader_pid < pid_) {
+    // Si recibimos líder con PID menor, ignorarlo y continuar nuestra elección
+    RCLCPP_INFO(get_logger(), "[%s] Ignoring leader with lower PID %d (my PID: %d)", 
+                role_str_.c_str(), new_leader_pid, pid_);
   }
 }
 
