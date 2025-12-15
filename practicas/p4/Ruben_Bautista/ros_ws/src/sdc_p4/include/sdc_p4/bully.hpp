@@ -38,6 +38,7 @@ private:
   static constexpr int DEBOUNCE_TIME = 500;
   static constexpr int START_DELAY = 5000;
 
+  // Variables
   int pid_;
   NodeState current_state_;
   std::string role_str_;
@@ -73,27 +74,26 @@ private:
   // Callback methods
   void heartbeat_callback();
   void timeout_callback();
-  void election_timeout_callback();
+  void election_callback();
   void debounce_callback();
   void leader_init_callback();
 
   // Message handlers
-  void handle_heartbeat(const std_msgs::msg::Float64::SharedPtr msg);
-  void handle_election_start(const std_msgs::msg::Int32::SharedPtr msg);
-  void handle_candidate(const std_msgs::msg::Int32::SharedPtr msg);
-  void handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg);
+  void receive_heartbeat(const std_msgs::msg::Float64::SharedPtr msg);
+  void election_process(const std_msgs::msg::Int32::SharedPtr msg);
+  void receive_candidate(const std_msgs::msg::Int32::SharedPtr msg);
+  void announce_new_leader(const std_msgs::msg::Int32::SharedPtr msg);
 
   // State methods
   void change_state(NodeState new_state);
   void start_election();
-  void end_election();
-  void announce_new_leader();
+  void send_pid();
   void reset_election();
   void start_heartbeat();
 
 
-  std::string state_to_string(NodeState state);
-  double get_current_epoch();
+  std::string state_2_string(NodeState state);
+  double get_epoch();
 };
 
 }  // namespace sdc_p4
