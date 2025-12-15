@@ -22,11 +22,10 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
   declare_parameter("role", "follower");
   start_role_ = get_parameter("role").as_string();
   
-  // **AÑADIR: Inicializar role_str_ desde el principio**
-  role_str_ = "follower";  // Estado inicial por defecto
-  
-  // Primero inicializar TODOS los publishers y subscribers
-  rclcpp::QoS qos_settings(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
+  role_str_ = "follower";
+
+  rclcpp::QoS qos_settings(rclcpp::QoSInitialization::from_rmw
+    (rmw_qos_profile_default));
   qos_settings.keep_last(10);
   qos_settings.reliable();
   qos_settings.durability_volatile();
@@ -60,27 +59,12 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
     std::bind(&BullyNode::handle_new_leader, this, std::placeholders::_1));
 
   if (start_role_ == "leader") {
-    // **CORRECCIÓN: Cambiar estado a follower primero (como todos)**
-    change_state(NodeState::FOLLOWER);
-    RCLCPP_INFO(get_logger(), "[%s] Node started with PID: %d", role_str_.c_str(), pid_);
-    
-    // Esperar 1 segundo y luego iniciar elecciones
-    init_timer_ = this->create_wall_timer(
-      std::chrono::milliseconds(LEADER_START_DELAY),
-      [this]() {
-        is_initializing_ = false;
-        // Cancelar el timer después de usarlo
-        if (init_timer_) {
-          init_timer_->cancel();
-        }
-        start_election();
-      });
-    
+    // Set the state to LEADER, then start election
+    change_state(NodeState::LEADER);
+    start_election();    
   } else {
     // **CORRECCIÓN: Asegurar que se llama a change_state()**
     change_state(NodeState::FOLLOWER);
-    RCLCPP_INFO(get_logger(), "[%s] Node started with PID: %d", role_str_.c_str(), pid_);
-    
     // Configurar timer de timeout para followers DESPUÉS de 7 segundos
     last_heartbeat_time_ = now();
     
@@ -277,8 +261,15 @@ void BullyNode::handle_candidate(const std_msgs::msg::Int32::SharedPtr msg)
 
   int candidate_pid = msg->data;
   
-  // No registrar nuestro propio PID de nuevo
+  // *** AÑADIR: No mostrar mensaje si es nuestro propio PID ***
   if (candidate_pid == pid_) {
+    // No mostrar nada, solo añadir a candidatos si es necesario
+    if (candidates_.find(candidate_pid) == candidates_.end()) {
+      candidates_.insert(candidate_pid);
+      if (candidate_pid > highest_candidate_pid_) {
+        highest_candidate_pid_ = candidate_pid;
+      }
+    }
     return;
   }
   
@@ -342,15 +333,14 @@ void BullyNode::announce_new_leader()
   leader_msg.data = pid_;
   new_leader_pub_->publish(leader_msg);
     
-  // Cambiar estado primero
-  change_state(NodeState::LEADER);
+  // *** CORRECCIÓN: NO mostrar mensaje aquí, lo mostrará handle_new_leader() ***
+  RCLCPP_INFO(get_logger(), "[election] Sending my PID to set the new leader: %d", pid_);  // <-- Este mensaje SÍ debe estar
   
-  // Luego imprimir mensaje
-  RCLCPP_INFO(get_logger(), "[%s] I'm the new leader", role_str_.c_str());
+  // NO cambiar estado aquí, se hará en handle_new_leader()
+  // NO mostrar "I'm the new leader" aquí
   
-  // Finalmente iniciar heartbeats
-  start_heartbeat();
-  
+  // Resetear la elección pero mantenernos en estado ELECTION
+  // handle_new_leader() se encargará del cambio
   reset_election();
 }
 
@@ -363,16 +353,29 @@ void BullyNode::handle_new_leader(const std_msgs::msg::Int32::SharedPtr msg)
   
   int new_leader_pid = msg->data;
   
-  // Si somos nosotros, solo procesar si ya nos habíamos anunciado como líder
+  // *** AÑADIR: Si ya somos seguidores y ya tenemos un líder, ignorar anuncios adicionales ***
+  if (current_state_ == NodeState::FOLLOWER) {
+    // Ya somos followers, solo aceptar líder con PID mayor si lo recibimos
+    // Para evitar múltiples mensajes "There is a new leader"
+    return;
+  }
+  
+  // Si el nuevo líder somos nosotros
   if (new_leader_pid == pid_) {
-    // Solo si estamos en elección significa que ya nos anunciamos
+    // Solo procesar si estamos en elección (es nuestro anuncio)
     if (current_state_ == NodeState::ELECTION) {
       change_state(NodeState::LEADER);
+      RCLCPP_INFO(get_logger(), "[leader] I'm the new leader");
       start_heartbeat();
       reset_election();
+    } else if (current_state_ == NodeState::LEADER) {
+      // Ya somos líder, ignorar nuestro propio anuncio
+      return;
     }
     return;
   } else if (new_leader_pid > pid_) {
+    RCLCPP_INFO(get_logger(), "[follower] There is a new leader %d", new_leader_pid);
+    
     // Si éramos líder, dejar de serlo
     if (current_state_ == NodeState::LEADER) {
       if (heartbeat_timer_) {

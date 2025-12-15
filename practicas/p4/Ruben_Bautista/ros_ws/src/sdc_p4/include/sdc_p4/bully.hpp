@@ -32,9 +32,8 @@ private:
 
   // Constants
   static constexpr int HEARTBEAT_PERIOD = 5000;
-  static constexpr int LEADER_START_DELAY = 1000;
-  static constexpr int FOLLOWER_START_DELAY = 7000;
-  static constexpr int HEARTBEAT_TIMEOUT = 15000;
+  static constexpr int FOLLOWER_START_DELAY = 2000;
+  static constexpr int HEARTBEAT_TIMEOUT = 11000;
   static constexpr int ELECTION_DURATION = 5000;
   static constexpr int DEBOUNCE_TIME = 500;
   static constexpr int START_DELAY = 5000;

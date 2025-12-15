@@ -1,0 +1,31 @@
+[0.032s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8
+[0.171s] [ 50%] [32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o[0m
+[21.666s] [100%] [32m[1mLinking CXX executable bully[0m
+[23.585s] [100%] Built target bully
+[23.606s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4 -- -j8 -l8
+[23.626s] Invoking command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4
+[23.642s] -- Install configuration: ""
+[23.643s] -- Execute custom install script
+[23.643s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib/sdc_p4/bully
+[23.644s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/include//sdc_p4/bully.hpp
+[23.645s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/library_path.sh
+[23.645s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/library_path.dsv
+[23.646s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/package_run_dependencies/sdc_p4
+[23.646s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/parent_prefix_path/sdc_p4
+[23.647s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/ament_prefix_path.sh
+[23.647s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/ament_prefix_path.dsv
+[23.647s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/path.sh
+[23.648s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/path.dsv
+[23.649s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.bash
+[23.649s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.sh
+[23.649s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.zsh
+[23.650s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.dsv
+[23.650s] -- Symlinking: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/package.dsv
+[23.669s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/packages/sdc_p4
+[23.670s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_dependencies-extras.cmake
+[23.670s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_include_directories-extras.cmake
+[23.670s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_libraries-extras.cmake
+[23.670s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/sdc_p4Config.cmake
+[23.671s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/sdc_p4Config-version.cmake
+[23.671s] -- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/package.xml
+[23.675s] Invoked command in '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4

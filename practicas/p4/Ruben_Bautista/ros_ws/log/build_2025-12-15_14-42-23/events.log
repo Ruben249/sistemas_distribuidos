@@ -1,0 +1,274 @@
+[0.000000] (-) TimerEvent: {}
+[0.000362] (sdc_p4) JobQueued: {'identifier': 'sdc_p4', 'dependencies': OrderedDict()}
+[0.001414] (sdc_p4) JobStarted: {'identifier': 'sdc_p4'}
+[0.027135] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'cmake'}
+[0.028378] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'build'}
+[0.029928] (sdc_p4) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', '--', '-j8', '-l8'], 'cwd': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'XDG_ACTIVATION_TOKEN': 'gnome-shell/Terminator/3400-1-rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM_TIME371285', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2147450879', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/rolling/share/', 'USER': 'rubenb', 'LC_TIME': 'es_ES.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/rolling/opt/gz_sim_vendor/share/gz:/opt/ros/rolling/opt/sdformat_vendor/share/gz:/opt/ros/rolling/opt/gz_gui_vendor/share/gz:/opt/ros/rolling/opt/gz_transport_vendor/share/gz:/opt/ros/rolling/opt/gz_rendering_vendor/share/gz:/opt/ros/rolling/opt/gz_plugin_vendor/share/gz:/opt/ros/rolling/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/rolling/opt/gz_msgs_vendor/share/gz:/opt/ros/rolling/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib:/opt/ros/rolling/opt/gz_sim_vendor/lib:/opt/ros/rolling/opt/gz_sensors_vendor/lib:/opt/ros/rolling/opt/gz_physics_vendor/lib:/opt/ros/rolling/opt/sdformat_vendor/lib:/opt/ros/rolling/opt/gz_gui_vendor/lib:/opt/ros/rolling/opt/gz_transport_vendor/lib:/opt/ros/rolling/opt/gz_rendering_vendor/lib:/opt/ros/rolling/opt/gz_plugin_vendor/lib:/opt/ros/rolling/opt/gz_fuel_tools_vendor/lib:/opt/ros/rolling/opt/gz_msgs_vendor/lib:/opt/ros/rolling/opt/gz_common_vendor/lib:/opt/ros/rolling/opt/gz_math_vendor/lib:/opt/ros/rolling/opt/gz_utils_vendor/lib:/opt/ros/rolling/opt/rviz_ogre_vendor/lib:/opt/ros/rolling/lib/x86_64-linux-gnu:/opt/ros/rolling/opt/gz_tools_vendor/lib:/opt/ros/rolling/opt/gz_ogre_next_vendor/lib:/opt/ros/rolling/opt/gz_dartsim_vendor/lib:/opt/ros/rolling/opt/gz_cmake_vendor/lib:/opt/ros/rolling/lib', 'LESS': '-R', 'HOME': '/home/rubenb', 'OLDPWD': '/home/rubenb', 'DESKTOP_SESSION': 'ubuntu', 'LSCOLORS': 'Gxfxcxdxdxegedabagacad', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'less', 'LC_MONETARY': 'es_ES.UTF-8', 'MANAGERPID': '2956', 'SYSTEMD_EXEC_PID': '3400', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '4460', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install', 'ROS_DISTRO': 'rolling', 'LOGNAME': 'rubenb', 'OSH': '/home/rubenb/.oh-my-bash', 'JOURNAL_STREAM': '8:21323', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'rubenb', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/rolling/opt/gz_msgs_vendor/bin:/opt/ros/rolling/opt/gz_tools_vendor/bin:/opt/ros/rolling/opt/gz_ogre_next_vendor/bin:/opt/ros/rolling/bin:/home/rubenb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:@/tmp/.ICE-unix/3317,unix/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:/tmp/.ICE-unix/3317', 'INVOCATION_ID': '1803341d5355439d8c6356753c901379', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'es_ES.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'HISTSIZE': '2147450879', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'es_ES.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling', 'SHELL': '/bin/bash', 'LC_NAME': 'es_ES.UTF-8', 'TERMINATOR_UUID': 'urn:uuid:3bf68190-0c74-46a1-b316-c98facd6910c', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'es_ES.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'es_ES.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/rolling/lib/python3.12/site-packages', 'LC_NUMERIC': 'es_ES.UTF-8', 'LC_PAPER': 'es_ES.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling/opt/gz_sim_vendor:/opt/ros/rolling/opt/gz_sensors_vendor:/opt/ros/rolling/opt/gz_physics_vendor:/opt/ros/rolling/opt/sdformat_vendor:/opt/ros/rolling/opt/gz_gui_vendor:/opt/ros/rolling/opt/gz_transport_vendor:/opt/ros/rolling/opt/gz_rendering_vendor:/opt/ros/rolling/opt/gz_plugin_vendor:/opt/ros/rolling/opt/gz_fuel_tools_vendor:/opt/ros/rolling/opt/gz_msgs_vendor:/opt/ros/rolling/opt/gz_common_vendor:/opt/ros/rolling/opt/gz_math_vendor:/opt/ros/rolling/opt/gz_utils_vendor:/opt/ros/rolling/opt/gz_tools_vendor:/opt/ros/rolling/opt/gz_ogre_next_vendor:/opt/ros/rolling/opt/gz_dartsim_vendor:/opt/ros/rolling/opt/gz_cmake_vendor:/opt/ros/rolling'}), 'shell': False}
+[0.099527] (-) TimerEvent: {}
+[0.172320] (sdc_p4) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/bully.dir/src/bully.cpp.o\x1b[0m\n'}
+[0.199729] (-) TimerEvent: {}
+[0.300264] (-) TimerEvent: {}
+[0.400763] (-) TimerEvent: {}
+[0.501252] (-) TimerEvent: {}
+[0.601739] (-) TimerEvent: {}
+[0.702137] (-) TimerEvent: {}
+[0.802556] (-) TimerEvent: {}
+[0.902970] (-) TimerEvent: {}
+[1.003360] (-) TimerEvent: {}
+[1.103797] (-) TimerEvent: {}
+[1.204297] (-) TimerEvent: {}
+[1.304742] (-) TimerEvent: {}
+[1.405167] (-) TimerEvent: {}
+[1.505747] (-) TimerEvent: {}
+[1.606352] (-) TimerEvent: {}
+[1.706900] (-) TimerEvent: {}
+[1.807355] (-) TimerEvent: {}
+[1.907863] (-) TimerEvent: {}
+[2.008426] (-) TimerEvent: {}
+[2.108969] (-) TimerEvent: {}
+[2.209466] (-) TimerEvent: {}
+[2.309940] (-) TimerEvent: {}
+[2.410432] (-) TimerEvent: {}
+[2.510964] (-) TimerEvent: {}
+[2.611424] (-) TimerEvent: {}
+[2.711853] (-) TimerEvent: {}
+[2.812258] (-) TimerEvent: {}
+[2.912703] (-) TimerEvent: {}
+[3.013179] (-) TimerEvent: {}
+[3.113722] (-) TimerEvent: {}
+[3.215611] (-) TimerEvent: {}
+[3.316216] (-) TimerEvent: {}
+[3.417350] (-) TimerEvent: {}
+[3.517835] (-) TimerEvent: {}
+[3.618319] (-) TimerEvent: {}
+[3.718743] (-) TimerEvent: {}
+[3.819166] (-) TimerEvent: {}
+[3.919618] (-) TimerEvent: {}
+[4.020050] (-) TimerEvent: {}
+[4.120531] (-) TimerEvent: {}
+[4.220995] (-) TimerEvent: {}
+[4.321428] (-) TimerEvent: {}
+[4.421835] (-) TimerEvent: {}
+[4.522276] (-) TimerEvent: {}
+[4.622724] (-) TimerEvent: {}
+[4.723145] (-) TimerEvent: {}
+[4.823606] (-) TimerEvent: {}
+[4.924056] (-) TimerEvent: {}
+[5.024517] (-) TimerEvent: {}
+[5.124953] (-) TimerEvent: {}
+[5.225389] (-) TimerEvent: {}
+[5.325929] (-) TimerEvent: {}
+[5.426354] (-) TimerEvent: {}
+[5.526934] (-) TimerEvent: {}
+[5.627404] (-) TimerEvent: {}
+[5.727890] (-) TimerEvent: {}
+[5.828374] (-) TimerEvent: {}
+[5.928851] (-) TimerEvent: {}
+[6.029285] (-) TimerEvent: {}
+[6.129805] (-) TimerEvent: {}
+[6.230238] (-) TimerEvent: {}
+[6.330687] (-) TimerEvent: {}
+[6.431130] (-) TimerEvent: {}
+[6.531571] (-) TimerEvent: {}
+[6.632025] (-) TimerEvent: {}
+[6.732564] (-) TimerEvent: {}
+[6.832995] (-) TimerEvent: {}
+[6.933401] (-) TimerEvent: {}
+[7.033823] (-) TimerEvent: {}
+[7.134265] (-) TimerEvent: {}
+[7.234721] (-) TimerEvent: {}
+[7.335154] (-) TimerEvent: {}
+[7.435618] (-) TimerEvent: {}
+[7.536156] (-) TimerEvent: {}
+[7.636644] (-) TimerEvent: {}
+[7.737194] (-) TimerEvent: {}
+[7.837740] (-) TimerEvent: {}
+[7.938234] (-) TimerEvent: {}
+[8.038725] (-) TimerEvent: {}
+[8.139292] (-) TimerEvent: {}
+[8.239789] (-) TimerEvent: {}
+[8.340285] (-) TimerEvent: {}
+[8.440813] (-) TimerEvent: {}
+[8.541319] (-) TimerEvent: {}
+[8.641889] (-) TimerEvent: {}
+[8.742377] (-) TimerEvent: {}
+[8.842903] (-) TimerEvent: {}
+[8.943383] (-) TimerEvent: {}
+[9.043904] (-) TimerEvent: {}
+[9.144421] (-) TimerEvent: {}
+[9.245012] (-) TimerEvent: {}
+[9.345544] (-) TimerEvent: {}
+[9.446030] (-) TimerEvent: {}
+[9.546567] (-) TimerEvent: {}
+[9.647116] (-) TimerEvent: {}
+[9.747608] (-) TimerEvent: {}
+[9.848125] (-) TimerEvent: {}
+[9.948612] (-) TimerEvent: {}
+[10.049220] (-) TimerEvent: {}
+[10.149831] (-) TimerEvent: {}
+[10.250311] (-) TimerEvent: {}
+[10.350780] (-) TimerEvent: {}
+[10.451339] (-) TimerEvent: {}
+[10.551782] (-) TimerEvent: {}
+[10.652222] (-) TimerEvent: {}
+[10.752618] (-) TimerEvent: {}
+[10.853078] (-) TimerEvent: {}
+[10.953540] (-) TimerEvent: {}
+[11.054007] (-) TimerEvent: {}
+[11.154530] (-) TimerEvent: {}
+[11.255016] (-) TimerEvent: {}
+[11.355448] (-) TimerEvent: {}
+[11.455896] (-) TimerEvent: {}
+[11.556413] (-) TimerEvent: {}
+[11.657541] (-) TimerEvent: {}
+[11.758898] (-) TimerEvent: {}
+[11.859361] (-) TimerEvent: {}
+[11.959890] (-) TimerEvent: {}
+[12.060461] (-) TimerEvent: {}
+[12.161039] (-) TimerEvent: {}
+[12.261594] (-) TimerEvent: {}
+[12.362111] (-) TimerEvent: {}
+[12.462619] (-) TimerEvent: {}
+[12.563112] (-) TimerEvent: {}
+[12.663601] (-) TimerEvent: {}
+[12.764160] (-) TimerEvent: {}
+[12.864766] (-) TimerEvent: {}
+[12.965322] (-) TimerEvent: {}
+[13.065870] (-) TimerEvent: {}
+[13.166405] (-) TimerEvent: {}
+[13.266843] (-) TimerEvent: {}
+[13.367232] (-) TimerEvent: {}
+[13.467609] (-) TimerEvent: {}
+[13.567986] (-) TimerEvent: {}
+[13.668371] (-) TimerEvent: {}
+[13.768762] (-) TimerEvent: {}
+[13.869173] (-) TimerEvent: {}
+[13.969596] (-) TimerEvent: {}
+[14.070025] (-) TimerEvent: {}
+[14.170607] (-) TimerEvent: {}
+[14.271096] (-) TimerEvent: {}
+[14.371635] (-) TimerEvent: {}
+[14.472181] (-) TimerEvent: {}
+[14.572752] (-) TimerEvent: {}
+[14.673296] (-) TimerEvent: {}
+[14.773802] (-) TimerEvent: {}
+[14.874307] (-) TimerEvent: {}
+[14.974841] (-) TimerEvent: {}
+[15.075357] (-) TimerEvent: {}
+[15.175893] (-) TimerEvent: {}
+[15.276413] (-) TimerEvent: {}
+[15.376959] (-) TimerEvent: {}
+[15.477480] (-) TimerEvent: {}
+[15.578023] (-) TimerEvent: {}
+[15.678566] (-) TimerEvent: {}
+[15.779103] (-) TimerEvent: {}
+[15.879701] (-) TimerEvent: {}
+[15.980755] (-) TimerEvent: {}
+[16.081339] (-) TimerEvent: {}
+[16.181868] (-) TimerEvent: {}
+[16.282314] (-) TimerEvent: {}
+[16.384159] (-) TimerEvent: {}
+[16.484744] (-) TimerEvent: {}
+[16.585295] (-) TimerEvent: {}
+[16.685710] (-) TimerEvent: {}
+[16.786129] (-) TimerEvent: {}
+[16.886538] (-) TimerEvent: {}
+[16.986910] (-) TimerEvent: {}
+[17.087297] (-) TimerEvent: {}
+[17.187718] (-) TimerEvent: {}
+[17.288540] (-) TimerEvent: {}
+[17.388972] (-) TimerEvent: {}
+[17.489358] (-) TimerEvent: {}
+[17.589798] (-) TimerEvent: {}
+[17.690290] (-) TimerEvent: {}
+[17.790738] (-) TimerEvent: {}
+[17.891290] (-) TimerEvent: {}
+[17.991832] (-) TimerEvent: {}
+[18.092357] (-) TimerEvent: {}
+[18.192917] (-) TimerEvent: {}
+[18.293445] (-) TimerEvent: {}
+[18.393956] (-) TimerEvent: {}
+[18.494465] (-) TimerEvent: {}
+[18.594999] (-) TimerEvent: {}
+[18.695512] (-) TimerEvent: {}
+[18.796019] (-) TimerEvent: {}
+[18.896524] (-) TimerEvent: {}
+[18.997040] (-) TimerEvent: {}
+[19.097548] (-) TimerEvent: {}
+[19.198245] (-) TimerEvent: {}
+[19.298624] (-) TimerEvent: {}
+[19.399034] (-) TimerEvent: {}
+[19.499463] (-) TimerEvent: {}
+[19.599966] (-) TimerEvent: {}
+[19.700432] (-) TimerEvent: {}
+[19.800891] (-) TimerEvent: {}
+[19.901333] (-) TimerEvent: {}
+[20.001804] (-) TimerEvent: {}
+[20.102197] (-) TimerEvent: {}
+[20.202628] (-) TimerEvent: {}
+[20.303029] (-) TimerEvent: {}
+[20.403425] (-) TimerEvent: {}
+[20.503863] (-) TimerEvent: {}
+[20.604266] (-) TimerEvent: {}
+[20.704653] (-) TimerEvent: {}
+[20.805034] (-) TimerEvent: {}
+[20.905445] (-) TimerEvent: {}
+[21.005873] (-) TimerEvent: {}
+[21.106370] (-) TimerEvent: {}
+[21.206859] (-) TimerEvent: {}
+[21.307361] (-) TimerEvent: {}
+[21.407789] (-) TimerEvent: {}
+[21.508220] (-) TimerEvent: {}
+[21.608724] (-) TimerEvent: {}
+[21.667469] (sdc_p4) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable bully\x1b[0m\n'}
+[21.708860] (-) TimerEvent: {}
+[21.809294] (-) TimerEvent: {}
+[21.909759] (-) TimerEvent: {}
+[22.010215] (-) TimerEvent: {}
+[22.110668] (-) TimerEvent: {}
+[22.211182] (-) TimerEvent: {}
+[22.311673] (-) TimerEvent: {}
+[22.412194] (-) TimerEvent: {}
+[22.512623] (-) TimerEvent: {}
+[22.613071] (-) TimerEvent: {}
+[22.713593] (-) TimerEvent: {}
+[22.814009] (-) TimerEvent: {}
+[22.914413] (-) TimerEvent: {}
+[23.014846] (-) TimerEvent: {}
+[23.115285] (-) TimerEvent: {}
+[23.215722] (-) TimerEvent: {}
+[23.316238] (-) TimerEvent: {}
+[23.416776] (-) TimerEvent: {}
+[23.517224] (-) TimerEvent: {}
+[23.586316] (sdc_p4) StdoutLine: {'line': b'[100%] Built target bully\n'}
+[23.607099] (sdc_p4) CommandEnded: {'returncode': 0}
+[23.608314] (sdc_p4) JobProgress: {'identifier': 'sdc_p4', 'progress': 'install'}
+[23.617358] (-) TimerEvent: {}
+[23.627226] (sdc_p4) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4'], 'cwd': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'XDG_ACTIVATION_TOKEN': 'gnome-shell/Terminator/3400-1-rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM_TIME371285', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2147450879', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/rolling/share/', 'USER': 'rubenb', 'LC_TIME': 'es_ES.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/rolling/opt/gz_sim_vendor/share/gz:/opt/ros/rolling/opt/sdformat_vendor/share/gz:/opt/ros/rolling/opt/gz_gui_vendor/share/gz:/opt/ros/rolling/opt/gz_transport_vendor/share/gz:/opt/ros/rolling/opt/gz_rendering_vendor/share/gz:/opt/ros/rolling/opt/gz_plugin_vendor/share/gz:/opt/ros/rolling/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/rolling/opt/gz_msgs_vendor/share/gz:/opt/ros/rolling/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib:/opt/ros/rolling/opt/gz_sim_vendor/lib:/opt/ros/rolling/opt/gz_sensors_vendor/lib:/opt/ros/rolling/opt/gz_physics_vendor/lib:/opt/ros/rolling/opt/sdformat_vendor/lib:/opt/ros/rolling/opt/gz_gui_vendor/lib:/opt/ros/rolling/opt/gz_transport_vendor/lib:/opt/ros/rolling/opt/gz_rendering_vendor/lib:/opt/ros/rolling/opt/gz_plugin_vendor/lib:/opt/ros/rolling/opt/gz_fuel_tools_vendor/lib:/opt/ros/rolling/opt/gz_msgs_vendor/lib:/opt/ros/rolling/opt/gz_common_vendor/lib:/opt/ros/rolling/opt/gz_math_vendor/lib:/opt/ros/rolling/opt/gz_utils_vendor/lib:/opt/ros/rolling/opt/rviz_ogre_vendor/lib:/opt/ros/rolling/lib/x86_64-linux-gnu:/opt/ros/rolling/opt/gz_tools_vendor/lib:/opt/ros/rolling/opt/gz_ogre_next_vendor/lib:/opt/ros/rolling/opt/gz_dartsim_vendor/lib:/opt/ros/rolling/opt/gz_cmake_vendor/lib:/opt/ros/rolling/lib', 'LESS': '-R', 'HOME': '/home/rubenb', 'OLDPWD': '/home/rubenb', 'DESKTOP_SESSION': 'ubuntu', 'LSCOLORS': 'Gxfxcxdxdxegedabagacad', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'less', 'LC_MONETARY': 'es_ES.UTF-8', 'MANAGERPID': '2956', 'SYSTEMD_EXEC_PID': '3400', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '4460', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install', 'ROS_DISTRO': 'rolling', 'LOGNAME': 'rubenb', 'OSH': '/home/rubenb/.oh-my-bash', 'JOURNAL_STREAM': '8:21323', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'rubenb', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/rolling/opt/gz_msgs_vendor/bin:/opt/ros/rolling/opt/gz_tools_vendor/bin:/opt/ros/rolling/opt/gz_ogre_next_vendor/bin:/opt/ros/rolling/bin:/home/rubenb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:@/tmp/.ICE-unix/3317,unix/rubenb-ASUS-TUF-Dash-F15-FX516PM-FX516PM:/tmp/.ICE-unix/3317', 'INVOCATION_ID': '1803341d5355439d8c6356753c901379', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'es_ES.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'HISTSIZE': '2147450879', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'es_ES.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling', 'SHELL': '/bin/bash', 'LC_NAME': 'es_ES.UTF-8', 'TERMINATOR_UUID': 'urn:uuid:3bf68190-0c74-46a1-b316-c98facd6910c', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'es_ES.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'es_ES.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/build/sdc_p4', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/rolling/lib/python3.12/site-packages', 'LC_NUMERIC': 'es_ES.UTF-8', 'LC_PAPER': 'es_ES.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4:/opt/ros/rolling/opt/gz_sim_vendor:/opt/ros/rolling/opt/gz_sensors_vendor:/opt/ros/rolling/opt/gz_physics_vendor:/opt/ros/rolling/opt/sdformat_vendor:/opt/ros/rolling/opt/gz_gui_vendor:/opt/ros/rolling/opt/gz_transport_vendor:/opt/ros/rolling/opt/gz_rendering_vendor:/opt/ros/rolling/opt/gz_plugin_vendor:/opt/ros/rolling/opt/gz_fuel_tools_vendor:/opt/ros/rolling/opt/gz_msgs_vendor:/opt/ros/rolling/opt/gz_common_vendor:/opt/ros/rolling/opt/gz_math_vendor:/opt/ros/rolling/opt/gz_utils_vendor:/opt/ros/rolling/opt/gz_tools_vendor:/opt/ros/rolling/opt/gz_ogre_next_vendor:/opt/ros/rolling/opt/gz_dartsim_vendor:/opt/ros/rolling/opt/gz_cmake_vendor:/opt/ros/rolling'}), 'shell': False}
+[23.643215] (sdc_p4) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[23.644081] (sdc_p4) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[23.644733] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/lib/sdc_p4/bully\n'}
+[23.645464] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/include//sdc_p4/bully.hpp\n'}
+[23.646110] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/library_path.sh\n'}
+[23.646479] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/library_path.dsv\n'}
+[23.647107] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/package_run_dependencies/sdc_p4\n'}
+[23.647524] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/parent_prefix_path/sdc_p4\n'}
+[23.648014] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/ament_prefix_path.sh\n'}
+[23.648435] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/ament_prefix_path.dsv\n'}
+[23.648863] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/path.sh\n'}
+[23.649294] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/environment/path.dsv\n'}
+[23.649813] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.bash\n'}
+[23.650209] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.sh\n'}
+[23.650669] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.zsh\n'}
+[23.651098] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/local_setup.dsv\n'}
+[23.651410] (sdc_p4) StdoutLine: {'line': b'-- Symlinking: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/package.dsv\n'}
+[23.670222] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/ament_index/resource_index/packages/sdc_p4\n'}
+[23.670854] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[23.671066] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[23.671322] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[23.671772] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/sdc_p4Config.cmake\n'}
+[23.672003] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/cmake/sdc_p4Config-version.cmake\n'}
+[23.672415] (sdc_p4) StdoutLine: {'line': b'-- Up-to-date symlink: /home/rubenb/uni/5_ano/1cuatri/sistemas_distribuidos/practicas/p4/Ruben_Bautista/ros_ws/install/sdc_p4/share/sdc_p4/package.xml\n'}
+[23.675773] (sdc_p4) CommandEnded: {'returncode': 0}
+[23.714692] (sdc_p4) JobEnded: {'identifier': 'sdc_p4', 'rc': 0}
+[23.716309] (-) EventReactorShutdown: {}
