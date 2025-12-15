@@ -1,8 +1,0 @@
-source;share/sdc_p4/hook/cmake_prefix_path.ps1
-source;share/sdc_p4/hook/cmake_prefix_path.dsv
-source;share/sdc_p4/hook/cmake_prefix_path.sh
-source;share/sdc_p4/local_setup.bash
-source;share/sdc_p4/local_setup.dsv
-source;share/sdc_p4/local_setup.ps1
-source;share/sdc_p4/local_setup.sh
-source;share/sdc_p4/local_setup.zsh
