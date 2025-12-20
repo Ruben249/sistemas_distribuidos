@@ -94,7 +94,7 @@ BullyNode::BullyNode(const rclcpp::NodeOptions & options)
 }
 
 /*change_state(): change the current state of the node
-and update the role string accordingly*/
+and update the role string*/
 void BullyNode::change_state(NodeState new_state)
 {
   current_state_ = new_state;
